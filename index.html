@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>包租代管－新進件防呆導航</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 15px; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: #2c3e50; font-size: 22px; margin-bottom: 5px; }
+        .subtitle { font-size:13px; color:#7f8c8d; text-align:center; margin-bottom: 25px; }
+        
+        /* 折疊按鈕樣式 */
+        .accordion-btn { 
+            width: 100%; background-color: #2c3e50; color: white; padding: 16px; 
+            text-align: left; border: none; border-radius: 8px; font-size: 16px; 
+            font-weight: bold; cursor: pointer; margin-top: 12px; display: flex; 
+            justify-content: space-between; align-items: center; transition: 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .accordion-btn:hover { background-color: #34495e; }
+        .accordion-btn::after { content: '➕'; font-size: 14px; }
+        .accordion-btn.active { background-color: #2980b9; border-radius: 8px 8px 0 0; margin-bottom: 0; }
+        .accordion-btn.active::after { content: '➖'; }
+
+        /* 內容區塊樣式 (預設隱藏) */
+        .accordion-content { 
+            display: none; border: 1px solid #2980b9; border-top: none; 
+            background-color: #fafafa; padding: 15px; border-radius: 0 0 8px 8px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* 內部分類小卡片 */
+        .card { border-left: 4px solid #3498db; background: #fff; padding: 12px; margin-bottom: 12px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-title { font-weight: bold; font-size: 15px; color: #2c3e50; margin-bottom: 6px; }
+        .rule-list { margin: 5px 0; padding-left: 18px; line-height: 1.6; font-size: 14px; }
+        
+        /* 提示框 */
+        .alert-box { background-color: #fff3cd; border-left: 4px solid #ffc107; color: #856404; padding: 10px; border-radius: 4px; font-size: 13px; margin-top: 8px; }
+        .danger-box { background-color: #f8d7da; border-left: 4px solid #dc3545; color: #721c24; padding: 10px; border-radius: 4px; font-size: 13px; margin-top: 8px; }
+        .qa-box { background-color: #e2e3e5; border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 13px; color: #383d41; }
+        .sample-placeholder { border: 2px dashed #bdc3c7; background: #fff; text-align: center; padding: 15px 10px; color: #7f8c8d; font-size: 13px; border-radius: 6px; margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📋 包租代管進件節點指南</h1>
+    <div class="subtitle">業務收件對照專用｜請點開對應項目查看規格</div>
+
+    <button class="accordion-btn">1. 直媒案件（包租）租金審查</button>
+    <div class="accordion-content">
+        <div class="card">
+            <div class="card-title">基本要求：提供 6 個月繳租證明</div>
+            <ul class="rule-list">
+                <li>必須以<b>「起租前 6 個月」</b>為計算基準。</li>
+            </ul>
+            <div class="qa-box">
+                <b>💡 節點 QA 答詢：</b><br>
+                問：如果每個月匯款的租金金額不同時？<br>
+                <b>答：業務需當場請客戶提出「為何每月租金不一樣」的合理原因說明。</b>
+            </div>
+            <div class="danger-box">
+                <b>⚠️ 缺件應變方案（二選一）：</b><br>
+                1. <b>完全無法提供證明：</b> 必須提供【保證人身分證】，且【保證人及承租人】雙方須一同辦理公證。<br>
+                2. <b>缺少部分月份：</b> 業務必須上簽呈。是否需要保證人？<b>請當下與主管確認！</b>
+            </div>
+        </div>
+    </div>
+
+    <button class="accordion-btn">2. 信任租與保證人審查</button>
+    <div class="accordion-content">
+        <div class="card">
+            <div class="card-title">信任租畫面提交標準</div>
+            <ul class="rule-list">
+                <li><b>評等 C 以下（含 C）：</b> 業務需額外提交簽呈。</li>
+                <li><b>案件附有保證人：</b> 保證人也必須同步檢附信任租畫面。</li>
+            </ul>
+            <div class="sample-placeholder">📸 範本圖片：信任租評等畫面（需清晰顯示評等字母與姓名）</div>
+        </div>
+    </div>
+
+    <button class="accordion-btn">3. 房東必備資料收集</button>
+    <div class="accordion-content">
+        <div class="card">
+            <div class="card-title">房東四大核心文件</div>
+            <ul class="rule-list">
+                <li><b>身分證正反面：</b> 須拍到完整四個角、嚴禁反光。</li>
+                <li><b>收租存摺封面：</b> 帳號、戶名須絕對清晰。</li>
+                <li><b>第一類建物謄本：</b> 核對所有權人與主要用途。</li>
+                <li><b>房屋稅單 或 課稅明細：</b> 須提供最新年度。</li>
+            </ul>
+            <div class="sample-placeholder">📸 範本圖片：一類謄本與最新稅單規格對照</div>
+        </div>
+    </div>
+
+    <button class="accordion-btn">4. 房客必備資料與身分分類</button>
+    <div class="accordion-content">
+        <div class="card">
+            <div class="card-title">房客共通文件（必備）</div>
+            <ul class="rule-list">
+                <li><b>承租人身分證正反面</b></li>
+                <li><b>存摺封面：</b> <span style="color:#dc3545; font-weight:bold;">若使用他人帳戶，須加附「該帳戶所有人身分證正反面」！</span></li>
+                <li><b>戶籍謄本 或 戶口名簿：</b> 須為「全戶」且「含詳細記事」，<span style="color:#dc3545; font-weight:bold;">且申請日期須在【近 1 個月內】！</span></li>
+                <li><b>三名緊急聯絡人：</b> 家人、同事、朋友均可，資料須齊全。</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left-color: #2e7d32;">
+            <div class="card-title" style="color: #2e7d32;">【一般戶】身分規格</div>
+            <ul class="rule-list">
+                <li>👉 僅需要確認上述之「近 1 個月內戶籍謄本」即可。</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left-color: #c62828;">
+            <div class="card-title" style="color: #c62828;">【弱勢戶】身分規格</div>
+            <ul class="rule-list">
+                <li>👉 必須提供有效的弱勢證明文件。</li>
+            </ul>
+            <div class="alert-box">
+                <b>👶 育有未成年子女特殊狀況：</b><br>
+                若子女與父母<b>不同戶籍</b>，請業務務必追加申請<b>「小孩的戶籍謄本（部分限戶即可）」</b>。
+            </div>
+        </div>
+    </div>
+
+    <button class="accordion-btn">5. 房客特殊狀況（特殊家庭/孕婦）</button>
+    <div class="accordion-content">
+        <div class="card">
+            <div class="card-title">夫妻不同戶籍</div>
+            <ul class="rule-list">
+                <li>須加附：<b>配偶身分證正反面</b> ＋ <b>配偶戶籍謄本（全戶含詳細記事）</b>。</li>
+                <li><span style="color:#d35400; font-weight:bold;">配偶為外籍人士：</span> 須提供<b>居留證正反面</b> ＋ <b>護照基本資料頁</b>。</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left-color: #e91e63;">
+            <div class="card-title" style="color: #e91e63;">孕婦資料收集（懷孕狀況）</div>
+            <ul class="rule-list">
+                <li>必須精準拍攝<b>「媽媽手冊」</b>以下三個畫面：</li>
+            </ul>
+            <div class="alert-box" style="background-color:#fce4ec; border-left:4px solid #e91e63; color:#880e4f;">
+                1. <b>手冊正面封面</b><br>
+                2. <b>手冊內頁：</b> <span style="font-weight:bold;">內頁產檢日期必須顯示為「最新日期」！</span><br>
+                3. <b>手冊封底</b>
+            </div>
+            <div class="sample-placeholder" style="border-color:#f48fb1; color:#c2185b;">📸 範本圖片：媽媽手冊三頁對照（封面、最新內頁、封底）</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // 點擊展開/折疊的自動化腳本
+    const acc = document.getElementsByClassName("accordion-btn");
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
