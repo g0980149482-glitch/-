@@ -3,164 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>包租代管－新進件防呆導航</title>
+    <title>收件流程及注意事項</title>
+    <!-- 引入 Google 字體與 FontAwesome 圖示 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 15px; }
-        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
-        h1 { text-align: center; color: #2c3e50; font-size: 22px; margin-bottom: 5px; }
-        .subtitle { font-size:13px; color:#7f8c8d; text-align:center; margin-bottom: 25px; }
-        
-        /* 折疊按鈕樣式 */
-        .accordion-btn { 
-            width: 100%; background-color: #2c3e50; color: white; padding: 16px; 
-            text-align: left; border: none; border-radius: 8px; font-size: 16px; 
-            font-weight: bold; cursor: pointer; margin-top: 12px; display: flex; 
-            justify-content: space-between; align-items: center; transition: 0.3s;
+        :root {
+            --primary: #2c3e50;
+            --accent-1: #3498db;
+            --accent-2: #e67e22;
+            --bg-light: #f8f9fa;
+            --text-main: #333333;
+            --text-muted: #7f8c8d;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 標題區 */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: #ffffff;
+            padding: 25px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* 分類大標 */
+        .category-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 25px 0 10px 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        /* 折疊卡片整體 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
         }
-        .accordion-btn:hover { background-color: #34495e; }
-        .accordion-btn::after { content: '➕'; font-size: 14px; }
-        .accordion-btn.active { background-color: #2980b9; border-radius: 8px 8px 0 0; margin-bottom: 0; }
-        .accordion-btn.active::after { content: '➖'; }
 
-        /* 內容區塊樣式 (預設隱藏) */
-        .accordion-content { 
-            display: none; border: 1px solid #2980b9; border-top: none; 
-            background-color: #fafafa; padding: 15px; border-radius: 0 0 8px 8px;
-            animation: fadeIn 0.3s ease-in-out;
+        /* 按鈕觸發區 */
+        .card-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.2s ease;
+            font-weight: 700;
+            font-size: 16px;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* 內部分類小卡片 */
-        .card { border-left: 4px solid #3498db; background: #fff; padding: 12px; margin-bottom: 12px; border-radius: 0 4px 4px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .card-title { font-weight: bold; font-size: 15px; color: #2c3e50; margin-bottom: 6px; }
-        .rule-list { margin: 5px 0; padding-left: 18px; line-height: 1.6; font-size: 14px; }
-        
-        /* 提示框 */
-        .alert-box { background-color: #fff3cd; border-left: 4px solid #ffc107; color: #856404; padding: 10px; border-radius: 4px; font-size: 13px; margin-top: 8px; }
-        .danger-box { background-color: #f8d7da; border-left: 4px solid #dc3545; color: #721c24; padding: 10px; border-radius: 4px; font-size: 13px; margin-top: 8px; }
-        .qa-box { background-color: #e2e3e5; border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 13px; color: #383d41; }
-        .sample-placeholder { border: 2px dashed #bdc3c7; background: #fff; text-align: center; padding: 15px 10px; color: #7f8c8d; font-size: 13px; border-radius: 6px; margin-top: 10px; font-weight: bold; }
+        /* 顏色區分防呆 */
+        .type-间媒 { background-color: #ebf5fb; color: #2980b9; }
+        .type-包租 { background-color: #fef5e7; color: #d35400; }
+        .type-代管 { background-color: #f4ecf7; color: #7d3c98; }
+        .type-房東 { background-color: #e8f8f5; color: #117a65; }
+        .type-房客 { background-color: #f9f9f9; color: #2c3e50; }
+
+        .card-header:hover {
+            opacity: 0.9;
+        }
+
+        .card-header .icon-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* 折疊內容區 */
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #ffffff;
+        }
+
+        .card-body {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 15px;
+        }
+
+        /* 內文排版優化 */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--text-muted);
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+            top: 0;
+        }
+
+        .sub-list {
+            padding-left: 15px;
+            margin-top: 6px;
+        }
+
+        .sub-list li::before {
+            content: "└";
+            color: #bdc3c7;
+        }
+
+        /* 警示亮色標籤 */
+        .badge-danger {
+            background-color: #e74c3c;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .badge-warning {
+            background-color: #f1c40f;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .badge-info {
+            background-color: #3498db;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        /* 複製與範本方塊 */
+        .copy-block {
+            background-color: #f8f9fa;
+            border: 1px dashed #bdc3c7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 12px 0;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            position: relative;
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-copy:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        /* 圖片展現預留區 */
+        .image-placeholder {
+            background-color: #f1f2f6;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--text-muted);
+        }
+
+        .image-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+            display: none; /* 當經理放入 src 時，可改為 block */
+        }
+
+        /* 展開狀態的旋轉 */
+        .is-open .arrow-icon {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>📋 包租代管進件節點指南</h1>
-    <div class="subtitle">業務收件對照專用｜請點開對應項目查看規格</div>
+    <header>
+        <h1>收件流程及注意事項</h1>
+        <p>星鴻包租代管－彰一處 內部進件防呆指南</p>
+    </header>
 
-    <button class="accordion-btn">1. 直媒案件（包租）租金審查</button>
-    <div class="accordion-content">
-        <div class="card">
-            <div class="card-title">基本要求：提供 6 個月繳租證明</div>
-            <ul class="rule-list">
-                <li>必須以<b>「起租前 6 個月」</b>為計算基準。</li>
-            </ul>
-            <div class="qa-box">
-                <b>💡 節點 QA 答詢：</b><br>
-                問：如果每個月匯款的租金金額不同時？<br>
-                <b>答：業務需當場請客戶提出「為何每月租金不一樣」的合理原因說明。</b>
+    <!-- ================= 第一大類 ================= -->
+    <div class="category-title">
+        <i class="fa-solid fa-folder-open"></i> 第一大類：直媒案件 / 間媒案件
+    </div>
+
+    <!-- 間媒案件 -->
+    <div class="card">
+        <div class="card-header type-间媒" onclick="toggleCard(this)">
+            <div class="icon-group">
+                <i class="fa-solid fa-people-arrows"></i>
+                <span>間媒案件留意事項 & 信任租話術</span>
             </div>
-            <div class="danger-box">
-                <b>⚠️ 缺件應變方案（二選一）：</b><br>
-                1. <b>完全無法提供證明：</b> 必須提供【保證人身分證】，且【保證人及承租人】雙方須一同辦理公證。<br>
-                2. <b>缺少部分月份：</b> 業務必須上簽呈。是否需要保證人？<b>請當下與主管確認！</b>
-            </div>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
         </div>
-    </div>
-
-    <button class="accordion-btn">2. 信任租與保證人審查</button>
-    <div class="accordion-content">
-        <div class="card">
-            <div class="card-title">信任租畫面提交標準</div>
-            <ul class="rule-list">
-                <li><b>評等 C 以下（含 C）：</b> 業務需額外提交簽呈。</li>
-                <li><b>案件附有保證人：</b> 保證人也必須同步檢附信任租畫面。</li>
-            </ul>
-            <div class="sample-placeholder">📸 範本圖片：信任租評等畫面（需清晰顯示評等字母與姓名）</div>
-        </div>
-    </div>
-
-    <button class="accordion-btn">3. 房東必備資料收集</button>
-    <div class="accordion-content">
-        <div class="card">
-            <div class="card-title">房東四大核心文件</div>
-            <ul class="rule-list">
-                <li><b>身分證正反面：</b> 須拍到完整四個角、嚴禁反光。</li>
-                <li><b>收租存摺封面：</b> 帳號、戶名須絕對清晰。</li>
-                <li><b>第一類建物謄本：</b> 核對所有權人與主要用途。</li>
-                <li><b>房屋稅單 或 課稅明細：</b> 須提供最新年度。</li>
-            </ul>
-            <div class="sample-placeholder">📸 範本圖片：一類謄本與最新稅單規格對照</div>
-        </div>
-    </div>
-
-    <button class="accordion-btn">4. 房客必備資料與身分分類</button>
-    <div class="accordion-content">
-        <div class="card">
-            <div class="card-title">房客共通文件（必備）</div>
-            <ul class="rule-list">
-                <li><b>承租人身分證正反面</b></li>
-                <li><b>存摺封面：</b> <span style="color:#dc3545; font-weight:bold;">若使用他人帳戶，須加附「該帳戶所有人身分證正反面」！</span></li>
-                <li><b>戶籍謄本 或 戶口名簿：</b> 須為「全戶」且「含詳細記事」，<span style="color:#dc3545; font-weight:bold;">且申請日期須在【近 1 個月內】！</span></li>
-                <li><b>三名緊急聯絡人：</b> 家人、同事、朋友均可，資料須齊全。</li>
-            </ul>
-        </div>
-        <div class="card" style="border-left-color: #2e7d32;">
-            <div class="card-title" style="color: #2e7d32;">【一般戶】身分規格</div>
-            <ul class="rule-list">
-                <li>👉 僅需要確認上述之「近 1 個月內戶籍謄本」即可。</li>
-            </ul>
-        </div>
-        <div class="card" style="border-left-color: #c62828;">
-            <div class="card-title" style="color: #c62828;">【弱勢戶】身分規格</div>
-            <ul class="rule-list">
-                <li>👉 必須提供有效的弱勢證明文件。</li>
-            </ul>
-            <div class="alert-box">
-                <b>👶 育有未成年子女特殊狀況：</b><br>
-                若子女與父母<b>不同戶籍</b>，請業務務必追加申請<b>「小孩的戶籍謄本（部分限戶即可）」</b>。
+        <div class="card-content">
+            <div class="card-body">
+                <ul>
+                    <li><strong>主動告知義務：</strong> 帶看時，必須主動告知房客「會調閱信用狀況提供給房東評估」。盡量調閱以進行租客篩選，有利於後續管理方便。</li>
+                    <li>
+                        <span class="badge-info">說明信任租話術懶人包</span> (業務可直接背誦口條)：
+                        <div class="copy-block" id="speechText">我們會需要調閱您的信用狀況，一來可以讓房東更加了解您的信用狀況，但是請放心，我們調閱的結果是不會傳給房東看，只會口頭告知評等是好、尚可、不好，主要針對的是您在信用方面的狀況是否有不良紀錄，而且這不會扣你的聯徵分數，若您沒問題麻煩幫我在這張同意書上簽名及身分證正反面傳給我。<button class="btn-copy" onclick="copyText('speechText', this)"><i class="fa-regular fa-copy"></i> 複製話術</button></div>
+                    </li>
+                    <li><strong>確認承租意願：</strong> 在帶看的同時，請務必確認房客的「租期意願」。若房客明確表達願意長期承租，業務可直接與房東討論租期部分是否可以直接簽 <strong>三年期</strong>。</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <button class="accordion-btn">5. 房客特殊狀況（特殊家庭/孕婦）</button>
-    <div class="accordion-content">
-        <div class="card">
-            <div class="card-title">夫妻不同戶籍</div>
-            <ul class="rule-list">
-                <li>須加附：<b>配偶身分證正反面</b> ＋ <b>配偶戶籍謄本（全戶含詳細記事）</b>。</li>
-                <li><span style="color:#d35400; font-weight:bold;">配偶為外籍人士：</span> 須提供<b>居留證正反面</b> ＋ <b>護照基本資料頁</b>。</li>
-            </ul>
-        </div>
-        <div class="card" style="border-left-color: #e91e63;">
-            <div class="card-title" style="color: #e91e63;">孕婦資料收集（懷孕狀況）</div>
-            <ul class="rule-list">
-                <li>必須精準拍攝<b>「媽媽手冊」</b>以下三個畫面：</li>
-            </ul>
-            <div class="alert-box" style="background-color:#fce4ec; border-left:4px solid #e91e63; color:#880e4f;">
-                1. <b>手冊正面封面</b><br>
-                2. <b>手冊內頁：</b> <span style="font-weight:bold;">內頁產檢日期必須顯示為「最新日期」！</span><br>
-                3. <b>手冊封底</b>
+    <!-- 包租案件 -->
+    <div class="card">
+        <div class="card-header type-包租" onclick="toggleCard(this)">
+            <div class="icon-group">
+                <i class="fa-solid fa-box-archive"></i>
+                <span>包租案件必須收集資料</span>
             </div>
-            <div class="sample-placeholder" style="border-color:#f48fb1; color:#c2185b;">📸 範本圖片：媽媽手冊三頁對照（封面、最新內頁、封底）</div>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <ul>
+                    <li>
+                        <strong>1. 房客信任租調閱：</strong>
+                        <ul class="sub-list">
+                            <li>必須收齊「身分證正反面 + 同意書」後，回傳至信任租調閱群組。</li>
+                            <li><span class="badge-warning">時間關鍵</span> 每日 <strong>10點前</strong> 送出，可在當天知道結果。業務須隨時留意主管是否已協助送出。</li>
+                            <li><span class="badge-danger">審核硬限制</span> 信任租評等在 <strong>C以下 (含C)</strong> 需額外上簽呈 (此限制僅包租案需要)。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>2. 六個月繳租證明：</strong>
+                        <ul class="sub-list">
+                            <li>必須使用<strong>銀行轉帳證明</strong>，絕對不可使用簽收單、手寫收據。</li>
+                            <li><span class="badge-danger">若無法提供</span>：必須提供保證人，且保證人與房客要<strong>一同辦理公證 + 簽呈</strong> (保證人同樣要提供信任租審查)。</li>
+                            <li><span class="badge-warning">若缺少月份</span>：業務必須上簽呈。至於是否一定要保證人？<strong>「請當下直接與主管確認！」</strong></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>3. 三名緊急聯絡人：</strong>
+                        <ul class="sub-list">
+                            <li>請房客務必完整提供 <strong>3名</strong> 緊急聯絡人資訊，關係必須包含：<strong>家人、朋友、同事</strong> 各一。</li>
+                            <li>話術安撫：告知房客平常絕對不會打電話，除非發生極為緊急狀況需要聯繫時才會主動聯繫。</li>
+                            <li><span class="badge-danger">防呆</span> 緊急聯絡人資料必須確實於房客系統資料上建立留檔。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 第二大類 ================= -->
+    <div class="category-title">
+        <i class="fa-solid fa-folder-open"></i> 第二大類：包租案件 / 代管案件
+    </div>
+
+    <!-- 代管案件 -->
+    <div class="card">
+        <div class="card-header type-代管" onclick="toggleCard(this)">
+            <div class="icon-group">
+                <i class="fa-solid fa-file-signature"></i>
+                <span>代管案件注意事項 & 簽呈範本</span>
+            </div>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <ul>
+                    <li><span class="badge-danger">代管一年規定</span>：若案件為「代管一年案」，業務<strong>必須上簽呈給主管</strong>。</li>
+                    <li><span class="badge-warning">複審夾檔</span>：簽呈核准後，主管會截圖核准畫面。業務必須將此截圖夾帶在複審資料中，位置請放置在<strong>「協議書之後」</strong>即可。</li>
+                    <li>
+                        <strong>📋 中區代管簽呈範本 (點擊右上方可直接複製文字)：</strong>
+                        <div class="copy-block" id="signTemplate">主旨：中區代管簽呈
+
+說明：
+
+一、案件資料
+  物件地址：
+  物件房型：
+  物件租金：
+  業務／代管件數：
+  房客工作職業：
+
+二、案件說明
+  （一）本案為代管新媒合案件。
+  （二）檢附信任租結果：通過。
+  （三）房客原規劃可簽訂長期租約，惟因初次入住該社區，考量居住適應問題，經房東與房客雙方討論後，先行簽訂一年期租約；後續如續約評估狀況良好，雙方將再行商討長約簽訂安排。
+
+
+懇請協理核准此代管案件。<button class="btn-copy" onclick="copyText('signTemplate', this)"><i class="fa-regular fa-copy"></i> 複製簽呈</button></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 房東資料 -->
+    <div class="card">
+        <div class="card-header type-房東" onclick="toggleCard(this)">
+            <div class="icon-group">
+                <i class="fa-solid fa-house-user"></i>
+                <span>包租 / 代管【房東】所需資料與 LINE 訊息</span>
+            </div>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <ul>
+                    <li><strong>1. 身分證正反面：</strong> 必須完整拍到四個邊角且清晰。可在上面壓字但絕不能遮擋到重要資訊及照片。建議壓字三擇一：<code>星鴻社會專用</code>、<code>星鴻社會住宅及調閱課稅明細使用</code>、<code>租賃使用</code>。<span class="badge-warning">注意</span> 若要代辦調閱課稅明細，身分證上必須有壓到相關字眼才能代辦。</li>
+                    <li><strong>2. 收租存摺封面：</strong> 必須完整拍到四個邊角，且必須清晰顯示出「分行名稱」、「帳號」和「戶名」。</li>
+                    <li><strong>3. 房屋稅單或課稅明細：</strong> 必須提供當年度最新的版本。</li>
+                    <li><strong>4. 第一類建物謄本：</strong> 用於核對建物的主要用途是否符合規定。</li>
+                    <li><span class="badge-info">業務代辦備註</span> 第3項(稅單)及第4項(謄本)可由業務協助代辦，但必須提早跟房東說明清楚。</li>
+                    <li>
+                        <span class="badge-danger">特殊狀況補充：</span>
+                        <ul class="sub-list">
+                            <li><strong>新建案/買賣交屋：</strong> 房東初期無法取得房屋稅單，業務須引導或協助至當地稅務局申請「公文函」，申請時間約需 <strong>1週</strong> 左右。</li>
+                            <li><strong>稅率錯誤(營業稅/非住非營)：</strong> 若稅單上顯示此類稅率，須請房東親自至國稅局辦理變更為住家用稅率，辦理時間約需 <strong>7-14天</strong> 左右。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>💬 傳給房東的 LINE 資料收集訊息範本：</strong>
+                        <div class="copy-block" id="landlordLine">房東您好再麻煩您幫我準備以下資料
+1.([)房東(])彩色身分證正反面照片
+2.([)房東(])彩色存摺照片（申請修繕補助費用用）
+3.第一類建物謄本（有效期一個月內、可代辦）
+4.房屋稅繳款書或課稅明細(可代辦)
+
+房東若今年度房屋稅單找不到的話，我這邊可以協助辦理，一類謄本部分我會直接幫您代辦，先跟您說一聲。若證件上須要押上文字，請幫我壓「星鴻社會專用」或「星鴻社會住宅及調閱課稅明細使用」即可。<button class="btn-copy" onclick="copyText('landlordLine', this)"><i class="fa-regular fa-copy"></i> 複製訊息</button></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 房客資料 -->
+    <div class="card">
+        <div class="card-header type-房客" onclick="toggleCard(this)">
+            <div class="icon-group">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>包租 / 代管【房客】所需資料與身分狀況</span>
+            </div>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <ul>
+                    <li><strong>1. 身分證正反面：</strong> 須完整拍到四邊且清晰，可在上面壓字但不能遮擋到重要資訊及照片，壓字三擇一：<code>星鴻社會專用</code>、<code>星鴻社會住宅及調閱課稅明細使用</code>、<code>租賃使用</code>。</li>
+                    <li><strong>2. 領取300億租金補貼帳戶：</strong> 須完整拍到四邊，清晰顯示分行名稱、帳號和戶名。</li>
+                    <li><strong>3. 戶籍謄本或戶口名簿：</strong> 必須為<strong>「全戶含詳細記事」</strong>。戶籍謄本須在 <strong>近一個月內</strong> 申請；戶口名簿則須上網查詢是否有異動紀錄並<strong>截圖證明</strong>。</li>
+                    <li><strong>4. 外籍配偶特殊件：</strong> 必須額外提供居留證正反面及護照基本資料頁。</li>
+                    
+                    <li style="margin-top: 15px;">
+                        <span class="badge-info">一般戶租客常見狀況：</span>
+                        <ul class="sub-list">
+                            <li><strong>使用非本人帳戶：</strong> 須加附指定帳戶人的身分證正反面，且簽約時須加簽「金融帳戶變更切切書」。</li>
+                            <li><span class="badge-danger">絕對禁用</span> <strong>不可使用無實體銀行的網銀帳戶</strong> (例如：將來銀行、王道銀行、LINE Bank等一律退件)。</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <span class="badge-warning">弱勢戶租客認定防呆：</span>
+                        <ul class="sub-list">
+                            <li><strong>育有未成年子女(不同戶籍)：</strong> 必須去申請小孩的戶籍謄本，可接受「部分限戶」即可。</li>
+                            <li><strong>第二胎(目前為胎兒)：</strong> <span class="badge-danger">重點</span> 直接拍孕婦媽媽手冊的<strong>「正面、反面、以及內頁有醫院蓋章的產檢紀錄」</strong>，必須核對是否為最新的產檢日期。
+                                <!-- 預留經理未來自己放媽媽手冊圖檔的位置 -->
+                                <div class="image-placeholder">
+                                    <i class="fa-regular fa-image" style="font-size: 24px; display: block; margin-bottom: 5px;"></i>
+                                    <span>📸 經理可在代碼此處更換為孕婦手冊範本圖片</span>
+                                    <img src="" alt="孕婦手冊範本">
+                                </div>
+                            </li>
+                            <li><strong>身心障礙：</strong> 提供身障小卡正反面，務必核對有效期限。</li>
+                            <li><strong>中/低收入戶：</strong> 提供最新年度證明書。(切記核對：有一種文件是「中低收老人」，規格不同)。</li>
+                            <li><strong>特殊境遇家庭：</strong> 請提供正式的特境證明文件 (<span class="badge-danger">禁</span> 勿提供公所核定函)。</li>
+                            <li><strong>60歲以上 / 原住民：</strong> 不需額外證明，只需提供含詳細記事之戶籍謄本即可。</li>
+                        </ul>
+                    </li>
+
+                    <li style="margin-top: 15px;">
+                        <span class="badge-danger">關鍵補充 (攸關業績獎金)：</span><br>
+                        租客若提前入戶籍，記得在 <strong>一個月內</strong> 完成社宅合約才視為新件！且必須要在 <strong>【表五 承租人申請書 P2】的戶籍地址後方親筆加上「遷入時間」</strong>。若未加上，審查一律視為舊件，<strong>獎金將會被砍半</strong>！
+                    </li>
+
+                    <li>
+                        <strong>💬 傳給房客的 LINE 資料收集訊息範本：</strong>
+                        <div class="copy-block" id="tenantLine">房客您好再麻煩您幫我準備以下資料
+1.([)房客(])彩色身分證正反照片
+2.([)房客(])存摺照片
+3.戶籍謄本([)全戶含詳細記事且近一個月內(])
+
+若證件上須要押上文字，請幫我壓「星鴻社會專用」或「星鴻社會住宅及調閱課稅明細使用」即可。<button class="btn-copy" onclick="copyText('tenantLine', this)"><i class="fa-regular fa-copy"></i> 複製訊息</button></div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
 </div>
 
 <script>
-    // 點擊展開/折疊的自動化腳本
-    const acc = document.getElementsByClassName("accordion-btn");
-    for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            const content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
+    // 控制折疊展開與收合的流暢動畫
+    function toggleCard(header) {
+        const card = header.parentElement;
+        const content = header.nextElementSibling;
+        
+        if (card.classList.contains('is-open')) {
+            card.classList.remove('is-open');
+            content.style.maxHeight = null;
+        } else {
+            // 收合其他已打開的卡片 (維持畫面乾淨)
+            document.querySelectorAll('.card').forEach(c => {
+                c.classList.remove('is-open');
+                c.querySelector('.card-content').style.maxHeight = null;
+            });
+            
+            card.classList.add('is-open');
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    }
+
+    // 一鍵複製文字功能，防呆不貼錯
+    function copyText(elementId, btn) {
+        const text = document.getElementById(elementId).innerText.replace('複製話術', '').replace('複製簽呈', '').replace('複製訊息', '').trim();
+        navigator.clipboard.writeText(text).then(() => {
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check" style="color: #2ecc71;"></i> 已複製';
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 2000);
+        }).catch(err => {
+            alert('複製失敗，請手動全選複製');
         });
     }
 </script>
