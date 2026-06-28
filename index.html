@@ -102,6 +102,7 @@
         .type-代管 { background-color: #f4ecf7; color: #7d3c98; }
         .type-房東 { background-color: #e8f8f5; color: #117a65; }
         .type-房客 { background-color: #f9f9f9; color: #2c3e50; }
+        .type-弱勢 { background-color: #fdf2e9; color: #e67e22; border-left: 4px solid #e67e22; }
 
         .card-header:hover {
             opacity: 0.9;
@@ -247,7 +248,7 @@
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 8px;
-            display: none; /* 當經理放入 src 時，可改為 block */
+            display: none;
         }
 
         /* 展開狀態的旋轉 */
@@ -353,7 +354,7 @@
                     <li><span class="badge-danger">代管一年規定</span>：若案件為「代管一年案」，業務<strong>必須上簽呈給主管</strong>。</li>
                     <li><span class="badge-warning">複審夾檔</span>：簽呈核准後，主管會截圖核准畫面。業務必須將此截圖夾帶在複審資料中，位置請放置在<strong>「協議書之後」</strong>即可。</li>
                     <li>
-                        <strong>📋 中區代管簽呈範本 (點擊右上方可直接複製文字)：</strong>
+                        <strong>📋 中區代管簽呈範本：</strong>
                         <div class="copy-block" id="signTemplate">主旨：中區代管簽呈
 
 說明：
@@ -417,12 +418,12 @@
         </div>
     </div>
 
-    <!-- 房客資料 -->
+    <!-- 房客通用資料 -->
     <div class="card">
         <div class="card-header type-房客" onclick="toggleCard(this)">
             <div class="icon-group">
                 <i class="fa-solid fa-user-gear"></i>
-                <span>包租 / 代管【房客】所需資料與身分狀況</span>
+                <span>包租 / 代管【房客】通用資料與一般戶狀況</span>
             </div>
             <i class="fa-solid fa-chevron-down arrow-icon"></i>
         </div>
@@ -432,32 +433,13 @@
                     <li><strong>1. 身分證正反面：</strong> 須完整拍到四邊且清晰，可在上面壓字但不能遮擋到重要資訊及照片，壓字三擇一：<code>星鴻社會專用</code>、<code>星鴻社會住宅及調閱課稅明細使用</code>、<code>租賃使用</code>。</li>
                     <li><strong>2. 領取300億租金補貼帳戶：</strong> 須完整拍到四邊，清晰顯示分行名稱、帳號和戶名。</li>
                     <li><strong>3. 戶籍謄本或戶口名簿：</strong> 必須為<strong>「全戶含詳細記事」</strong>。戶籍謄本須在 <strong>近一個月內</strong> 申請；戶口名簿則須上網查詢是否有異動紀錄並<strong>截圖證明</strong>。</li>
-                    <li><strong>4. 外籍配偶特殊件：</strong> 必須額外提供居留證正反面及護照基本資料頁。</li>
+                    <li><strong>4. 外籍配偶：</strong> 必須額外提供居留證正反面及護照基本資料頁。</li>
                     
                     <li style="margin-top: 15px;">
                         <span class="badge-info">一般戶租客常見狀況：</span>
                         <ul class="sub-list">
                             <li><strong>使用非本人帳戶：</strong> 須加附指定帳戶人的身分證正反面，且簽約時須加簽「金融帳戶變更切切書」。</li>
                             <li><span class="badge-danger">絕對禁用</span> <strong>不可使用無實體銀行的網銀帳戶</strong> (例如：將來銀行、王道銀行、LINE Bank等一律退件)。</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <span class="badge-warning">弱勢戶租客認定防呆：</span>
-                        <ul class="sub-list">
-                            <li><strong>育有未成年子女(不同戶籍)：</strong> 必須去申請小孩的戶籍謄本，可接受「部分限戶」即可。</li>
-                            <li><strong>第二胎(目前為胎兒)：</strong> <span class="badge-danger">重點</span> 直接拍孕婦媽媽手冊的<strong>「正面、反面、以及內頁有醫院蓋章的產檢紀錄」</strong>，必須核對是否為最新的產檢日期。
-                                <!-- 預留經理未來自己放媽媽手冊圖檔的位置 -->
-                                <div class="image-placeholder">
-                                    <i class="fa-regular fa-image" style="font-size: 24px; display: block; margin-bottom: 5px;"></i>
-                                    <span>📸 經理可在代碼此處更換為孕婦手冊範本圖片</span>
-                                    <img src="" alt="孕婦手冊範本">
-                                </div>
-                            </li>
-                            <li><strong>身心障礙：</strong> 提供身障小卡正反面，務必核對有效期限。</li>
-                            <li><strong>中/低收入戶：</strong> 提供最新年度證明書。(切記核對：有一種文件是「中低收老人」，規格不同)。</li>
-                            <li><strong>特殊境遇家庭：</strong> 請提供正式的特境證明文件 (<span class="badge-danger">禁</span> 勿提供公所核定函)。</li>
-                            <li><strong>60歲以上 / 原住民：</strong> 不需額外證明，只需提供含詳細記事之戶籍謄本即可。</li>
                         </ul>
                     </li>
 
@@ -480,9 +462,73 @@
         </div>
     </div>
 
+    <!-- ================= 弱勢戶特別分開的獨立摺頁 ================= -->
+    <div class="card">
+        <div class="card-header type-弱勢" onclick="toggleCard(this)">
+            <div class="icon-group">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>⚠️ 【必看】弱勢戶租客身分認定與防呆</span>
+            </div>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </div>
+        <div class="card-content">
+            <div class="card-body" style="background-color: #fdfefe;">
+                <ul>
+                    <li><span class="badge-danger">核心硬性要求</span> 弱勢戶進件必須提供有效的<strong>弱勢證明文件</strong>，並依下列分類嚴格核對：</li>
+                    
+                    <li><strong>1. 育有未成年子女 (父母與小孩不同戶籍)：</strong> 
+                        <ul class="sub-list">
+                            <li>業務必須額外去申請<strong>小孩的戶籍謄本</strong>，此部分接受申請「部分限戶」即可過關。</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>2. 懷孕第二胎 (目前為胎兒身分)：</strong> 
+                        <ul class="sub-list">
+                            <li><span class="badge-danger">審查重點</span> 必須精準拍攝孕婦媽媽手冊的<strong>「正面封面、反面封底、以及內頁有醫院蓋章的產檢紀錄」</strong>。</li>
+                            <li>審查時會嚴格核對產檢紀錄日期是否為<strong>最新日期</strong>。</li>
+                        </ul>
+                        <!-- 預留經理未來自己放媽媽手冊圖檔的位置 -->
+                        <div class="image-placeholder">
+                            <i class="fa-regular fa-image" style="font-size: 24px; display: block; margin-bottom: 5px;"></i>
+                            <span>📸 經理可在代碼此處更換為孕婦手冊範本圖片</span>
+                            <img src="" alt="孕婦手冊範本">
+                        </div>
+                    </li>
+
+                    <li><strong>3. 身心障礙身分：</strong> 
+                        <ul class="sub-list">
+                            <li>必須提供身障小卡的正反面照片。</li>
+                            <li><span class="badge-danger">防呆</span> 業務務必當場核對小卡背面的<strong>「有效期限」</strong>是否過期。</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>4. 低收入戶 或 中低收入戶：</strong> 
+                        <ul class="sub-list">
+                            <li>直接提供最新年度的證明書。</li>
+                            <li><span class="badge-warning">注意誤區</span> 市面上有一種證明文件是「中低收老人」，其核定規格不同，切勿搞混。</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>5. 特殊境遇家庭：</strong> 
+                        <ul class="sub-list">
+                            <li>必須提供正式的「特殊境遇家庭身分證明文件」。</li>
+                            <li><span class="badge-danger">絕對退件</span> <strong>不可以提供公所的核定函</strong>，一律不予承認。</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>6. 滿60歲高齡戶 或 原住民身分：</strong> 
+                        <ul class="sub-list">
+                            <li>不需要額外準備複雜證明，只需確認檢附的戶籍謄本（全戶含詳細記事）上有明確紀載出生年月日或原住民身分註記即可。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<script>
+<script {id: "toggleScript"}>
     // 控制折疊展開與收合的流暢動畫
     function toggleCard(header) {
         const card = header.parentElement;
@@ -503,7 +549,7 @@
         }
     }
 
-    // 一鍵複製文字功能，防呆不貼錯
+    // 一鍵複製文字功能
     function copyText(elementId, btn) {
         const text = document.getElementById(elementId).innerText.replace('複製話術', '').replace('複製簽呈', '').replace('複製訊息', '').trim();
         navigator.clipboard.writeText(text).then(() => {
