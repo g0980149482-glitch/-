@@ -265,12 +265,7 @@
         <p>星鴻包租代管－彰一處 內部進件防呆指南</p>
     </header>
 
-    <!-- ================= 第一大類 ================= -->
-    <div class="category-title">
-        <i class="fa-solid fa-folder-open"></i> 第一大類：直媒案件 / 間媒案件
-    </div>
-
-    <!-- 間媒案件 -->
+    <!-- 間媒案件 (原第一大類移除了獨立標題標籤，改用卡片) -->
     <div class="card">
         <div class="card-header type-间媒" onclick="toggleCard(this)">
             <div class="icon-group">
@@ -293,12 +288,17 @@
         </div>
     </div>
 
+    <!-- ================= 第二大類標題修改 ================= -->
+    <div class="category-title">
+        <i class="fa-solid fa-folder-open"></i> 直媒/間媒媒合成功收件流程注意事項
+    </div>
+
     <!-- 包租案件 -->
     <div class="card">
         <div class="card-header type-包租" onclick="toggleCard(this)">
             <div class="icon-group">
                 <i class="fa-solid fa-box-archive"></i>
-                <span>包租案件必須收集資料</span>
+                <span>包租案件必須收集資料 & 兩大簽呈範本</span>
             </div>
             <i class="fa-solid fa-chevron-down arrow-icon"></i>
         </div>
@@ -314,14 +314,96 @@
                         </ul>
                     </li>
                     <li>
-                        <strong>2. 六個月繳租證明：</strong>
+                        <strong>2. 六個月繳租證明 (硬性審查)：</strong>
                         <ul class="sub-list">
                             <li>必須使用<strong>銀行轉帳證明</strong>，絕對不可使用簽收單、手寫收據。</li>
-                            <li><span class="badge-danger">若無法提供</span>：必須提供保證人，且保證人與房客要<strong>一同辦理公證 + 簽呈</strong> (保證人同樣要提供信任租審查)。</li>
-                            <li><span class="badge-warning">若缺少月份</span>：業務必須上簽呈。至於是否一定要保證人？<strong>「請當下直接與主管確認！」</strong></li>
+                            
+                            <li style="margin-top: 8px;"><span class="badge-warning">情境 A：缺少月份繳租證明</span><br>
+                                業務必須上簽呈。<strong>上傳給主管審查時，必須傳齊以下 4 樣畫面：</strong>
+                                <div style="background-color: #fff9eb; border-left: 3px solid #f39c12; padding: 6px 12px; margin: 4px 0; font-size: 14px;">
+                                    1. 簽呈文字<br>
+                                    2. 三名緊急聯絡人 (系統畫面截圖)<br>
+                                    3. 其餘月份之轉帳截圖畫面<br>
+                                    4. 房客信任租評等畫面
+                                </div>
+                                是否需要保證人？<strong>「請當下直接與主管確認！」</strong>
+                            </li>
+                            
+                            <li style="margin-top: 8px;"><span class="badge-danger">情境 B：完全無法提供六個月繳租證明</span><br>
+                                必須提供保證人，且保證人與房客要<strong>一同辦理公證 + 簽呈</strong>。
+                                <strong>上傳給主管審查時，必須傳齊以下 3 樣畫面：</strong>
+                                <div style="background-color: #fdedec; border-left: 3px solid #e74c3c; padding: 6px 12px; margin: 4px 0; font-size: 14px;">
+                                    1. 簽呈文字<br>
+                                    2. 三名緊急聯絡人 (系統畫面截圖)<br>
+                                    3. 承租人及保證人之信任租畫面
+                                </div>
+                            </li>
                         </ul>
                     </li>
-                    <li>
+                    
+                    <!-- 簽呈範本一：包含信任租C等以下 -->
+                    <li style="margin-top: 15px;">
+                        <strong>📋 簽呈範本一 (包含信任租C等以下 / 缺少月份)：</strong>
+                        <div class="copy-block" id="baoSign1">主旨：中區包租簽呈
+
+案件類型：包租
+
+物件地址：
+物件房型：
+物件租金：
+
+業務/代管件數：XXX／XX件
+房東：
+房客：
+房客工作職業：(須包含保證人職業及任職多久)
+
+備註說明
+
+1. 檢附信任租結果：通過。
+
+2. 如房客有欠繳租金導致虧損，業務（XXX）願意與公司共同負擔租金損失。
+
+3. 無法提供六個月繳租證明原因：
+-承租人於原租屋處承租至 3 月。
+-4 月至 5 月期間暫時搬回家中居住，期間無對外租屋及租金支出。
+-故無法提供完整六個月轉帳繳租證明。
+
+4. 信任租補充說明：
+次承租人目前任職補習班老師，工作與收入來源穩定。
+過往租屋期間皆有正常繳租紀錄。
+綜合評估，本案承租人具穩定履約能力，整體租賃風險可控。<button class="btn-copy" onclick="copyText('baoSign1', this)"><i class="fa-regular fa-copy"></i> 複製範本一</button></div>
+                    </li>
+
+                    <!-- 簽呈範本二：無六個月繳租證明 -->
+                    <li style="margin-top: 10px;">
+                        <strong>📋 簽呈範本二 (完全無六個月繳租證明)：</strong>
+                        <div class="copy-block" id="baoSign2">主旨：中區包租簽呈
+
+案件類型：包租（新件）
+
+物件地址：
+物件房型：
+物件租金：
+
+業務／代管件數：XXX/XX件
+房東：
+房客：
+房客工作職業：（年資約 X年）
+有無保證人：有（XXX）電話:
+
+備註說明
+
+1.檢附信任租結果：通過
+
+2.如房客有欠繳租金導致虧損，業務（XXX）願意與公司共同負擔租金損失。
+
+3.未能提供六個月繳租證明之原因：
+承租人過去住家裡，故無匯款明細
+
+承租人從事口罩工廠主管工作已滿 5年，工作年資穩定，收入來源固定，具持續租金支付能力；且保證人目前從事牙科櫃檯行政，具穩定收入來源，整體履約能力評估無虞，租賃風險可控。<button class="btn-copy" onclick="copyText('baoSign2', this)"><i class="fa-regular fa-copy"></i> 複製範本二</button></div>
+                    </li>
+
+                    <li style="margin-top: 15px;">
                         <strong>3. 三名緊急聯絡人：</strong>
                         <ul class="sub-list">
                             <li>請房客務必完整提供 <strong>3名</strong> 緊急聯絡人資訊，關係必須包含：<strong>家人、朋友、同事</strong> 各一。</li>
@@ -332,11 +414,6 @@
                 </ul>
             </div>
         </div>
-    </div>
-
-    <!-- ================= 第二大類 ================= -->
-    <div class="category-title">
-        <i class="fa-solid fa-folder-open"></i> 第二大類：包租案件 / 代管案件
     </div>
 
     <!-- 代管案件 -->
@@ -462,7 +539,7 @@
         </div>
     </div>
 
-    <!-- ================= 弱勢戶特別分開的獨立摺頁 ================= -->
+    <!-- 弱勢戶特別獨立摺頁 -->
     <div class="card">
         <div class="card-header type-弱勢" onclick="toggleCard(this)">
             <div class="icon-group">
@@ -487,7 +564,6 @@
                             <li><span class="badge-danger">審查重點</span> 必須精準拍攝孕婦媽媽手冊的<strong>「正面封面、反面封底、以及內頁有醫院蓋章的產檢紀錄」</strong>。</li>
                             <li>審查時會嚴格核對產檢紀錄日期是否為<strong>最新日期</strong>。</li>
                         </ul>
-                        <!-- 預留經理未來自己放媽媽手冊圖檔的位置 -->
                         <div class="image-placeholder">
                             <i class="fa-regular fa-image" style="font-size: 24px; display: block; margin-bottom: 5px;"></i>
                             <span>📸 經理可在代碼此處更換為孕婦手冊範本圖片</span>
@@ -528,7 +604,7 @@
 
 </div>
 
-<script {id: "toggleScript"}>
+<script>
     // 控制折疊展開與收合的流暢動畫
     function toggleCard(header) {
         const card = header.parentElement;
@@ -538,7 +614,6 @@
             card.classList.remove('is-open');
             content.style.maxHeight = null;
         } else {
-            // 收合其他已打開的卡片 (維持畫面乾淨)
             document.querySelectorAll('.card').forEach(c => {
                 c.classList.remove('is-open');
                 c.querySelector('.card-content').style.maxHeight = null;
@@ -551,7 +626,13 @@
 
     // 一鍵複製文字功能
     function copyText(elementId, btn) {
-        const text = document.getElementById(elementId).innerText.replace('複製話術', '').replace('複製簽呈', '').replace('複製訊息', '').trim();
+        const text = document.getElementById(elementId).innerText
+            .replace('複製話術', '')
+            .replace('複製簽呈', '')
+            .replace('複製訊息', '')
+            .replace('複製範本一', '')
+            .replace('複製範本二', '')
+            .trim();
         navigator.clipboard.writeText(text).then(() => {
             const originalHTML = btn.innerHTML;
             btn.innerHTML = '<i class="fa-solid fa-check" style="color: #2ecc71;"></i> 已複製';
