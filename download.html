@@ -194,9 +194,16 @@
             font-weight: 700;
             border: none;
             cursor: pointer;
+            margin-bottom: 8px;
+        }
+
+        .btn-dl:last-child {
+            margin-bottom: 0;
         }
 
         .btn-cloud { background-color: #2ecc71; }
+        .btn-system { background-color: #e67e22; }
+        .btn-outline { background-color: #7f8c8d; font-size: 13px; padding: 10px; }
     </style>
 </head>
 <body>
@@ -227,17 +234,18 @@
             </div>
             <div class="res-desc">發朋友圈、LINE 群組開發房東房客專用。</div>
             <div class="preview-box">
-                <img src="dm1.jpg" alt="DM1" class="preview-img" onerror="this.src='https://placehold.co/400x500/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
+                <img src="https://g0980149482-glitch.github.io/-/dm1.jpg" alt="DM1" class="preview-img" onerror="this.src='https://placehold.co/400x500/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
             </div>
             <div class="phone-tips">
                 <strong>📱 手機儲存防呆指引：</strong>
                 <ul>
-                    <li>• <strong>iPhone (iOS)：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
-                    <li>• <strong>Android 戶：</strong> 請直接點擊下方「點我下載」按鈕。</li>
+                    <li>• <strong>iPhone用戶：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
+                    <li>• <strong>Android用戶：</strong> 點擊下方按鈕，會直接單獨開啟圖片，再長按圖片儲存即可。</li>
                 </ul>
             </div>
-            <a href="dm1.jpg" download="星鴻社宅招募DM_直式.jpg" class="btn-dl">
-                <i class="fa-solid fa-circle-down"></i> 點我下載 (Android適用)
+            <!-- 已修正：補上完整 GitHub 網址路徑 -->
+            <a href="https://g0980149482-glitch.github.io/-/dm1.jpg" target="_blank" class="btn-dl">
+                <i class="fa-solid fa-circle-down"></i> 點我單獨開啟圖片 (長按即可儲存)
             </a>
         </div>
 
@@ -249,17 +257,18 @@
             </div>
             <div class="res-desc">現場跟房東面談時，方便出示講解。</div>
             <div class="preview-box">
-                <img src="dm2.jpg" alt="DM2" class="preview-img" onerror="this.src='https://placehold.co/500x350/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
+                <img src="https://g0980149482-glitch.github.io/-/dm2.jpg" alt="DM2" class="preview-img" onerror="this.src='https://placehold.co/500x350/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
             </div>
             <div class="phone-tips">
                 <strong>📱 手機儲存防呆指引：</strong>
                 <ul>
-                    <li>• <strong>iPhone (iOS)：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
-                    <li>• <strong>Android 戶：</strong> 請直接點擊下方按鈕下載。</li>
+                    <li>• <strong>iPhone用戶：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
+                    <li>• <strong>Android用戶：</strong> 點擊下方按鈕，會直接單獨開啟圖片，再長按圖片儲存即可。</li>
                 </ul>
             </div>
-            <a href="dm2.jpg" download="包租代管優勢對照表.jpg" class="btn-dl">
-                <i class="fa-solid fa-circle-down"></i> 點我下載 (Android適用)
+            <!-- 已修正：補上完整 GitHub 網址路徑 -->
+            <a href="https://g0980149482-glitch.github.io/-/dm2.jpg" target="_blank" class="btn-dl">
+                <i class="fa-solid fa-circle-down"></i> 點我單獨開啟圖片 (長按即可儲存)
             </a>
         </div>
     </div>
@@ -277,18 +286,23 @@
                 <i class="fa-solid fa-file-contract" style="color: #e74c3c;"></i>
                 <span>國家住都中心 綜合委託契約書範本</span>
             </div>
-            <div class="res-desc">社會住宅包租代管──綜合委託契約書（空白範本）。</div>
+            <div class="res-desc">社會住宅包租代管第四期──綜合委託契約書（空白範本）。</div>
             
             <div class="phone-tips" style="background-color: #e3f2fd; border-left-color: #2196f3; color: #0d47a1;">
                 <strong>📱 手機下載提示：</strong>
                 <ul>
-                    <li>• 點擊下方按鈕前往住都中心官網後，請<strong>滑到網頁最下方</strong>。</li>
-                    <li>• 在「附件下載」區塊點擊需要的 Word 檔即可開啟或下載。</li>
+                    <li>• 為避免手機瀏覽器阻擋政府官網的 Word 檔案下載，建議直接登入公司內部系統查看，或前往官方頁面手動下載。</li>
                 </ul>
             </div>
             
-            <a href="https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778" target="_blank" class="btn-dl btn-cloud">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> 前往住都中心下載空白合約
+            <!-- 按鈕一：直接導向星鴻內部的審核與合約系統首頁 -->
+            <a href="https://skyfunsystem.com/Audit/Audit_Contrat_Index" target="_blank" class="btn-dl btn-system">
+                <i class="fa-solid fa-laptop-house"></i> 🔑 點我前往「星鴻合約系統」
+            </a>
+
+            <!-- 按鈕二：原國土署/住都中心官網備查 -->
+            <a href="https://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285" target="_blank" class="btn-dl btn-outline">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> 備用：前往國家住都中心官網頁面
             </a>
         </div>
 
@@ -308,16 +322,12 @@
 </div>
 
 <script>
-    // 修正後的切換邏輯
+    // 完美的切換邏輯
     function switchTab(event, sectionId) {
-        // 取消所有按鈕的亮色
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-        // 讓目前點擊的按鈕亮起來
         event.currentTarget.classList.add('active');
         
-        // 隱藏所有分頁內容
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-        // 顯示被選中的分頁內容
         document.getElementById(sectionId).classList.add('active');
     }
 </script>
