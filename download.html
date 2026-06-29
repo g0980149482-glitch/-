@@ -255,7 +255,7 @@
                 <strong>📱 手機儲存防呆指引：</strong>
                 <ul>
                     <li>• <strong>iPhone (iOS)：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
-                    <li>• <strong>Android 戶：</strong> 請直接點擊下方按鈕下載.</li>
+                    <li>• <strong>Android 戶：</strong> 請直接點擊下方按鈕下載。</li>
                 </ul>
             </div>
             <a href="dm2.jpg" download="包租代管優勢對照表.jpg" class="btn-dl">
@@ -271,13 +271,13 @@
             <i class="fa-solid fa-file-word" style="color: #2980b9;"></i> 業務合約與表單下載
         </div>
 
-        <!-- 新增的住都中心空白合約書卡片 -->
+        <!-- 空白合約書卡片 -->
         <div class="res-card">
             <div class="res-title">
                 <i class="fa-solid fa-file-contract" style="color: #e74c3c;"></i>
                 <span>國家住都中心 綜合委託契約書範本</span>
             </div>
-            <div class="res-desc">社會住宅包租代管第四期──綜合委託契約書（空白空白範本）。</div>
+            <div class="res-desc">社會住宅包租代管──綜合委託契約書（空白範本）。</div>
             
             <div class="phone-tips" style="background-color: #e3f2fd; border-left-color: #2196f3; color: #0d47a1;">
                 <strong>📱 手機下載提示：</strong>
@@ -287,7 +287,6 @@
                 </ul>
             </div>
             
-            <!-- 這裡直接埋入經理提供的住都中心官網連結 -->
             <a href="https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778" target="_blank" class="btn-dl btn-cloud">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> 前往住都中心下載空白合約
             </a>
@@ -309,12 +308,16 @@
 </div>
 
 <script>
-    // 修正後的完美分頁切換邏輯
+    // 修正後的切換邏輯
     function switchTab(event, sectionId) {
+        // 取消所有按鈕的亮色
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        // 讓目前點擊的按鈕亮起來
         event.currentTarget.classList.add('active');
         
+        // 隱藏所有分頁內容
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        // 顯示被選中的分頁內容
         document.getElementById(sectionId).classList.add('active');
     }
 </script>
