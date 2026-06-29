@@ -15,7 +15,6 @@
             --info: #3498db;
             --bg-light: #f8f9fa;
             --text-main: #333333;
-            --border-color: #cbd5e1;
         }
 
         * {
@@ -84,20 +83,18 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* 被選中時的發亮樣式 */
         .nav-btn.active {
             background-color: var(--primary);
             color: white;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        /* 分頁內容控制區 */
         .tab-content {
-            display: none; /* 預設全部隱藏 */
+            display: none;
         }
 
         .tab-content.active {
-            display: block; /* 只有被加上 active 的才會顯示 */
+            display: block;
             animation: fadeIn 0.35s ease;
         }
 
@@ -106,7 +103,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 分類大標 */
         .section-title {
             font-size: 16px;
             font-weight: 700;
@@ -194,16 +190,31 @@
             font-weight: 700;
             border: none;
             cursor: pointer;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .btn-dl:last-child {
             margin-bottom: 0;
         }
 
-        .btn-cloud { background-color: #2ecc71; }
-        .btn-system { background-color: #e67e22; }
-        .btn-outline { background-color: #7f8c8d; font-size: 13px; padding: 10px; }
+        .btn-gov { background-color: #2ecc71; }
+        .btn-copy { background-color: #95a5a6; font-size: 13px; padding: 10px; }
+        
+        /* 複製成功提示彈窗 */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: none;
+            z-index: 999;
+        }
     </style>
 </head>
 <body>
@@ -220,7 +231,7 @@
         <button class="nav-btn" onclick="switchTab(event, 'doc-section')">合約 / 表單範本</button>
     </div>
 
-    <!-- ================= 分頁一：行銷 DM 電子檔 (預設顯示) ================= -->
+    <!-- ================= 分頁一：行銷 DM 電子檔 ================= -->
     <div id="dm-section" class="tab-content active">
         <div class="section-title">
             <i class="fa-solid fa-images" style="color: #16a085;"></i> 行銷 DM 電子檔列表
@@ -237,16 +248,11 @@
                 <img src="https://g0980149482-glitch.github.io/-/dm1.jpg" alt="DM1" class="preview-img" onerror="this.src='https://placehold.co/400x500/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
             </div>
             <div class="phone-tips">
-                <strong>📱 手機儲存防呆指引：</strong>
+                <strong>📱 手機儲存指引：</strong>
                 <ul>
-                    <li>• <strong>iPhone用戶：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
-                    <li>• <strong>Android用戶：</strong> 點擊下方按鈕，會直接單獨開啟圖片，再長按圖片儲存即可。</li>
+                    <li>• <strong>無論哪種手機：</strong> 請直接「長按上方圖片 2 秒」➔ 點選「加入照片」或「下載圖片」即可完美儲存！</li>
                 </ul>
             </div>
-            <!-- 已修正：補上完整 GitHub 網址路徑 -->
-            <a href="https://g0980149482-glitch.github.io/-/dm1.jpg" target="_blank" class="btn-dl">
-                <i class="fa-solid fa-circle-down"></i> 點我單獨開啟圖片 (長按即可儲存)
-            </a>
         </div>
 
         <!-- DM 卡片 2 -->
@@ -260,16 +266,11 @@
                 <img src="https://g0980149482-glitch.github.io/-/dm2.jpg" alt="DM2" class="preview-img" onerror="this.src='https://placehold.co/500x350/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
             </div>
             <div class="phone-tips">
-                <strong>📱 手機儲存防呆指引：</strong>
+                <strong>📱 手機儲存指引：</strong>
                 <ul>
-                    <li>• <strong>iPhone用戶：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
-                    <li>• <strong>Android用戶：</strong> 點擊下方按鈕，會直接單獨開啟圖片，再長按圖片儲存即可。</li>
+                    <li>• <strong>無論哪種手機：</strong> 請直接「長按上方圖片 2 秒」➔ 點選「加入照片」或「下載圖片」即可完美儲存！</li>
                 </ul>
             </div>
-            <!-- 已修正：補上完整 GitHub 網址路徑 -->
-            <a href="https://g0980149482-glitch.github.io/-/dm2.jpg" target="_blank" class="btn-dl">
-                <i class="fa-solid fa-circle-down"></i> 點我單獨開啟圖片 (長按即可儲存)
-            </a>
         </div>
     </div>
 
@@ -286,49 +287,74 @@
                 <i class="fa-solid fa-file-contract" style="color: #e74c3c;"></i>
                 <span>國家住都中心 綜合委託契約書範本</span>
             </div>
-            <div class="res-desc">社會住宅包租代管第四期──綜合委託契約書（空白範本）。</div>
+            <div class="res-desc">社會住宅包租代管第四期──綜合委託契約書（官方最新空白範本）。</div>
             
             <div class="phone-tips" style="background-color: #e3f2fd; border-left-color: #2196f3; color: #0d47a1;">
-                <strong>📱 手機下載提示：</strong>
+                <strong>📱 雙系統下載指南（免維護，直連最新官網）：</strong>
                 <ul>
-                    <li>• 為避免手機瀏覽器阻擋政府官網的 Word 檔案下載，建議直接登入公司內部系統查看，或前往官方頁面手動下載。</li>
+                    <li>• <strong>第一步：</strong> 點擊綠色按鈕。系統會嘗試強制調用手機內建瀏覽器（Safari/Chrome）開啟官網。</li>
+                    <li>• <strong>備用防呆：</strong> 若發現仍被 LINE 擋住，請點灰色按鈕複製官網網址，並貼到手機的 Chrome 或 Safari 瀏覽器打開，即可順暢下載 Word 檔！</li>
                 </ul>
             </div>
             
-            <!-- 按鈕一：直接導向星鴻內部的審核與合約系統首頁 -->
-            <a href="https://skyfunsystem.com/Audit/Audit_Contrat_Index" target="_blank" class="btn-dl btn-system">
-                <i class="fa-solid fa-laptop-house"></i> 🔑 點我前往「星鴻合約系統」
+            <!-- 主要按鈕：嘗試自動外跳內建瀏覽器 -->
+            <a href="intent://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285#Intent;scheme=https;package=com.android.chrome;end" onclick="openGovLink(event)" class="btn-dl btn-gov">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> 📲 前往住都中心官網（自動同步最新）
             </a>
 
-            <!-- 按鈕二：原國土署/住都中心官網備查 -->
-            <a href="https://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285" target="_blank" class="btn-dl btn-outline">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> 備用：前往國家住都中心官網頁面
-            </a>
-        </div>
-
-        <!-- 表單卡片 2 -->
-        <div class="res-card">
-            <div class="res-title">
-                <i class="fa-solid fa-file-lines" style="color: #3498db;"></i>
-                <span>金融帳戶變更切結書 (.docx)</span>
-            </div>
-            <div class="res-desc">非本人帳戶收租、領補助時必填。</div>
-            <a href="https://drive.google.com" target="_blank" class="btn-dl">
-                <i class="fa-box-archive fa-solid"></i> 前往雲端下載
-            </a>
+            <!-- 備用按鈕：防呆複製網址 -->
+            <button onclick="copyUrl('https://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285')" class="btn-dl btn-copy">
+                <i class="fa-regular fa-copy"></i> 📋 複製官網網址 (若下載被擋請用此鈕)
+            </button>
         </div>
     </div>
 
 </div>
 
+<!-- 提示彈窗 -->
+<div id="toast" class="toast">網址已複製！請至 Chrome/Safari 貼上開啟</div>
+
 <script>
-    // 完美的切換邏輯
+    // 切換頁籤
     function switchTab(event, sectionId) {
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         event.currentTarget.classList.add('active');
         
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
         document.getElementById(sectionId).classList.add('active');
+    }
+
+    // 智能處理官網連結跳轉
+    function openGovLink(e) {
+        const url = "https://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285";
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isLine = /Line/i.test(navigator.userAgent);
+
+        if (isLine) {
+            if (isAndroid) {
+                // 安卓 LINE 環境下，使用意圖連結嘗試強制喚醒 Chrome
+                return; 
+            } else {
+                // iOS LINE 環境下，加上特殊參數嘗試引導外跳
+                e.preventDefault();
+                window.open(url + "?openExternalBrowser=1", "_blank");
+            }
+        } else {
+            // 一般瀏覽器環境正常開啟
+            e.preventDefault();
+            window.open(url, "_blank");
+        }
+    }
+
+    // 防呆複製功能
+    function copyUrl(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }).catch(err => {
+            alert('複製失敗，請手動複製官網網址。');
+        });
     }
 </script>
 
