@@ -281,30 +281,30 @@
             <i class="fa-solid fa-file-word" style="color: #2980b9;"></i> 業務合約與表單下載
         </div>
 
-        <!-- 空白合約書卡片 -->
+        <!-- 空白合約書卡片 (修正為第五期) -->
         <div class="res-card">
             <div class="res-title">
                 <i class="fa-solid fa-file-contract" style="color: #e74c3c;"></i>
-                <span>國家住都中心 綜合委託契約書範本</span>
+                <span>社會住宅包租代管【第五期】綜合委託契約書</span>
             </div>
-            <div class="res-desc">社會住宅包租代管第四期──最新空白範本區。</div>
+            <div class="res-desc">內政部國土管理署最新公告「第五期」社會住宅公版空白合約書（Word 格式）。</div>
             
             <div class="phone-tips" style="background-color: #e3f2fd; border-left-color: #2196f3; color: #0d47a1;">
-                <strong>💡 官方網站防盜鏈下載指南（永久有效連結）：</strong>
+                <strong>📱 手機下載必看指引（防 LINE 攔截機制）：</strong>
                 <ul>
-                    <li>• <strong>操作步驟：</strong> 點擊綠色按鈕前往官方專區。</li>
-                    <li>• <strong>下載位置：</strong> 進到網頁後，請往下找<strong>「綜合委託契約書」</strong>或<strong>「契約書」</strong>字樣，點選右側的 Word 圖示即可直接下載！</li>
+                    <li>• <strong>第一步：</strong> 請優先點擊綠色按鈕，會直接下載最新第五期合約。</li>
+                    <li>• <strong>防呆備用：</strong> 若 Android 手機在 LINE 內點擊沒反應，請點灰色按鈕複製網址，打開手機的 <strong>Chrome 瀏覽器</strong> 貼上，就能 100% 成功下載！</li>
                 </ul>
             </div>
             
-            <!-- 已修正：改為穩定的住都中心公開文件下載專區首頁，避免被系統跳轉 -->
-            <a href="https://www.hurc.org.tw/hurc/docList?uid=146&pid=145" target="_blank" class="btn-dl btn-gov">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> 📲 前往住都中心下載專區 (最穩定)
+            <!-- 已修正：替換成最正確的內政部第五期綜合委託契約書公版載點 -->
+            <a href="https://pip.moi.gov.tw/V3/B/DownloadFile.ashx?FileName=5%e6%9c%9f-%e5%ab%aa%e8%a8%97%e5%a5%91%e7%b4%84%e6%9b%b8(%e5%85%ac%e7%89%88).docx" target="_blank" class="btn-dl btn-gov">
+                <i class="fa-solid fa-file-arrow-down"></i> 📲 點我直接下載【第五期】官方合約
             </a>
 
-            <!-- 備用按鈕 -->
-            <button onclick="copyUrl('https://www.hurc.org.tw/hurc/docList?uid=146&pid=145')" class="btn-dl btn-copy">
-                <i class="fa-regular fa-copy"></i> 📋 複製專區網址 (若下載被擋請用此鈕)
+            <!-- 備用複製按鈕 -->
+            <button onclick="copyUrl('https://pip.moi.gov.tw/V3/B/DownloadFile.ashx?FileName=5%e6%9c%9f-%e5%ab%aa%e8%a8%97%e5%a5%91%e7%b4%84%e6%9b%b8(%e5%85%ac%e7%89%88).docx')" class="btn-dl btn-copy">
+                <i class="fa-regular fa-copy"></i> 📋 複製第五期合約網址 (Android 備用)
             </button>
         </div>
     </div>
@@ -315,12 +315,12 @@
 <div id="toast" class="toast">網址已複製！請至 Chrome/Safari 貼上開啟</div>
 
 <script>
-    // 解決快取問題：如果網址沒有帶時間標記，自動重定向加上時間標記強迫重新整理
+    // 自動破解快取機制
     (function() {
         const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.has('cache_ts')) {
+        if (!urlParams.has('ref')) {
             const currentUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-            window.location.href = currentUrl + '?cache_ts=' + new Date().getTime() + window.location.hash;
+            window.location.href = currentUrl + '?ref=' + new Date().getTime() + window.location.hash;
         }
     })();
 
@@ -340,7 +340,7 @@
             toast.style.display = 'block';
             setTimeout(() => { toast.style.display = 'none'; }, 3000);
         }).catch(err => {
-            alert('複製失敗，請手動複製官網網址。');
+            alert('複製失敗，請手動複製網址。');
         });
     }
 </script>
