@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>業務資源與行銷DM下載專區</title>
+    <!-- 引入 Google 字體與 FontAwesome 圖示 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --success: #2ecc71;
+            --info: #3498db;
+            --bg-light: #f8f9fa;
+            --text-main: #333333;
+            --border-color: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 標題區 */
+        header {
+            background: linear-gradient(135deg, #16a085, #2c3e50);
+            color: #ffffff;
+            padding: 25px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* 快速導覽列 */
+        .nav-tabs {
+            display: flex;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* 分類大標 */
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0 10px 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 資源卡片樣式 */
+        .res-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .res-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .res-desc {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+        }
+
+        /* 預覽圖區塊 */
+        .preview-box {
+            text-align: center;
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 12px;
+        }
+
+        .preview-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 250px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* 系統手機防呆提示區 */
+        .phone-tips {
+            background-color: #fff9db;
+            border-left: 4px solid #f59f00;
+            color: #664d03;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .phone-tips ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 4px;
+        }
+
+        .phone-tips li {
+            margin-bottom: 2px;
+        }
+
+        /* 下載與操作按鈕 */
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-dl {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-dl:hover { opacity: 0.9; }
+        .btn-cloud { background-color: #2ecc71; } /* 雲端硬碟按鈕顏色 */
+        .btn-preview { background-color: #95a5a6; }
+
+        /* 返回最上層按鈕 */
+        .btn-top {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .btn-top a {
+            color: #7f8c8d;
+            font-size: 13px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>業務資源與行銷DM專區</h1>
+        <p>星鴻包租代管－彰一處 內部同仁限定</p>
+    </header>
+
+    <!-- 快速分流切換（方便同仁一鍵滑到指定位置） -->
+    <div class="nav-tabs">
+        <a href="#dm-section" class="nav-btn active" onclick="switchTab(this)">行銷 DM 電子檔</a>
+        <a href="#doc-section" class="nav-btn" onclick="switchTab(this)">合約 / 表單範本</a>
+    </div>
+
+    <!-- ================= 區塊一：行銷 DM 電子檔 ================= -->
+    <div id="dm-section">
+        <div class="section-title">
+            <i class="fa-solid fa-images" style="color: #16a085;"></i> 行銷 DM 電子檔 (圖片類)
+        </div>
+
+        <!-- DM 卡片 1 -->
+        <div class="res-card">
+            <div class="res-title">
+                <i class="fa-regular fa-image" style="color: #e67e22;"></i>
+                <span>社宅招募 DM (直式 A4)</span>
+            </div>
+            <div class="res-desc">發朋友圈、LINE 群組開發房東房客專用，最新修訂版。</div>
+            
+            <!-- 圖片預覽：業務可以直接看，業務手機長按這裡就能存 -->
+            <div class="preview-box">
+                <!-- 💡 經理：未來只要把 src="dm1.jpg" 改成您上傳到 GitHub 的圖片檔名即可 -->
+                <img src="dm1.jpg" alt="請經理補上 DM 圖片檔名" class="preview-img" onerror="this.src='https://placehold.co/400x500/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
+            </div>
+
+            <!-- 手機防呆教學方塊 -->
+            <div class="phone-tips">
+                <strong>📱 手機儲存防呆指引：</strong>
+                <ul>
+                    <li>• <strong>iPhone (iOS)：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」即可存入相簿。</li>
+                    <li>• <strong>Android 戶：</strong> 請直接點擊下方「點我下載」按鈕存檔。</li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <!-- 下載連結：download屬性可以強制部分手機進行下載 -->
+                <a href="dm1.jpg" download="星鴻社宅招募DM_直式.jpg" class="btn-dl">
+                    <i class="fa-solid fa-circle-down"></i> 點我下載 (Android適用)
+                </a>
+            </div>
+        </div>
+
+        <!-- DM 卡片 2 -->
+        <div class="res-card">
+            <div class="res-title">
+                <i class="fa-regular fa-image" style="color: #e67e22;"></i>
+                <span>包租代管優勢對照表 (橫式)</span>
+            </div>
+            <div class="res-desc">現場跟房東面談時，方便用平板或手機直接放大出示講解。</div>
+            
+            <div class="preview-box">
+                <img src="dm2.jpg" alt="請經理補上 DM 圖片檔名" class="preview-img" onerror="this.src='https://placehold.co/500x350/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
+            </div>
+
+            <div class="phone-tips">
+                <strong>📱 手機儲存防呆指引：</strong>
+                <ul>
+                    <li>• <strong>iPhone (iOS)：</strong> 請「長按上方圖片 2 秒」➔ 點選「加入照片」。</li>
+                    <li>• <strong>Android 戶：</strong> 請直接點擊下方按鈕下載。</li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <a href="dm2.jpg" download="包租代管優勢對照表.jpg" class="btn-dl">
+                    <i class="fa-solid fa-circle-down"></i> 點我下載 (Android適用)
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= 區塊二：合約 / 表單範本 ================= -->
+    <div id="doc-section" style="margin-top: 10px;">
+        <div class="section-title">
+            <i class="fa-solid fa-file-word" style="color: #2980b9;"></i> 業務合約與表單範本 (雲端硬碟)
+        </div>
+
+        <!-- 表單卡片 1 -->
+        <div class="res-card">
+            <div class="res-title">
+                <i class="fa-solid fa-file-lines" style="color: #3498db;"></i>
+                <span>金融帳戶變更切結書 (.docx)</span>
+            </div>
+            <div class="res-desc">非本人帳戶收租、領補助時必填。已設定點擊直接引導至雲端下載。</div>
+            
+            <div class="phone-tips" style="background-color: #e3f2fd; border-left-color: #2196f3; color: #0d47a1;">
+                <strong>📱 Word/Excel 檔案防呆指引：</strong>
+                <ul>
+                    <li>• 建議手機先安裝 <strong>Google 雲端硬碟 APP</strong> 以防排版亂掉。</li>
+                    <li>• 點擊下方按鈕後，會直接開起雲端硬碟，可點選右上角「建立副本」或「下載」即可在手機編輯。</li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <!-- 💡 經理：未來請把 href="#" 換成您的 Google 雲端硬碟分享連結 -->
+                <a href="https://drive.google.com" target="_blank" class="btn-dl btn-cloud">
+                    <i class="fa-box-archive fa-solid"></i> 前往 Google 雲端下載
+                </a>
+            </div>
+        </div>
+
+        <!-- 表單卡片 2 -->
+        <div class="res-card">
+            <div class="res-title">
+                <i class="fa-solid fa-file-signature" style="color: #3498db;"></i>
+                <span>公證委託書與準備清單 (PDF)</span>
+            </div>
+            <div class="res-desc">辦理公證所需的屋主委託書範本，建議同仁隨身留存。</div>
+
+            <div class="btn-group">
+                <a href="https://drive.google.com" target="_blank" class="btn-dl btn-cloud">
+                    <i class="fa-box-archive fa-solid"></i> 前往 Google 雲端下載
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-top">
+        <a href="#top"><i class="fa-solid fa-arrow-up"></i> 回到頂端</a>
+    </div>
+</div>
+
+<script>
+    // 簡單的導覽列亮色切換效果
+    function switchTab(element) {
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
