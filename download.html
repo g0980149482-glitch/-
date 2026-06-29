@@ -287,24 +287,24 @@
                 <i class="fa-solid fa-file-contract" style="color: #e74c3c;"></i>
                 <span>國家住都中心 綜合委託契約書範本</span>
             </div>
-            <div class="res-desc">社會住宅包租代管第四期──綜合委託契約書（官方最新空白範本）。</div>
+            <div class="res-desc">社會住宅包租代管第四期──最新空白範本區。</div>
             
             <div class="phone-tips" style="background-color: #e3f2fd; border-left-color: #2196f3; color: #0d47a1;">
-                <strong>📱 雙系統下載指南（免維護，直連最新官網）：</strong>
+                <strong>💡 官方網站防盜鏈下載指南（永久有效連結）：</strong>
                 <ul>
-                    <li>• <strong>第一步：</strong> 點擊綠色按鈕。系統會嘗試強制調用手機內建瀏覽器（Safari/Chrome）開啟官網。</li>
-                    <li>• <strong>備用防呆：</strong> 若發現仍被 LINE 擋住，請點灰色按鈕複製官網網址，並貼到手機的 Chrome 或 Safari 瀏覽器打開，即可順暢下載 Word 檔！</li>
+                    <li>• <strong>操作步驟：</strong> 點擊綠色按鈕前往官方專區。</li>
+                    <li>• <strong>下載位置：</strong> 進到網頁後，請往下找<strong>「綜合委託契約書」</strong>或<strong>「契約書」</strong>字樣，點選右側的 Word 圖示即可直接下載！</li>
                 </ul>
             </div>
             
-            <!-- 主要按鈕：嘗試自動外跳內建瀏覽器 -->
-            <a href="intent://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285#Intent;scheme=https;package=com.android.chrome;end" onclick="openGovLink(event)" class="btn-dl btn-gov">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> 📲 前往住都中心官網（自動同步最新）
+            <!-- 已修正：改為穩定的住都中心公開文件下載專區首頁，避免被系統跳轉 -->
+            <a href="https://www.hurc.org.tw/hurc/docList?uid=146&pid=145" target="_blank" class="btn-dl btn-gov">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> 📲 前往住都中心下載專區 (最穩定)
             </a>
 
-            <!-- 備用按鈕：防呆複製網址 -->
-            <button onclick="copyUrl('https://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285')" class="btn-dl btn-copy">
-                <i class="fa-regular fa-copy"></i> 📋 複製官網網址 (若下載被擋請用此鈕)
+            <!-- 備用按鈕 -->
+            <button onclick="copyUrl('https://www.hurc.org.tw/hurc/docList?uid=146&pid=145')" class="btn-dl btn-copy">
+                <i class="fa-regular fa-copy"></i> 📋 複製專區網址 (若下載被擋請用此鈕)
             </button>
         </div>
     </div>
@@ -315,6 +315,15 @@
 <div id="toast" class="toast">網址已複製！請至 Chrome/Safari 貼上開啟</div>
 
 <script>
+    // 解決快取問題：如果網址沒有帶時間標記，自動重定向加上時間標記強迫重新整理
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (!urlParams.has('cache_ts')) {
+            const currentUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+            window.location.href = currentUrl + '?cache_ts=' + new Date().getTime() + window.location.hash;
+        }
+    })();
+
     // 切換頁籤
     function switchTab(event, sectionId) {
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -322,28 +331,6 @@
         
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
         document.getElementById(sectionId).classList.add('active');
-    }
-
-    // 智能處理官網連結跳轉
-    function openGovLink(e) {
-        const url = "https://www.hurc.org.tw/hurc/docDetail?uid=146&pid=145&doc_id=1285";
-        const isAndroid = /Android/i.test(navigator.userAgent);
-        const isLine = /Line/i.test(navigator.userAgent);
-
-        if (isLine) {
-            if (isAndroid) {
-                // 安卓 LINE 環境下，使用意圖連結嘗試強制喚醒 Chrome
-                return; 
-            } else {
-                // iOS LINE 環境下，加上特殊參數嘗試引導外跳
-                e.preventDefault();
-                window.open(url + "?openExternalBrowser=1", "_blank");
-            }
-        } else {
-            // 一般瀏覽器環境正常開啟
-            e.preventDefault();
-            window.open(url, "_blank");
-        }
     }
 
     // 防呆複製功能
