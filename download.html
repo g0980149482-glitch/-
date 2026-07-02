@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>業務資源與行銷DM專區</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -149,9 +149,9 @@
 
     <!-- 頂部三個選單切換 -->
     <div class="nav-tabs">
-        <button class="nav-btn active" onclick="switchTab(event, 'gift-tab')">1.新人小禮包開發話術</button>
-        <button class="nav-btn" onclick="switchTab(event, 'dm-tab')">2.行銷DM</button>
-        <button class="nav-btn" onclick="switchTab(event, 'doc-tab')">3.合約/表單範本</button>
+        <button id="btn-gift" class="nav-btn active" onclick="switchTab(event, 'gift-tab')">1.新人小禮包開發話術</button>
+        <button id="btn-dm" class="nav-btn" onclick="switchTab(event, 'dm-tab')">2.行銷DM</button>
+        <button id="btn-doc" class="nav-btn" onclick="switchTab(event, 'doc-tab')">3.合約/表單範本</button>
     </div>
 
     <!-- ================= 選單一：新人小禮包開發話術 ================= -->
@@ -252,12 +252,26 @@
 <div id="toast" class="toast">複製成功！</div>
 
 <script>
+    // 終極防錨點干擾：網頁載入時強制清空 URL 的 # 號，確保一律停留在新人小禮包頁面
+    window.onload = function() {
+        if (window.location.hash) {
+            // 清除網址列的 #dm-section 
+            history.replaceState("", document.title, window.location.pathname + window.location.search);
+        }
+        // 強制切換回第一個分頁
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-gift').classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.getElementById('gift-tab').classList.add('active');
+    };
+
     function switchTab(event, tabId) {
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         event.currentTarget.classList.add('active');
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
     }
+    
     function copyTxt(id, msg) {
         const txt = document.getElementById(id).innerText;
         navigator.clipboard.writeText(txt).then(() => {
