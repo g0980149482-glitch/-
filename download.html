@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>業務資源與行銷DM下載專區</title>
     <!-- 引入 Google 字體與 FontAwesome 圖示 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -58,7 +58,7 @@
             opacity: 0.9;
         }
 
-        /* 頂部切換選單 (Tab) */
+        /* 頂部切換選單 (Tab 三選單優化) */
         .nav-tabs {
             display: flex;
             background: #e2e8f0;
@@ -66,14 +66,15 @@
             border-radius: 10px;
             margin-bottom: 20px;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            gap: 4px;
         }
 
         .nav-btn {
             flex: 1;
             text-align: center;
-            padding: 12px;
+            padding: 10px 4px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 13px;
             color: #4a5568;
             border: none;
             background: none;
@@ -113,7 +114,7 @@
             gap: 6px;
         }
 
-        /* 資源卡片樣式 */
+        /* 區塊卡片樣式 */
         .res-card {
             background: white;
             border-radius: 10px;
@@ -137,6 +138,30 @@
             font-size: 13px;
             color: #7f8c8d;
             margin-bottom: 12px;
+        }
+
+        /* 話術文字排版區 */
+        .script-box {
+            background-color: #f8f9fa;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 14px;
+            color: #334155;
+            white-space: pre-line;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .welcome-box {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fde68a;
+            color: #92400e;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 500;
         }
 
         /* 預覽圖區塊 */
@@ -200,6 +225,7 @@
 
         .btn-gov { background-color: #2ecc71; }
         .btn-copy { background-color: #95a5a6; font-size: 13px; padding: 10px; }
+        .btn-script { background-color: #e67e22; font-size: 13px; padding: 10px; }
         
         /* 複製成功提示彈窗 */
         .toast {
@@ -225,14 +251,118 @@
         <p>星鴻包租代管－彰一處 內部同仁限定</p>
     </header>
 
-    <!-- 頂部分頁選單 -->
+    <!-- 頂部分頁選單 (調整為三個選單) -->
     <div class="nav-tabs">
-        <button class="nav-btn active" onclick="switchTab(event, 'dm-section')">行銷 DM 電子檔</button>
-        <button class="nav-btn" onclick="switchTab(event, 'doc-section')">合約 / 表單範本</button>
+        <button class="nav-btn active" onclick="switchTab(event, 'gift-section')">1. 新人小禮包開發話術</button>
+        <button class="nav-btn" onclick="switchTab(event, 'dm-section')">2. 行銷 DM</button>
+        <button class="nav-btn" onclick="switchTab(event, 'doc-section')">3. 合約 / 表單範本</button>
     </div>
 
-    <!-- ================= 分頁一：行銷 DM 電子檔 ================= -->
-    <div id="dm-section" class="tab-content active">
+    <!-- ================= 選單一：新人小禮包開發話術 ================= -->
+    <div id="gift-section" class="tab-content active">
+        <div class="welcome-box">
+            🥳 <strong>恭喜大家進入到彰化營業處大家庭！</strong><br>
+            希望大家可以一起在這個團隊一起奮鬥，也能夠在這個行業裏找到自己的小金庫😊
+        </div>
+
+        <div class="section-title">
+            <i class="fa-solid fa-phone" style="color: #e67e22;"></i> 電話開發話術模板
+        </div>
+
+        <div class="res-card">
+            <div class="res-title">📞 初次致電房東模板</div>
+            <div class="script-box" id="script-phone">Ｘ先生／小姐您好，我是星鴻社會住宅的XX。剛剛聽您提到有讓房客申請租金補貼，其實只要符合資格，就可以成為公益出租人。
+
+另外政府目前還有一個「社會住宅包租代管計畫」，也是公益出租人可以申請的，不知道您之前有沒有聽過呢？
+
+我簡單跟您分享幾個房東最有感的好處：
+
+第一，合法出租，還能享有房屋稅、地價稅及所得稅等相關租稅優惠。
+第二，加入社會住宅期間，每年最高可申請一萬元修繕補助。
+第三，租約期間由我們協助租賃管理，包含租客聯繫、續約及相關行政作業，讓您出租更省時、更安心。
+
+如果您方便，我可以安排一個時間帶資料過去，詳細向您說明政策內容，也順便了解一下您的房屋狀況，看看是否符合申請資格。</div>
+            <button onclick="copyTextById('script-phone', '話術模板已複製！')" class="btn-dl btn-script">
+                <i class="fa-regular fa-copy"></i> 📋 複製電話開發話術
+            </button>
+        </div>
+
+        <div class="section-title">
+            <i class="fa-brands fa-line" style="color: #2ecc71;"></i> 加 LINE 後續追蹤話術
+        </div>
+
+        <!-- LINE 第一段 -->
+        <div class="res-card">
+            <div class="res-title">💬 第一段｜加 LINE 後立即發送</div>
+            <div class="res-desc">用於建立初步信任。</div>
+            <div class="script-box" id="script-line1">您好，我是剛剛與您電話聯繫的 星鴻社會住宅推廣員－○○○ 😊
+
+感謝您加入我的 LINE！
+
+我們是政府合作廠商星鴻社會住宅廠商，除了協助房東招租，也提供一般租賃媒合服務。
+
+後續有任何出租相關問題，都可以直接透過 LINE 與我聯繫，我會盡力協助您。</div>
+            <button onclick="copyTextById('script-line1', '第一段話術已複製！')" class="btn-dl btn-script">
+                <i class="fa-regular fa-copy"></i> 📋 複製第一段文字
+            </button>
+        </div>
+
+        <!-- LINE 第二段 -->
+        <div class="res-card">
+            <div class="res-title">💬 第二段｜建立價值</div>
+            <div class="res-desc">約 5～10 分鐘後發送，加深福利印象。</div>
+            <div class="script-box" id="script-line2">這邊也跟您分享，目前加入社會住宅，房東可享有政府提供的多項福利：
+
+✅ 房屋稅、地價稅及所得稅等租稅優惠
+✅ 每年8000-10000元修繕補助
+✅ 公證費補助最高 9,000 元
+✅ 居家安全相關保險補助最高 3,500 元（如地震、火災等）
+
+另外，我們也會協助房屋帶看、招租及租賃管理，全程房東無需支付服務費，相關費用皆由政府補助。</div>
+            <button onclick="copyTextById('script-line2', '第二段話術已複製！')" class="btn-dl btn-script">
+                <i class="fa-regular fa-copy"></i> 📋 複製第二段文字
+            </button>
+        </div>
+
+        <!-- LINE 第三段 -->
+        <div class="res-card">
+            <div class="res-title">💬 第三段｜引導互動</div>
+            <div class="res-desc">當天或隔天發送，積極促成帶看評估。</div>
+            <div class="script-box" id="script-line3">想先跟您確認一下房屋目前的狀況，方便我協助評估：
+
+📍 房屋目前還在出租中，還是已經空屋呢？
+
+如果目前還在招租，我這邊也有房客持續在找房，可以協助您媒合看看。
+
+若方便的話，也可以提供房屋地址、租金及幾張室內照片，我可以先協助您評估市場行情及是否符合社會住宅資格。
+
+如果您有空，我也可以安排時間親自過去說明政策內容，順便看看房屋狀況，提供您最適合的出租建議。</div>
+            <button onclick="copyTextById('script-line3', '第三段話術已複製！')" class="btn-dl btn-script">
+                <i class="fa-regular fa-copy"></i> 📋 複製第三段文字
+            </button>
+        </div>
+
+        <!-- 廠商信任疑慮卡片 -->
+        <div class="res-card" style="border: 1px solid #3498db;">
+            <div class="res-title" style="color: #2980b9;">
+                <i class="fa-solid fa-shield-halved"></i> 房東有疑慮？出示合格廠商查詢
+            </div>
+            <div class="res-desc">若房東想確認我們是否為合格社宅廠商，可傳送此段話術並引導至系統查詢名單。</div>
+            <div class="script-box" id="script-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
+            
+            <button onclick="copyTextById('script-verify', '查證話術已複製！')" class="btn-dl btn-script" style="margin-bottom: 12px;">
+                <i class="fa-regular fa-copy"></i> 📋 複製防呆查證話術
+            </button>
+            
+            <a href="https://skyfunsystem.com/Contrat/Contrat_Index" target="_blank" class="btn-dl btn-gov" style="background-color: #3498db;">
+                <i class="fa-solid fa-magnifying-glass"></i> 🔍 點我直連【內政部國土署業者名單查詢】
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ================= 選單二：行銷 DM ================= -->
+    <div id="dm-section" class="tab-content">
         <div class="section-title">
             <i class="fa-solid fa-images" style="color: #16a085;"></i> 行銷 DM 電子檔列表
         </div>
@@ -250,7 +380,7 @@
             <div class="phone-tips">
                 <strong>📱 手機儲存指引：</strong>
                 <ul>
-                    <li>• <strong>無論哪種手機：</strong> 請直接「長按上方圖片 2 秒」➔ 點選「加入照片」或「下載圖片」即可完美儲存！</li>
+                    <li>• 請直接「長按上方圖片 2 秒」➔ 點選「加入照片」或「下載圖片」即可儲存！</li>
                 </ul>
             </div>
         </div>
@@ -268,20 +398,20 @@
             <div class="phone-tips">
                 <strong>📱 手機儲存指引：</strong>
                 <ul>
-                    <li>• <strong>無論哪種手機：</strong> 請直接「長按上方圖片 2 秒」➔ 點選「加入照片」或「下載圖片」即可完美儲存！</li>
+                    <li>• 請直接「長按上方圖片 2 秒」➔ 點選「加入照片}」或「下載圖片」即可儲存！</li>
                 </ul>
             </div>
         </div>
     </div>
 
 
-    <!-- ================= 分頁二：合約 / 表單範本 ================= -->
+    <!-- ================= 選單三：合約 / 表單範本 ================= -->
     <div id="doc-section" class="tab-content">
         <div class="section-title">
             <i class="fa-solid fa-file-word" style="color: #2980b9;"></i> 業務合約與表單下載
         </div>
 
-        <!-- 空白合約書卡片 (100% 精準對接第五期) -->
+        <!-- 空白合約書卡片 -->
         <div class="res-card">
             <div class="res-title">
                 <i class="fa-solid fa-file-contract" style="color: #e74c3c;"></i>
@@ -290,20 +420,17 @@
             <div class="res-desc">國家住宅及都市更新中心最新公告「第五期」合約下載頁面。</div>
             
             <div class="phone-tips" style="background-color: #e3f2fd; border-left-color: #2196f3; color: #0d47a1;">
-                <strong>📱 雙系統下載指南（直連最新第五期官網）：</strong>
+                <strong>📱 雙系統下載指南：</strong>
                 <ul>
                     <li>• <strong>第一步：</strong> 點擊綠色按鈕前往第五期合約公告頁面。</li>
-                    <li>• <strong>第二步：</strong> 在官網下方「附件下載」區點選 <strong>「附件1_第五期綜合委託契約書(公版)」</strong> 即可成功下載 Word 檔！</li>
-                    <li>• <strong>備用防呆：</strong> 若 Android 手機被 LINE 阻擋下載，請點灰色按鈕複製網址，貼到 Chrome 瀏覽器打開即可順利下載。</li>
+                    <li>• <strong>第二步：</strong> 在官網下方「附件下載」區點選 <strong>「附件1_第五期綜合委託契約書(公版)」</strong> 下載 Word 檔。</li>
                 </ul>
             </div>
             
-            <!-- 完美修正：100% 完整無誤的第五期官方公告頁網址 -->
             <a href="https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778" target="_blank" class="btn-dl btn-gov">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> 📲 前往住都中心【第五期】合約網頁
             </a>
 
-            <!-- 備用複製按鈕 -->
             <button onclick="copyUrl('https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778')" class="btn-dl btn-copy">
                 <i class="fa-regular fa-copy"></i> 📋 複製第五期合約網址 (Android 備用)
             </button>
@@ -319,9 +446,9 @@
     // 自動破解快取機制
     (function() {
         const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.has('v_final')) {
+        if (!urlParams.has('v_tab3')) {
             const currentUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-            window.location.href = currentUrl + '?v_final=' + new Date().getTime() + window.location.hash;
+            window.location.href = currentUrl + '?v_tab3=' + new Date().getTime() + window.location.hash;
         }
     })();
 
@@ -334,15 +461,31 @@
         document.getElementById(sectionId).classList.add('active');
     }
 
-    // 防呆複製功能
+    // 防呆複製網址功能
     function copyUrl(text) {
         navigator.clipboard.writeText(text).then(() => {
-            const toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+            showToast('網址已複製！請至 Chrome/Safari 貼上開啟');
         }).catch(err => {
             alert('複製失敗，請手動複製網址。');
         });
+    }
+
+    // 複製指定區塊話術功能
+    function copyTextById(id, successMsg) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            showToast(successMsg);
+        }).catch(err => {
+            alert('複製失敗，請手動複製。');
+        });
+    }
+
+    // 顯示 Toast 提示
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.innerText = message;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 3000);
     }
 </script>
 
