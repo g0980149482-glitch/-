@@ -58,7 +58,7 @@
             opacity: 0.9;
         }
 
-        /* 頂部切換選單 */
+        /* 頂部切換選單 (Tab 三選單優化) */
         .nav-tabs {
             display: flex;
             background: #e2e8f0;
@@ -164,41 +164,6 @@
             font-weight: 500;
         }
 
-        /* 預覽圖區塊 */
-        .preview-box {
-            text-align: center;
-            background: #f8f9fa;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 10px;
-            margin-bottom: 12px;
-        }
-
-        .preview-img {
-            max-width: 100%;
-            height: auto;
-            max-height: 280px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* 手機防呆提示區 */
-        .phone-tips {
-            background-color: #fff9db;
-            border-left: 4px solid #f59f00;
-            color: #664d03;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-        .phone-tips ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 4px;
-        }
-
         /* 下載與操作按鈕 */
         .btn-dl {
             display: inline-flex;
@@ -251,7 +216,7 @@
         <p>星鴻包租代管－彰一處 內部同仁限定</p>
     </header>
 
-    <!-- 頂部分頁選單 -->
+    <!-- 頂部分頁選單 (調整為三個選單) -->
     <div class="nav-tabs">
         <button class="nav-btn active" onclick="switchTab(event, 'gift-section')">1. 新人小禮包開發話術</button>
         <button class="nav-btn" onclick="switchTab(event, 'dm-section')">2. 行銷 DM</button>
@@ -279,7 +244,7 @@
 
 第一，合法出租，還能享有房屋稅、地價稅及所得稅等相關租稅優惠。
 第二，加入社會住宅期間，每年最高可申請一萬元修繕補助。
-第三，租約期間由我們協助租賃管理，包含租客聯繫、续約及相關行政作業，讓您出租更省時、更安心。
+第三，租約期間由我們協助租賃管理，包含租客聯繫、續約及相關行政作業，讓您出租更省時、更安心。
 
 如果您方便，我可以安排一個時間帶資料過去，詳細向您說明政策內容，也順便了解一下您的房屋狀況，看看是否符合申請資格。</div>
             <button onclick="copyTextById('script-phone', '話術模板已複製！')" class="btn-dl btn-script">
@@ -361,18 +326,10 @@
         <div class="section-title">
             <i class="fa-solid fa-images" style="color: #16a085;"></i> 行銷 DM 電子檔列表
         </div>
-
         <div class="res-card">
             <div class="res-title"><span>社宅招募 DM (直式 A4)</span></div>
-            <div class="preview-box">
-                <img src="https://g0980149482-glitch.github.io/-/dm1.jpg" alt="DM1" class="preview-img" onerror="this.src='https://placehold.co/400x500/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
-            </div>
-        </div>
-
-        <div class="res-card">
-            <div class="res-title"><span>包租代管優勢對照表 (橫式)</span></div>
-            <div class="preview-box">
-                <img src="https://g0980149482-glitch.github.io/-/dm2.jpg" alt="DM2" class="preview-img" onerror="this.src='https://placehold.co/500x350/e2e8f0/7f8c8d?text=經理請在此更換DM圖檔'">
+            <div class="script-box" style="background:#fff; border:none; padding:0; text-align:center; font-size:13px; color:#e74c3c;">
+                ⚠️ 經理提示：由於舊圖片連結失效，請同仁向經理索取最新 DM 檔上傳。
             </div>
         </div>
     </div>
@@ -382,32 +339,18 @@
         <div class="section-title">
             <i class="fa-solid fa-file-word" style="color: #2980b9;"></i> 業務合約與表單下載
         </div>
-
         <div class="res-card">
             <div class="res-title"><span>社會住宅包租代管【第五期】綜合委託契約書</span></div>
             <a href="https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778" target="_blank" class="btn-dl btn-gov">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> 📲 前往住都中心【第五期】合約網頁
             </a>
-            <button onclick="copyUrl('https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778')" class="btn-dl btn-copy">
-                <i class="fa-regular fa-copy"></i> 📋 複製第五期合約網址
-            </button>
         </div>
     </div>
 </div>
 
-<div id="toast" class="toast">網址已複製！</div>
+<div id="toast" class="toast">複製成功！</div>
 
 <script>
-    // 終極防快取：只要偵測到網址帶有舊的 v_final 或者是完全沒帶新參數，就強制重定向
-    (function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.has('v_super_update') || urlParams.has('v_final')) {
-            const currentUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-            // 強制清除 hash（#dm-section）並加上全新超級參數
-            window.location.href = currentUrl + '?v_super_update=' + new Date().getTime();
-        }
-    })();
-
     function switchTab(event, sectionId) {
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         if(event) event.currentTarget.classList.add('active');
@@ -415,20 +358,14 @@
         document.getElementById(sectionId).classList.add('active');
     }
 
-    function copyUrl(text) {
-        navigator.clipboard.writeText(text).then(() => { showToast('網址已複製！'); });
-    }
-
     function copyTextById(id, successMsg) {
         const text = document.getElementById(id).innerText;
-        navigator.clipboard.writeText(text).then(() => { showToast(successMsg); });
-    }
-
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.innerText = message;
-        toast.style.display = 'block';
-        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        navigator.clipboard.writeText(text).then(() => {
+            const toast = document.getElementById('toast');
+            toast.innerText = successMsg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        });
     }
 </script>
 </body>
