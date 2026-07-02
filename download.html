@@ -326,7 +326,7 @@
 
         <!-- LINE 第三段 -->
         <div class="res-card">
-            <div class="res-title">💬 第三段｜引導互動</div>
+            <div class="res-title">💬 第三段｜引引导互動</div>
             <div class="res-desc">當天或隔天發送，積極促成帶看評估。</div>
             <div class="script-box" id="script-line3">想先跟您確認一下房屋目前的狀況，方便我協助評估：
 
@@ -398,7 +398,7 @@
             <div class="phone-tips">
                 <strong>📱 手機儲存指引：</strong>
                 <ul>
-                    <li>• 請直接「長按上方圖片 2 秒」➔ 點選「加入照片}」或「下載圖片」即可儲存！</li>
+                    <li>• 請直接「長按上方圖片 2 秒」➔ 點選「加入照片」或「下載圖片」即可儲存！</li>
                 </ul>
             </div>
         </div>
@@ -443,12 +443,12 @@
 <div id="toast" class="toast">網址已複製！請至 Chrome/Safari 貼上開啟</div>
 
 <script>
-    // 自動破解快取機制
+    // 自動強制破解快取機制 (強制套用全新參數)
     (function() {
         const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.has('v_tab3')) {
+        if (!urlParams.has('v_gift_pack')) {
             const currentUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-            window.location.href = currentUrl + '?v_tab3=' + new Date().getTime() + window.location.hash;
+            window.location.href = currentUrl + '?v_gift_pack=' + new Date().getTime() + window.location.hash;
         }
     })();
 
