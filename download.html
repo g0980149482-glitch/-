@@ -4,32 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>業務資源與行銷DM專區</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #2c3e50; --accent: #e74c3c; --success: #2ecc71; --info: #3498db; --text-main: #333333; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f0f2f5; color: var(--text-main); line-height: 1.6; padding: 15px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; color: #333333; line-height: 1.6; padding: 15px; }
         .container { max-width: 600px; margin: 0 auto; }
-        header { background: linear-gradient(135deg, #16a085, #2c3e50); color: #ffffff; padding: 22px 15px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        header { background: linear-gradient(135deg, #16a085, #2c3e50); color: #ffffff; padding: 22px 15px; border-radius: 12px; text-align: center; margin-bottom: 15px; }
         header h1 { font-size: 20px; font-weight: 700; margin-bottom: 5px; }
         header p { font-size: 13px; opacity: 0.9; }
         .nav-tabs { display: flex; background: #e2e8f0; padding: 5px; border-radius: 10px; margin-bottom: 15px; gap: 4px; }
-        .nav-btn { flex: 1; text-align: center; padding: 10px 2px; font-weight: 700; font-size: 13px; color: #4a5568; border: none; background: none; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; }
-        .nav-btn.active { background-color: var(--primary); color: white; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
+        .nav-btn { flex: 1; text-align: center; padding: 10px 2px; font-weight: 700; font-size: 13px; color: #4a5568; border: none; background: none; border-radius: 8px; cursor: pointer; }
+        .nav-btn.active { background-color: #2c3e50; color: white; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        .section-title { font-size: 15px; font-weight: 700; color: var(--primary); margin: 15px 0 10px 5px; }
-        .res-card { background: white; border-radius: 10px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .section-title { font-size: 15px; font-weight: 700; color: #2c3e50; margin: 15px 0 10px 5px; }
+        .res-card { background: white; border-radius: 10px; padding: 15px; margin-bottom: 12px; border: 1px solid #e2e8f0; }
         .res-title { font-size: 15px; font-weight: 700; color: #2c3e50; margin-bottom: 6px; }
         .res-desc { font-size: 13px; color: #7f8c8d; margin-bottom: 10px; }
         .script-box { background-color: #f8f9fa; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; font-size: 14px; color: #334155; white-space: pre-line; margin-bottom: 10px; line-height: 1.6; }
         .welcome-box { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fde68a; color: #92400e; padding: 12px; border-radius: 10px; font-size: 13px; margin-bottom: 15px; }
-        .btn-dl { display: inline-flex; width: 100%; align-items: center; justify-content: center; gap: 6px; padding: 12px; background-color: #e67e22; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
+        .btn-dl { display: block; width: 100%; text-align: center; padding: 12px; background-color: #e67e22; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
         .btn-gov { background-color: #3498db; margin-top: 12px; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; display: none; z-index: 999; }
         
-        /* 網頁原生表格樣式，取代圖片防止破圖 */
+        /* 網頁內建原生表格 */
         .table-responsive { width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid #cbd5e1; border-radius: 6px; }
         .gov-table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; background: #ffffff; }
         .gov-table th { background-color: #f1f5f9; color: #334155; font-weight: 700; padding: 8px 10px; border-bottom: 2px solid #cbd5e1; }
@@ -67,7 +64,7 @@
 
 第一，合法出租，還能享有房屋稅、地價稅及所得稅等相關租稅優惠。
 第二，加入社會住宅期間，每年最高可申請一萬元修繕補助。
-第三，租約期間由我們協助租賃管理，包含租客聯繫、續約及相關行政作業，讓您出租更省時、更安心。
+Third，租約期間由我們協助租賃管理，包含租客聯繫、續約及相關行政作業，讓您出租更省時、更安心。
 
 如果您方便，我可以安排一個時間帶資料過去，詳細向您說明政策內容，也順便了解一下您的房屋狀況，看看是否符合申請資格。</div>
                 <button onclick="copyTxt('sc-phone', '電話開發話術已複製！')" class="btn-dl">📋 複製電話開發話術</button>
@@ -113,13 +110,13 @@
                 <button onclick="copyTxt('sc-l3', '第三段互動話術已複製！')" class="btn-dl">📋 複製第三段話術</button>
             </div>
 
-            <!-- 廠商驗證區塊（改用100%不破圖網頁原生表格） -->
+            <!-- 🛡️ 廠商驗證區塊（改用原生純網頁表格，確保任何裝置 100% 顯示不卡死） -->
             <div class="res-card" style="border: 1px solid #3498db;">
                 <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？出示合格業者名單</div>
                 <div class="script-box" id="sc-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
                 <button onclick="copyTxt('sc-verify', '查證話術已複製！')" class="btn-dl" style="background-color: #7f8c8d;">📋 複製防呆查證話術</button>
                 
-                <!-- 直接用 HTML 畫出彰化縣名單表格，完美取代截圖圖片 -->
+                <!-- 純 HTML 桌代表格，免加載圖片，絕不破圖 -->
                 <div class="table-responsive">
                     <table class="gov-table">
                         <thead>
@@ -154,7 +151,7 @@
                     </table>
                 </div>
                 
-                <!-- 精準修正為住都中心官方網址 -->
+                <!-- 正確引導入住都中心 1779 公告頁面 -->
                 <a href="https://www.hurc.org.tw/hurc/docDetail?uid=296&pid=257&doc_id=1779" target="_blank" class="btn-dl btn-gov">🔍 點我直連【住都中心公會版業者名單公告】</a>
             </div>
         </div>
@@ -184,7 +181,6 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        if(window.location.hash) { history.replaceState("", document.title, window.location.pathname + window.location.search); }
         switchTab(null, 'gift-tab');
     });
 
