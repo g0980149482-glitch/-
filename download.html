@@ -26,13 +26,10 @@
         .btn-gov { background-color: #3498db; margin-top: 12px; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; display: none; z-index: 999; }
         
-        /* 網頁內建原生表格 */
-        .table-responsive { width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid #cbd5e1; border-radius: 6px; }
-        .gov-table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; background: #ffffff; }
-        .gov-table th { background-color: #f1f5f9; color: #334155; font-weight: 700; padding: 8px 10px; border-bottom: 2px solid #cbd5e1; }
-        .gov-table td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; }
-        .gov-table tr:nth-child(even) { background-color: #f8fafc; }
-        .highlight-row { background-color: #fef08a !important; font-weight: 700; color: #a16207 !important; }
+        /* 圖片容器與樣式，確保圖片在手機上完美填滿且不卡死 */
+        .preview-container { text-align: center; margin: 15px 0; background: #f8fafc; padding: 8px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .preview-label { font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 5px; display: block; }
+        .preview-img { max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: inline-block; }
     </style>
 </head>
 <body>
@@ -63,8 +60,8 @@
 我簡單跟您分享幾個房東最有感的好處：
 
 第一，合法出租，還能享有房屋稅、地價稅及所得稅等相關租稅優惠。
-第二，加入社會住宅期間，每年最高可申請一萬元修繕補助。
-Third，租約期間由我們協助租賃管理，包含租客聯繫、續約及相關行政作業，讓您出租更省時、更安心。
+第二，加入社會住宅期間，每年最高可申請一萬元修繕補助.
+第三，租約期間由我們協助租賃管理，包含租客聯繫、續約及相關行政作業，讓您出租更省時、更安心。
 
 如果您方便，我可以安排一個時間帶資料過去，詳細向您說明政策內容，也順便了解一下您的房屋狀況，看看是否符合申請資格。</div>
                 <button onclick="copyTxt('sc-phone', '電話開發話術已複製！')" class="btn-dl">📋 複製電話開發話術</button>
@@ -110,48 +107,25 @@ Third，租約期間由我們協助租賃管理，包含租客聯繫、續約及
                 <button onclick="copyTxt('sc-l3', '第三段互動話術已複製！')" class="btn-dl">📋 複製第三段話術</button>
             </div>
 
-            <!-- 🛡️ 廠商驗證區塊（改用原生純網頁表格，確保任何裝置 100% 顯示不卡死） -->
+            <!-- 🛡️ 廠商驗證區塊（完全移除手打代碼表格，改由雲端硬碟原始截圖直接呈現） -->
             <div class="res-card" style="border: 1px solid #3498db;">
                 <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？出示合格業者名單</div>
                 <div class="script-box" id="sc-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
                 <button onclick="copyTxt('sc-verify', '查證話術已複製！')" class="btn-dl" style="background-color: #7f8c8d;">📋 複製防呆查證話術</button>
                 
-                <!-- 純 HTML 桌代表格，免加載圖片，絕不破圖 -->
-                <div class="table-responsive">
-                    <table class="gov-table">
-                        <thead>
-                            <tr>
-                                <th>縣市</th>
-                                <th>公會版第五期得標廠商名稱</th>
-                                <th>目前狀態</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>彰化縣</td>
-                                <td>大豐富房屋仲介有限公司</td>
-                                <td>已核准</td>
-                            </tr>
-                            <tr class="highlight-row">
-                                <td>彰化縣</td>
-                                <td>星鴻股份有限公司（彰化營業處）</td>
-                                <td>⭐ 國家核准得標廠商</td>
-                            </tr>
-                            <tr>
-                                <td>彰化縣</td>
-                                <td>兆基管理顧問股份有限公司</td>
-                                <td>已核准</td>
-                            </tr>
-                            <tr>
-                                <td>彰化縣</td>
-                                <td>總管家租賃住宅服務股份有限公司</td>
-                                <td>已核准</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- 截圖一：Google 搜尋畫面截圖 -->
+                <div class="preview-container">
+                    <span class="preview-label">📸 截圖一：內政部國土署公會版搜尋畫面</span>
+                    <img src="https://lh3.googleusercontent.com/d/1B7X3WymVd2Ie6VzRz4_6u5nWhhVnKq0l" alt="公會版搜尋畫面截圖" class="preview-img">
+                </div>
+
+                <!-- 截圖二：彰化縣合格業者名單表格截圖 -->
+                <div class="preview-container">
+                    <span class="preview-label">📸 截圖二：彰化縣國家核准得標廠商名單</span>
+                    <img src="https://lh3.googleusercontent.com/d/1_T9eWkRmdgHq-YkE2A6R4oWl2zM09b2l" alt="彰化縣業者名單截圖" class="preview-img">
                 </div>
                 
-                <!-- 正確引導入住都中心 1779 公告頁面 -->
+                <!-- 正確引導入住都中心 1779 官方公告頁面 -->
                 <a href="https://www.hurc.org.tw/hurc/docDetail?uid=296&pid=257&doc_id=1779" target="_blank" class="btn-dl btn-gov">🔍 點我直連【住都中心公會版業者名單公告】</a>
             </div>
         </div>
