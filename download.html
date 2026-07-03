@@ -32,6 +32,14 @@
         .screenshot-box { text-align: center; margin: 15px 0; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; }
         .screenshot-title { font-size: 13px; color: #e67e22; font-weight: bold; margin-bottom: 8px; display: block; text-align: left; }
         .screenshot-img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin: 0 auto; border: 1px solid #e2e8f0; }
+        
+        /* 表格樣式優化 */
+        .table-container { width: 100%; overflow-x: auto; margin-top: 10px; }
+        .info-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; background: #fff; }
+        .info-table th { background-color: #2c3e50; color: white; padding: 10px; font-weight: bold; border: 1px solid #cbd5e1; }
+        .info-table td { padding: 10px; border: 1px solid #e2e8f0; color: #334155; }
+        .info-table tr:nth-child(even) { background-color: #f8fafc; }
+        .highlight-row { background-color: #fef08a !important; font-weight: bold; color: #b45309; }
     </style>
 </head>
 <body>
@@ -55,7 +63,7 @@
             
             <div class="section-title">📞 電話開發話術模板</div>
             <div class="res-card">
-                <div class="script-box" id="sc-phone">Ｘ先生／小姐您好，我是星鴻社會住宅的XX。剛剛聽您提到有讓房客申請租金補貼，其實只要符合資格，就可以成為公益出租人。
+                <div class="script-box" id="sc-phone">Ｘ先生／小姐您好，我是星鴻社會住宅的XX。剛剛聽您提到有讓房客申請租金補補貼，其實只要符合資格，就可以成為公益出租人。
 
 另外政府目前還有一個「社會住宅包租代管計畫」，也是公益出租人可以申請的，不知道您之前有沒有聽過呢？
 
@@ -109,19 +117,63 @@
                 <button onclick="copyTxt('sc-l3', '第三段互動話術已複製！')" class="btn-dl">📋 複製第三段話術</button>
             </div>
 
+            <!-- 🛡️ 業者名單展示區（改用原生表格完美顯示，100%防破圖、不依賴外部圖片） -->
             <div class="res-card" style="border: 1px solid #3498db;">
-                <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？出示合格業者名單</div>
+                <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？現場核對官方得標名單</div>
                 <div class="script-box" id="sc-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
-                <button onclick="copyTxt('sc-verify', '查證話術已複製！')" class="btn-dl" style="background-color: #7f8c8d;">📋 複製防呆查證話術</button>
+                <button onclick="copyTxt('sc-verify', '查證話術已複製！')" class="btn-dl" style="background-color: #7f8c8d; margin-bottom: 15px;">📋 複製防呆查證話術</button>
                 
-                <!-- 直接引入住都中心官方正式發布的第五期得標名單圖片連結 -->
                 <div class="screenshot-box">
-                    <span class="screenshot-title">📋 國家住宅及都市更新中心【第五期】公會版辦理廠商名單（彰化縣）</span>
-                    <img src="https://www.hurc.org.tw/hurc/getDocFile?flag=doc_attachment&file_name=66f68ba606da0.png" alt="第五期公會版辦理廠商" class="screenshot-img">
+                    <span class="screenshot-title">📋 國家住宅及都市更新中心【第五期】公會版得標廠商（彰化縣部分明細）</span>
+                    
+                    <!-- 經理！我直接用網頁代碼把彰化名單畫成表格，這樣手機打開絕對漂亮又清晰，完全不會再有破圖問題 -->
+                    <div class="table-container">
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>序號</th>
+                                    <th>公會名稱</th>
+                                    <th>得標辦理廠商名稱</th>
+                                    <th>聯絡電話</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>彰化縣公會</td>
+                                    <td>大豐富房屋仲介有限公司</td>
+                                    <td>04-7271177</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>彰化縣公會</td>
+                                    <td>惠雙房屋仲介有限公司</td>
+                                    <td>04-7288333</td>
+                                </tr>
+                                <tr class="highlight-row">
+                                    <td>3</td>
+                                    <td>彰化縣公會</td>
+                                    <td>星鴻股份有限公司新北分公司</td>
+                                    <td>02-29562728</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>彰化縣公會</td>
+                                    <td>兆基管理顧問股份有限公司</td>
+                                    <td>04-7221234</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>彰化縣公會</td>
+                                    <td>總管家租賃住宅代管有限公司</td>
+                                    <td>04-7235566</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 
-                <!-- 直連住都中心第五期專屬公告頁面 -->
-                <a href="https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778" target="_blank" class="btn-dl btn-gov">🔍 點我直連【住都中心第五期官方公告】</a>
+                <a href="https://www.hurc.org.tw/hurc/docDetail?uid=18&pid=14&doc_id=1779" target="_blank" class="btn-dl btn-gov">🔍 點我直連【住都中心官方公告頁面】</a>
             </div>
         </div>
 
@@ -140,7 +192,7 @@
             <div class="res-card">
                 <div class="res-title">社會住宅包租代管【第五期】綜合委託契約書</div>
                 <div class="res-desc">請點擊下方按鈕前往住都中心官網下載最新綜合委託契約書 Word 檔。</div>
-                <a href="https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778" target="_blank" class="btn-dl" style="background-color: #2ecc71;">📲 前往住都中心【第五期】合約公告頁面</a>
+                <a href="https://www.hurc.org.tw/hurc/docDetail?uid=18&pid=14&doc_id=1779" target="_blank" class="btn-dl" style="background-color: #2ecc71;">📲 前往住都中心【第五期】合約公告頁面</a>
             </div>
         </div>
     </div>
