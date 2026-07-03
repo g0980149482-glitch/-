@@ -38,11 +38,10 @@
         .info-table tr:nth-child(even) { background-color: #f8fafc; }
         .highlight-row { background-color: #fef08a !important; font-weight: bold; color: #b45309; }
 
-        /* 滿版高清圖片展示區（點擊可直接打開大圖自由放大） */
-        .img-link-box { margin-top: 15px; display: block; text-decoration: none; border: 2px dashed #3498db; padding: 8px; border-radius: 8px; background: #f0f9ff; transition: all 0.2s; }
-        .img-link-box:hover { background: #e0f2fe; }
+        /* 滿版高清圖片展示區 */
+        .img-link-box { margin-top: 15px; display: block; text-decoration: none; border: 2px dashed #e67e22; padding: 8px; border-radius: 8px; background: #fff7ed; }
         .preview-img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .click-hint { display: block; font-size: 13px; color: #2980b9; font-weight: bold; margin-top: 8px; text-align: center; }
+        .click-hint { display: block; font-size: 14px; color: #c2410c; font-weight: bold; margin-top: 8px; text-align: center; background: #ffedd5; padding: 6px; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -173,11 +172,13 @@
                         </table>
                     </div>
 
-                    <!-- 🔗 點擊直通：直接開啟 GitHub 上的高清大圖原檔（同仁可在手機裡直接用手勢雙指放大） -->
-                    <a href="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" target="_blank" class="img-link-box">
-                        <img src="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" alt="得標名單大圖" class="preview-img" onerror="this.src='https://placehold.co/600x400?text=%E9%BB%9E%E6%AD%A4%E6%9F%A5%E7%9C%8B%E9%9B%B2%E7%AB%AF%E5%A4%A7%E5%9C%96';">
-                        <span class="click-hint">🔍 圖片不清楚？點擊此處即可打開「高清大圖原檔」自由手勢放大</span>
-                    </a>
+                    <!-- 💡 解決無法放大的最終方案：引導夥伴長按圖片下載，或在新視窗放大 -->
+                    <div class="img-link-box">
+                        <span class="click-hint">💡 請「長按圖片」儲存或點擊在新視窗自由放大</span>
+                        <a href="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" target="_blank">
+                            <img src="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" alt="得標名單大圖" class="preview-img" onerror="this.src='https://placehold.co/600x400?text=%E5%9C%96%E7%89%87%E5%8A%A0%E8%BC%89%E4%B8%AD';">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
