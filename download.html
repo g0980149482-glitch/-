@@ -26,8 +26,9 @@
         .script-box { background-color: #f8f9fa; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; font-size: 14px; color: #334155; white-space: pre-line; margin-bottom: 10px; line-height: 1.6; }
         .welcome-box { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fde68a; color: #92400e; padding: 12px; border-radius: 10px; font-size: 13px; margin-bottom: 15px; }
         .btn-dl { display: inline-flex; width: 100%; align-items: center; justify-content: center; gap: 6px; padding: 12px; background-color: #e67e22; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
-        .btn-gov { background-color: #3498db; margin-top: 8px; }
+        .btn-gov { background-color: #3498db; margin-top: 12px; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; display: none; z-index: 999; }
+        .preview-img { max-width: 100%; height: auto; border-radius: 8px; margin: 12px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; display: block; }
     </style>
 </head>
 <body>
@@ -38,34 +39,101 @@
         <p>星鴻包租代管－彰一處 內部同仁專用</p>
     </header>
 
-    <!-- 頂部切換選單（加入 id 確保強制改寫） -->
     <div class="nav-tabs" id="main-tabs">
         <button id="btn-gift" class="nav-btn active" onclick="switchTab(event, 'gift-tab')">1.新人小禮包開發話術</button>
         <button id="btn-dm" class="nav-btn" onclick="switchTab(event, 'dm-tab')">2.行銷DM</button>
         <button id="btn-doc" class="nav-btn" onclick="switchTab(event, 'doc-tab')">3.合約/表單範本</button>
     </div>
 
-    <!-- 內容容器 -->
     <div id="main-contents">
-        <!-- 選單一 -->
+        <!-- 選單一：新人小禮包開發話術 -->
         <div id="gift-tab" class="tab-content active">
-            <div class="welcome-box">🥳 <strong>恭喜大家進入到彰化營業處大家庭！</strong><br>希望大家可以一起在這個團隊一起奮鬥😊</div>
+            <div class="welcome-box">🥳 <strong>恭喜大家進入到彰化營業處大家庭！</strong><br>希望大家可以一起在這個團隊一起奮鬥，也能夠在這個行業裏找到自己的小金庫😊</div>
+            
             <div class="section-title">📞 電話開發話術模板</div>
             <div class="res-card">
-                <div class="script-box" id="sc-phone">Ｘ先生／小姐您好，我是星鴻社會住宅的XX...（完整話術已內嵌）</div>
+                <div class="script-box" id="sc-phone">Ｘ先生／小姐您好，我是星鴻社會住宅的XX。剛剛聽您提到有讓房客申請租金補貼，其實只要符合資格，就可以成為公益出租人。
+
+另外政府目前還有一個「社會住宅包租代管計畫」，也是公益出租人可以申請的，不知道您之前有沒有聽過呢？
+
+我簡單跟您分享幾個房東最有感的好處：
+
+第一，合法出租，還能享有房屋稅、地價稅及所得稅等相關租稅優惠。
+第二，加入社會住宅期間，每年最高可申請一萬元修繕補助。
+第三，租約期間由我們協助租賃管理，包含租客聯繫、續約及相關行政作業，讓您出租更省時、更安心。
+
+如果您方便，我可以安排一個時間帶資料過去，詳細向您說明政策內容，也順便了解一下您的房屋狀況，看看是否符合申請資格。</div>
                 <button onclick="copyTxt('sc-phone', '電話開發話術已複製！')" class="btn-dl">📋 複製電話開發話術</button>
             </div>
+
+            <div class="section-title">💬 加 LINE 後續追蹤話術</div>
+            <div class="res-card">
+                <div class="res-title">第一段｜加 LINE 後立即發送</div>
+                <div class="script-box" id="sc-l1">您好，我是剛剛與您電話聯繫的 星鴻社會住宅推廣員－○○○ 😊
+
+感謝您加入我的 LINE！
+
+我們是政府合作廠商星鴻社會住宅廠商，除了協助房東招租，也提供一般租賃媒合服務。
+
+後續有任何出租相關問題，都可以直接透過 LINE 與我聯繫，我會盡力協助您。</div>
+                <button onclick="copyTxt('sc-l1', '第一段文字已複製！')" class="btn-dl">📋 複製第一段話術</button>
+            </div>
+            
+            <div class="res-card">
+                <div class="res-title">第二段｜建立價值（約5～10分鐘後）</div>
+                <div class="script-box" id="sc-l2">這邊也跟您分享，目前加入社會住宅，房東可享有政府提供的多項福利：
+
+✅ 房屋稅、地價稅及所得稅等租稅優惠
+✅ 每年8000-10000元修繕補助
+✅ 公證費補助最高 9,000 元
+✅ 居家安全相關保險補助最高 3,500 元（如地震、火災等）
+
+另外，我們也會協助房屋帶看、招租及租賃管理，全程房東無需支付服務費，相關費用皆由政府補助。</div>
+                <button onclick="copyTxt('sc-l2', '第二段福利話術已複製！')" class="btn-dl">📋 複製第二段話術</button>
+            </div>
+            
+            <div class="res-card">
+                <div class="res-title">第三段｜引導互動（當天或隔天）</div>
+                <div class="script-box" id="sc-l3">想先跟您確認一下房屋目前的狀況，方便我協助評估：
+
+📍 房屋目前還在出租中，還是已經空屋呢？
+
+如果目前還在招租，我這邊也有房客持續在找房，可以協助您媒合看看。
+
+若方便的話，也可以提供房屋地址、租金及幾張室內照片，我可以先協助您評估市場行情及是否符合社會住宅資格。
+
+如果您有空，我也可以安排時間親自過去說明政策內容，順便看看房屋狀況，提供您最適合的出租建議。</div>
+                <button onclick="copyTxt('sc-l3', '第三段互動話術已複製！')" class="btn-dl">📋 複製第三段話術</button>
+            </div>
+
+            <!-- 廠商驗證區塊（已直接置入您的雲端硬碟圖片） -->
+            <div class="res-card" style="border: 1px solid #3498db;">
+                <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？出示合格業者名單</div>
+                <div class="script-box" id="sc-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
+                <button onclick="copyTxt('sc-verify', '查證話術已複製！')" class="btn-dl" style="background-color: #7f8c8d;">📋 複製防呆查證話術</button>
+                
+                <!-- 這裡已成功串接您的雲端硬碟圖片，會在網頁直接顯示 -->
+                <img src="https://lh3.googleusercontent.com/d/1_T9eWkRmdgHq-YkE2A6R4oWl2zM09b2l" alt="彰化縣業者名單截圖" class="preview-img">
+                
+                <a href="https://skyfunsystem.com/Contrat/Contrat_Index" target="_blank" class="btn-dl btn-gov">🔍 點我直連【內政部國土署公會版業者名單】</a>
+            </div>
         </div>
-        <!-- 選單二 -->
+
+        <!-- 選單二：行銷DM -->
         <div id="dm-tab" class="tab-content">
             <div class="section-title">🖼️ 行銷 DM 下載專區</div>
-            <div class="res-card"><div class="res-title">社宅招募 DM電子檔</div><div class="res-desc" style="color:#e74c3c;">⚠️ 請同仁暫時向經理索取 DM 原圖。</div></div>
+            <div class="res-card">
+                <div class="res-title">社宅招募 DM電子檔</div>
+                <div class="res-desc" style="color:#e74c3c; font-weight: bold;">⚠️ 圖片連結更新中：請同仁暫時先向經理索取 DM 原圖存檔。</div>
+            </div>
         </div>
-        <!-- 選單三 -->
+        
+        <!-- 選單三：合約/表單範本 -->
         <div id="doc-tab" class="tab-content">
             <div class="section-title">📝 業務契約下載</div>
             <div class="res-card">
                 <div class="res-title">社會住宅包租代管【第五期】綜合委託契約書</div>
+                <div class="res-desc">請點擊下方按鈕前往住都中心官網下載最新綜合委託契約書 Word 檔。</div>
                 <a href="https://www.hurc.org.tw/hurc/docDetail?uid=297&pid=257&doc_id=1778" target="_blank" class="btn-dl" style="background-color: #2ecc71;">📲 前往住都中心【第五期】合約公告頁面</a>
             </div>
         </div>
@@ -75,21 +143,8 @@
 <div id="toast" class="toast">複製成功！</div>
 
 <script>
-    // 終極保險：如果網頁被舊伺服器快取、或錨點干擾，直接用瀏覽器硬體覆寫
     document.addEventListener("DOMContentLoaded", function() {
-        // 移除網址後面的 #dm-section 避免干擾
         if(window.location.hash) { history.replaceState("", document.title, window.location.pathname + window.location.search); }
-        
-        // 檢查如果畫面上沒有出現新人禮包，直接強行重構網頁頂部
-        const tabs = document.getElementById('main-tabs');
-        if (tabs && tabs.children.length < 3) {
-            tabs.innerHTML = `
-                <button id="btn-gift" class="nav-btn active" onclick="switchTab(event, 'gift-tab')">1.新人小禮包開發話術</button>
-                <button id="btn-dm" class="nav-btn" onclick="switchTab(event, 'dm-tab')">2.行銷DM</button>
-                <button id="btn-doc" class="nav-btn" onclick="switchTab(event, 'doc-tab')">3.合約/表單範本</button>
-            `;
-        }
-        // 預設切換至第一個
         switchTab(null, 'gift-tab');
     });
 
