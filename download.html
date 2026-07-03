@@ -26,9 +26,12 @@
         .script-box { background-color: #f8f9fa; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; font-size: 14px; color: #334155; white-space: pre-line; margin-bottom: 10px; line-height: 1.6; }
         .welcome-box { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fde68a; color: #92400e; padding: 12px; border-radius: 10px; font-size: 13px; margin-bottom: 15px; }
         .btn-dl { display: block; width: 100%; text-align: center; padding: 12px; background-color: #e67e22; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
-        .btn-gov { background-color: #3498db; margin-top: 15px; padding: 15px 10px; font-size: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2); }
+        .btn-gov { background-color: #3498db; margin-top: 12px; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; display: none; z-index: 999; }
-        .info-highlight { background-color: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; }
+        
+        .screenshot-box { text-align: center; margin: 15px 0; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; }
+        .screenshot-title { font-size: 13px; color: #e67e22; font-weight: bold; margin-bottom: 8px; display: block; text-align: left; }
+        .screenshot-img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin: 0 auto; border: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
@@ -106,19 +109,20 @@
                 <button onclick="copyTxt('sc-l3', '第三段互動話術已複製！')" class="btn-dl">📋 複製第三段話術</button>
             </div>
 
-            <!-- 🛡️ 廠商驗證區塊（官方直連免圖片，100%防破圖卡死） -->
             <div class="res-card" style="border: 1px solid #3498db;">
-                <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？引導核對政府名單</div>
+                <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？出示合格業者名單</div>
                 <div class="script-box" id="sc-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
                 <button onclick="copyTxt('sc-verify', '查證話術已複製！')" class="btn-dl" style="background-color: #7f8c8d;">📋 複製防呆查證話術</button>
                 
-                <div class="info-highlight">
-                    💡 <strong>給同仁的備忘提示：</strong><br>
-                    點擊下方藍色按鈕可直接開啟【國家住宅及都市更新中心】官方公告，進入後請向房東展示名單附件，即可查證我司得標資格，最權威、最真實！
+                <!-- 修正為第五期最新圖片顯示 -->
+                <div class="screenshot-box">
+                    <span class="screenshot-title">📋 國家住宅及都市更新中心【第五期】公會版辦理廠商名單（彰化縣）</span>
+                    <!-- 這裡直接載入專案中的圖片，確保前台能抓到 -->
+                    <img src="search.jpg" alt="第五期公會版辦理廠商" class="screenshot-img">
                 </div>
                 
-                <!-- 經理指定的住都中心公會版業者名單公告頁面 -->
-                <a href="https://www.hurc.org.tw/hurc/docDetail?uid=18&pid=14&doc_id=1779" target="_blank" class="btn-dl btn-gov">🔍 點我直連【住都中心公會版業者名單公告】</a>
+                <!-- 修正為正確的內政部不動產資訊平台第五期名單網址 -->
+                <a href="https://pip.moi.gov.tw/" target="_blank" class="btn-dl btn-gov">🔍 點我直連【內政部不動產資訊平台】</a>
             </div>
         </div>
 
