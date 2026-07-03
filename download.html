@@ -28,7 +28,7 @@
         .btn-dl { display: block; width: 100%; text-align: center; padding: 12px; background-color: #e67e22; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; display: none; z-index: 999; }
         
-        /* 內建純文字表格：保證不破圖 */
+        /* 官方表格樣式 */
         .table-box { text-align: center; margin: 15px 0; background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; }
         .table-title { font-size: 13px; color: #e67e22; font-weight: bold; margin-bottom: 10px; display: block; text-align: left; }
         .table-container { width: 100%; overflow-x: auto; border-radius: 6px; border: 1px solid #e2e8f0; }
@@ -37,6 +37,10 @@
         .info-table td { padding: 10px; border: 1px solid #e2e8f0; color: #334155; }
         .info-table tr:nth-child(even) { background-color: #f8fafc; }
         .highlight-row { background-color: #fef08a !important; font-weight: bold; color: #b45309; }
+
+        /* 圖片放大按鈕區塊 */
+        .img-preview-box { margin-top: 15px; text-align: center; }
+        .btn-view-large { display: inline-block; width: 100%; padding: 10px; background-color: #34495e; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: bold; text-align: center; margin-top: 8px; }
     </style>
 </head>
 <body>
@@ -60,7 +64,7 @@
             
             <div class="section-title">📞 電話開發話術模板</div>
             <div class="res-card">
-                <div class="script-box" id="sc-phone">Ｘ先生／小姐您好，我是星鴻社會住宅的XX。剛剛聽您提到有讓房客申請租金補貼，其實只要符合資格，就可以成為公益出租人。
+                <div class="script-box" id="sc-phone">Ｘ先生／小姐您好，我是星鴻社會住宅的XX。剛剛聽您提到有讓房客申請租金補補貼，其實只要符合資格，就可以成為公益出租人。
 
 另外政府目前還有一個「社會住宅包租代管計畫」，也是公益出租人可以申請的，不知道您之前有沒有聽過呢？
 
@@ -83,7 +87,7 @@
 
 我們是政府合作廠商星鴻社會住宅廠商，除了協助房東招租，也提供一般租賃媒合服務。
 
-後續有任何出租相關問題，都可以直接透過 LINE 與我聯繫，我會盡力協助您.</div>
+後續有任何出租相關問題，都可以直接透過 LINE 與我聯繫，我會盡力協助您。</div>
                 <button onclick="copyTxt('sc-l1', '第一段文字已複製！')" class="btn-dl">📋 複製第一段話術</button>
             </div>
             
@@ -114,7 +118,7 @@
                 <button onclick="copyTxt('sc-l3', '第三段互動話術已複製！')" class="btn-dl">📋 複製第三段話術</button>
             </div>
 
-            <!-- 🛡️ 廠商驗證區塊（徹底移除了舊的 img 標籤，保證絕不破圖） -->
+            <!-- 🛡️ 廠商驗證區塊 -->
             <div class="res-card" style="border: 1px solid #3498db;">
                 <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？現場展示官方得標名單</div>
                 <div class="script-box" id="sc-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
@@ -165,6 +169,11 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <!-- 🔍 新增：直接點選放大看雲端硬碟原圖的按鈕 -->
+                    <div class="img-preview-box">
+                        <a href="https://drive.google.com/drive/u/0/folders/1wqqYdnUcu59AZsHYO8nG05t6yTV6kQS5" target="_blank" class="btn-view-large">🔍 點此直接打開雲端硬碟看原圖 / 放大圖片</a>
                     </div>
                 </div>
             </div>
