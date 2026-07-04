@@ -28,18 +28,11 @@
         .btn-dl { display: block; width: 100%; text-align: center; padding: 12px; background-color: #e67e22; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; display: none; z-index: 999; }
         
-        /* 內建純文字表格 */
-        .table-box { text-align: center; margin: 15px 0; background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; }
-        .table-title { font-size: 13px; color: #e67e22; font-weight: bold; margin-bottom: 10px; display: block; text-align: left; }
-        .table-container { width: 100%; overflow-x: auto; border-radius: 6px; border: 1px solid #e2e8f0; }
-        .info-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; background: #fff; min-width: 400px; }
-        .info-table th { background-color: #2c3e50; color: white; padding: 10px; font-weight: bold; border: 1px solid #cbd5e1; }
-        .info-table td { padding: 10px; border: 1px solid #e2e8f0; color: #334155; }
-        .info-table tr:nth-child(even) { background-color: #f8fafc; }
-        .highlight-row { background-color: #fef08a !important; font-weight: bold; color: #b45309; }
-
-        /* 滿版高清圖片展示區 */
-        .img-link-box { margin-top: 15px; display: block; text-decoration: none; border: 2px dashed #e67e22; padding: 8px; border-radius: 8px; background: #fff7ed; }
+        /* 滿版圖片專屬樣式區 */
+        .verify-img-box { margin-top: 15px; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; }
+        .verify-title { font-size: 14px; color: #e67e22; font-weight: bold; margin-bottom: 8px; display: block; text-align: left; }
+        .img-link-box { display: block; text-decoration: none; border: 2px dashed #e67e22; padding: 8px; border-radius: 8px; background: #fff7ed; transition: background 0.2s; }
+        .img-link-box:hover { background: #ffedd5; }
         .preview-img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .click-hint { display: block; font-size: 14px; color: #c2410c; font-weight: bold; margin-top: 8px; text-align: center; background: #ffedd5; padding: 6px; border-radius: 4px; }
     </style>
@@ -119,65 +112,22 @@
                 <button onclick="copyTxt('sc-l3', '第三段互動話術已複製！')" class="btn-dl">📋 複製第三段話術</button>
             </div>
 
-            <!-- 🛡️ 廠商驗證區塊 -->
+            <!-- 🛡️ 廠商驗證區塊（更新：改為純圖片與獨立連結展示） -->
             <div class="res-card" style="border: 1px solid #3498db;">
                 <div class="res-title" style="color: #2980b9;">🛡️ 房東有疑慮？現場展示官方得標名單</div>
                 <div class="script-box" id="sc-verify">房東，若您擔心一律可以上網搜尋「社會住宅公會版業者名單」，要記得哦!! 我們是公會版的業者名單，目前他們有分中央版及公會版，我們在公會版全台14都都有得標。</div>
                 <button onclick="copyTxt('sc-verify', '查證話術已複製！')" class="btn-dl" style="background-color: #7f8c8d; margin-bottom: 5px;">📋 複製防呆查證話術</button>
                 
-                <div class="table-box">
-                    <span class="table-title">📋 國家住宅及都市更新中心【第五期】公會版辦理廠商名單（彰化縣）</span>
+                <div class="verify-img-box">
+                    <span class="verify-title">📋 國家住宅及都市更新中心【第五期】彰化縣名單</span>
                     
-                    <div class="table-container">
-                        <table class="info-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 20%">序號</th>
-                                    <th style="width: 30%">辦理縣市</th>
-                                    <th style="width: 50%">得標辦理廠商名稱</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>彰化縣地區</td>
-                                    <td>意志力租賃住宅代管有限公司</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>彰化縣地區</td>
-                                    <td>兆基管理顧問股份有限公司</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>彰化縣地區</td>
-                                    <td>安東租賃住宅代管有限公司</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>彰化縣地區</td>
-                                    <td>大晟資產管理顧問股份有限公司</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>彰化縣地區</td>
-                                    <td>昊霖租賃住宅代管有限公司</td>
-                                </tr>
-                                <tr class="highlight-row">
-                                    <td>6</td>
-                                    <td>彰化縣地區</td>
-                                    <td>星鴻股份有限公司</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- 💡 解決無法放大的最終方案：引導夥伴長按圖片下載，或在新視窗放大 -->
+                    <!-- 點擊圖片或下方連結都會在新分頁打開這張 555.png，方便手機手勢放大 -->
                     <div class="img-link-box">
-                        <span class="click-hint">💡 請「長按圖片」儲存或點擊在新視窗自由放大</span>
                         <a href="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" target="_blank">
-                            <img src="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" alt="得標名單大圖" class="preview-img" onerror="this.src='https://placehold.co/600x400?text=%E5%9C%96%E7%89%87%E5%8A%A0%E8%BC%89%E4%B8%AD';">
+                            <img src="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" alt="星鴻得分得標官方名單截圖" class="preview-img" onerror="this.src='https://placehold.co/600x400?text=%E5%9C%96%E7%89%87%E8%BC%89%E5%85%A5%E4%B8%AD%EF%BC%8C%E6%88%96%E9%BB%9E%E6%AD%A4%E7%9B%B4%E6%8E%A5%E5%BC%B5%E9%96%8B%E9%80%A3%E7%B5%90';">
                         </a>
+                        <span class="click-hint">💡 點擊圖片或「長按儲存」即可放大查看原圖</span>
+                        <a href="https://raw.githubusercontent.com/g0980149482-glitch/-/main/img/555.png" target="_blank" style="display: block; text-align: center; margin-top: 10px; color: #2563eb; font-size: 13px; font-weight: bold; text-decoration: underline;">🔗 點此直通高清大圖連結 (可放大)</a>
                     </div>
                 </div>
             </div>
