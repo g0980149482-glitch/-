@@ -6,6 +6,13 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <script>
+        // 偵測是否在 LINE 內建瀏覽器中開啟，若是則自動調用外部瀏覽器（Chrome/Safari）打開，解決下載與快取問題
+        if (/Line/i.test(navigator.userAgent) && !/openExternalBrowser=1/.test(location.search)) {
+            var separator = location.href.indexOf('?') > -1 ? '&' : '?';
+            location.href = location.href + separator + 'openExternalBrowser=1';
+        }
+    </script>
     <title>業務資源與行銷DM專區</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
