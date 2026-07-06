@@ -7,10 +7,14 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script>
-        // 偵測是否在 LINE 內建瀏覽器中開啟，若是則自動調用外部瀏覽器（Chrome/Safari）打開，解決下載與快取問題
-        if (/Line/i.test(navigator.userAgent) && !/openExternalBrowser=1/.test(location.search)) {
-            var separator = location.href.indexOf('?') > -1 ? '&' : '?';
-            location.href = location.href + separator + 'openExternalBrowser=1';
+        // 偵測 LINE 內建瀏覽器，顯示提示橫幅引導使用者手動跳轉（LINE 已限制自動 JS 跳轉）
+        function isInLineApp() {
+            return /Line/i.test(navigator.userAgent);
+        }
+        function openInExternalBrowser() {
+            var url = location.href;
+            var separator = url.indexOf('?') > -1 ? '&' : '?';
+            location.href = url + separator + 'openExternalBrowser=1';
         }
     </script>
     <title>業務資源與行銷DM專區</title>
@@ -42,9 +46,32 @@
         .img-link-box:hover { background: #ffedd5; }
         .preview-img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .click-hint { display: block; font-size: 14px; color: #c2410c; font-weight: bold; margin-top: 8px; text-align: center; background: #ffedd5; padding: 6px; border-radius: 4px; }
+
+        /* LINE 瀏覽器提示橫幅 */
+        .line-banner { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: linear-gradient(135deg, #06C755, #00A74A); color: white; padding: 10px 14px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .line-banner p { font-size: 13px; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.2px; }
+        .line-banner-btn { display: inline-block; background: white; color: #06C755; font-size: 14px; font-weight: 900; padding: 8px 22px; border-radius: 30px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); letter-spacing: 0.5px; }
+        .line-banner-active { display: block; }
+        .line-banner-spacer { display: none; height: 85px; }
+        .line-banner-spacer-active { display: block; }
     </style>
 </head>
 <body>
+
+<!-- LINE 瀏覽器提示橫幅：偵測到 LINE 時顯示 -->
+<div class="line-banner" id="line-banner">
+    <p>📱 您正在使用 LINE 開啟，部分功能受限（無法下載）</p>
+    <button class="line-banner-btn" onclick="openInExternalBrowser()">👆 點此用瀏覽器開啟 即可下載圖片</button>
+</div>
+<div class="line-banner-spacer" id="line-banner-spacer"></div>
+
+<script>
+    // 頁面載入後顯示 LINE 提示橫幅
+    if (isInLineApp()) {
+        document.getElementById('line-banner').classList.add('line-banner-active');
+        document.getElementById('line-banner-spacer').classList.add('line-banner-spacer-active');
+    }
+</script>
 
 <div class="container">
     <header>
