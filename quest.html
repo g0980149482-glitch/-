@@ -113,20 +113,33 @@
         .quick-link .ql-sub { font-size: 10px; font-weight: 400; color: var(--muted); display: block; }
 
         /* ── 容器 ── */
-        .container { max-width: 600px; margin: 0 auto; padding: 16px 14px; }
+        .container { max-width: 960px; margin: 0 auto; padding: 16px 14px; }
+
+        /* ── 關卡網格（橫向+直向排列） ── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
         /* ── 步驟卡片 ── */
         .step-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 14px;
-            margin-bottom: 10px;
             overflow: hidden;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .step-card::before {
             content: ''; position: absolute;
-            left: 0; top: 0; bottom: 0; width: 4px;
+            left: 0; top: 0; bottom: 0; width: 5px;
             background: var(--border);
         }
         .step-card.done::before { background: var(--green); }
@@ -134,48 +147,48 @@
 
         /* 卡片 Header */
         .step-header {
-            padding: 14px 14px 14px 18px;
+            padding: 16px 16px 16px 20px;
             cursor: pointer;
-            display: flex; align-items: center; gap: 12px;
+            display: flex; align-items: center; gap: 14px;
             user-select: none;
         }
         .step-num {
-            width: 40px; height: 40px; border-radius: 10px;
+            width: 48px; height: 48px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
             background: rgba(255,255,255,.04);
             border: 1px solid var(--border);
-            font-size: 18px;
+            font-size: 24px;
         }
         .step-card.done .step-num { background: rgba(0,212,170,.12); border-color: var(--green); }
         .step-card.active .step-num { background: rgba(108,99,255,.15); border-color: var(--accent); }
 
         .step-info { flex: 1; min-width: 0; }
         .step-day {
-            font-size: 10px; font-weight: 700; letter-spacing: 1px;
-            color: var(--muted); margin-bottom: 2px;
+            font-size: 12px; font-weight: 700; letter-spacing: 1px;
+            color: var(--muted); margin-bottom: 4px;
         }
         .step-card.done .step-day { color: var(--green); }
         .step-card.active .step-day { color: var(--accent); }
-        .step-title { font-size: 15px; font-weight: 700; line-height: 1.3; }
-        .step-progress { font-size: 11px; color: var(--muted); margin-top: 2px; }
+        .step-title { font-size: 19px; font-weight: 900; line-height: 1.3; }
+        .step-progress { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
         .step-badge {
             flex-shrink: 0;
-            font-size: 10px; font-weight: 700;
-            padding: 3px 9px; border-radius: 20px;
+            font-size: 11px; font-weight: 700;
+            padding: 4px 10px; border-radius: 20px;
         }
         .badge-done { background: rgba(0,212,170,.15); color: var(--green); }
         .badge-active { background: rgba(108,99,255,.15); color: var(--accent); }
         .badge-locked { background: rgba(255,255,255,.05); color: var(--muted); }
 
-        .step-arrow { color: var(--muted); font-size: 12px; transition: transform .3s; flex-shrink: 0; }
+        .step-arrow { color: var(--muted); font-size: 14px; transition: transform .3s; flex-shrink: 0; }
         .step-card.open .step-arrow { transform: rotate(180deg); }
 
         /* 折疊體 */
         .step-body { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.25,.8,.25,1); }
         .step-body-inner {
-            padding: 0 16px 18px 18px;
+            padding: 0 18px 20px 20px;
             border-top: 1px solid var(--border);
         }
 
@@ -183,30 +196,30 @@
         .concept-box {
             background: rgba(108,99,255,.06);
             border-left: 3px solid var(--accent);
-            padding: 9px 12px; border-radius: 0 8px 8px 0;
-            font-size: 12px; color: #c5c9e6; line-height: 1.7;
-            margin: 12px 0 14px;
+            padding: 10px 14px; border-radius: 0 8px 8px 0;
+            font-size: 13px; color: #c5c9e6; line-height: 1.7;
+            margin: 14px 0 16px;
         }
         .step-card.done .concept-box { border-left-color: var(--green); background: rgba(0,212,170,.05); }
 
         /* 小標 */
         .mini-label {
-            font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+            font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
             text-transform: uppercase; color: var(--muted);
-            margin: 14px 0 8px;
+            margin: 16px 0 10px;
         }
 
         /* Checklist */
         .checklist { list-style: none; margin-bottom: 14px; }
         .checklist li {
             display: flex; align-items: flex-start; gap: 10px;
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255,255,255,.04);
-            font-size: 12px; color: #c5c9e6; line-height: 1.5;
+            font-size: 13px; color: #c5c9e6; line-height: 1.5;
         }
         .checklist li:last-child { border-bottom: none; }
         .checklist input[type="checkbox"] {
-            width: 16px; height: 16px;
+            width: 18px; height: 18px;
             flex-shrink: 0;
             margin-top: 1px;
             accent-color: var(--accent);
@@ -225,8 +238,8 @@
         .res-btn {
             display: flex; align-items: center; gap: 10px;
             text-decoration: none;
-            padding: 9px 12px; border-radius: 9px;
-            font-size: 12px; font-weight: 700;
+            padding: 10px 14px; border-radius: 9px;
+            font-size: 13px; font-weight: 700;
             margin-bottom: 8px;
             border: 1px solid;
             transition: opacity .2s;
@@ -241,18 +254,18 @@
         .res-btn.gold {
             background: rgba(245,200,66,.08); border-color: rgba(245,200,66,.3); color: var(--gold);
         }
-        .res-btn .ri { font-size: 15px; flex-shrink: 0; }
+        .res-btn .ri { font-size: 16px; flex-shrink: 0; }
         .res-btn .rt { flex: 1; }
-        .res-btn .ra { font-size: 11px; opacity: .5; }
+        .res-btn .ra { font-size: 12px; opacity: .5; }
 
         /* 完成條件框 */
         .goal-box {
             background: rgba(245,200,66,.05);
             border: 1px solid rgba(245,200,66,.2);
-            border-radius: 9px; padding: 9px 12px;
+            border-radius: 9px; padding: 10px 14px;
             display: flex; gap: 9px;
-            font-size: 11px; color: #e6d68a; line-height: 1.6;
-            margin-top: 12px;
+            font-size: 12px; color: #e6d68a; line-height: 1.6;
+            margin-top: 14px;
         }
 
         /* ── 日曆timeline ── */
@@ -414,7 +427,8 @@
     </div>
 </div>
 
-<div class="connector"></div>
+<!-- ── 關卡網格（橫向+直向排列） ── -->
+<div class="steps-grid">
 
 <!-- ══ STEP 1 ══ -->
 <div class="step-card active" id="step1">
@@ -447,8 +461,6 @@
         </div>
     </div>
 </div>
-
-<div class="connector"></div>
 
 <!-- ══ STEP 2 ══ -->
 <div class="step-card active" id="step2">
@@ -484,8 +496,6 @@
     </div>
 </div>
 
-<div class="connector"></div>
-
 <!-- ══ STEP 3 ══ -->
 <div class="step-card active" id="step3">
     <div class="step-header" onclick="toggleStep('step3')">
@@ -516,8 +526,6 @@
     </div>
 </div>
 
-<div class="connector"></div>
-
 <!-- ══ STEP 4 ══ -->
 <div class="step-card active" id="step4">
     <div class="step-header" onclick="toggleStep('step4')">
@@ -543,8 +551,6 @@
         </div>
     </div>
 </div>
-
-<div class="connector"></div>
 
 <!-- ══ STEP 5 ══ -->
 <div class="step-card active" id="step5">
@@ -576,8 +582,6 @@
         </div>
     </div>
 </div>
-
-<div class="connector"></div>
 
 <!-- ══ STEP 6 ══ -->
 <div class="step-card active" id="step6">
@@ -612,8 +616,6 @@
     </div>
 </div>
 
-<div class="connector"></div>
-
 <!-- ══ STEP 7 ══ -->
 <div class="step-card active" id="step7">
     <div class="step-header" onclick="toggleStep('step7')">
@@ -642,8 +644,6 @@
     </div>
 </div>
 
-<div class="connector"></div>
-
 <!-- ══ STEP 8 ══ -->
 <div class="step-card active" id="step8">
     <div class="step-header" onclick="toggleStep('step8')">
@@ -666,19 +666,10 @@
                 <li><input type="checkbox" id="s8c3" onchange="updateProgress()"><label for="s8c3">合約雙方皆簽章完備</label></li>
                 <li><input type="checkbox" id="s8c4" onchange="updateProgress()"><label for="s8c4">房東與房客已加入地區官方LINE群</label></li>
             </ul>
-            <div class="mini-label">🗂️ 任務資源</div>
-            <a href="download.html" class="res-btn purple">
-                <span class="ri">🌐</span><span class="rt">國土署空白合約下載（提前3天給雙方審閱）</span><span class="ra">→</span>
-            </a>
-            <a href="download.html" class="res-btn teal">
-                <span class="ri">📁</span><span class="rt">合約附約與其他表單下載</span><span class="ra">→</span>
-            </a>
             <div class="goal-box">🏁 <span>完成條件：合約雙方完整簽署，公證完成（如需公證），資料整理備好繳回公司。</span></div>
         </div>
     </div>
 </div>
-
-<div class="connector"></div>
 
 <!-- ══ STEP 9 ══ -->
 <div class="step-card active" id="step9">
@@ -710,8 +701,6 @@
     </div>
 </div>
 
-<div class="connector"></div>
-
 <!-- ══ STEP 10 ══ -->
 <div class="step-card active" id="step10">
     <div class="step-header" onclick="toggleStep('step10')">
@@ -737,6 +726,8 @@
         </div>
     </div>
 </div>
+
+</div><!-- /steps-grid -->
 
 <!-- ── 全部完成 ── -->
 <div class="finale" id="finale" style="display:none;">
