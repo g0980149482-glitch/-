@@ -441,7 +441,7 @@
         <div class="step-info">
             <div class="step-day">STEP 03 · Day 8 前完成</div>
             <div class="step-title">場勘實戰 3 場</div>
-            <div class="step-progress" id="prog3">打勾 0/3 項</div>
+            <div class="step-progress" id="prog3">打勾 0/4 項</div>
         </div>
         <span class="step-badge badge-active">進行中</span>
         <span class="step-arrow">▼</span>
@@ -454,6 +454,7 @@
                 <li><input type="checkbox" id="s3c1" onchange="updateProgress()"><label for="s3c1">完成至少 3 場實地拜訪</label></li>
                 <li><input type="checkbox" id="s3c2" onchange="updateProgress()"><label for="s3c2">有主管或學長姐陪同</label></li>
                 <li><input type="checkbox" id="s3c3" onchange="updateProgress()"><label for="s3c3">做場勘紀錄、簽到委託並拍照存證</label></li>
+                <li><input type="checkbox" id="s3c4" onchange="updateProgress()"><label for="s3c4">直媒案件（免簽委託）：確認條件後可直接跳至『STEP 06 收齊房東客資料』</label></li>
             </ul>
             <div class="mini-label">🗂️ 任務資源</div>
             <a href="download.html" class="res-btn teal">
@@ -507,15 +508,41 @@
             <div class="concept-box">安排租客看屋，觀察條件與誠信，判斷是否可承租。完成帶看後要告知房東篩選結果，信任租結果以口頭方式告知。</div>
             <div class="mini-label">✅ 執行檢核</div>
             <ul class="checklist" id="list5">
-                <li><input type="checkbox" id="s5c1" onchange="updateProgress()"><label for="s5c1">完整詢問罐頭訊息（姓名、性別、年齡、人數、職業、寵物、租金、搬離原因等）</label></li>
+                <li><input type="checkbox" id="s5c1" onchange="updateProgress()"><label for="s5c1">完整詢問租客資訊範本（姓名、性別、職業勞健保、補貼、起租日等）</label></li>
                 <li><input type="checkbox" id="s5c2" onchange="updateProgress()"><label for="s5c2">完成帶看並初步訪談租客背景</label></li>
                 <li><input type="checkbox" id="s5c3" onchange="updateProgress()"><label for="s5c3">完成信任租程序（現場簽同意書、拍身份證）</label></li>
                 <li><input type="checkbox" id="s5c4" onchange="updateProgress()"><label for="s5c4">帶看後完成回報房東（篩選結果與租客基本資訊）</label></li>
             </ul>
             <div class="mini-label">🗂️ 任務資源</div>
-            <a href="index.html" class="res-btn purple">
-                <span class="ri">📋</span><span class="rt">收件流程與東客對話注意事項</span><span class="ra">→</span>
+            
+            <!-- 租客資訊問卷複製區 -->
+            <div style="background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 13px; font-weight: 700; color: var(--gold);">☀️ 租客資訊預問表單（點選一鍵複製）</span>
+                    <button onclick="copyTenantTemplate(this)" style="background: var(--accent); color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; font-weight: 700;">📋 複製內容</button>
+                </div>
+                <pre id="tenantTemplateText" style="font-family: inherit; font-size: 12px; color: #c5c9e6; white-space: pre-wrap; word-break: break-all; margin: 0; line-height: 1.5; background: rgba(0,0,0,.2); padding: 10px; border-radius: 6px;">☀️租客資訊☀️
+如果有意願看房請先留下資料喔～
+需要先告知房東➡️儘量打詳細（❌只打服務業）
+
+1. 您的大名：
+2. 性別：
+3. 年紀：
+4. 幾個人要住：
+5. 是否申請過租金補貼：
+6. 目前住在什麼地區：
+7. 要搬的原因是：
+8. 您目前的職業、有無勞健保：
+9. 是否有寵物：
+10.什麼時候要開始租？
+11.備註、需求：</pre>
+            </div>
+
+            <!-- 信任租雲端硬碟按鈕 -->
+            <a href="https://drive.google.com/drive/folders/12J9nTJSLzGrYfIy8xmICSox01qhnPTnI" target="_blank" class="res-btn teal">
+                <span class="ri">🛡️</span><span class="rt">前往信任租專區（雲端資料夾）</span><span class="ra">→</span>
             </a>
+
             <div class="goal-box">🏁 <span>完成條件：租客有意願承租，信任租結果已調閱完成並口頭回報房東。</span></div>
         </div>
     </div>
@@ -750,6 +777,22 @@
         } else {
             document.getElementById('finale').style.display = 'none';
         }
+    }
+
+    // ─── 一鍵複製租客資訊範本 ───
+    function copyTenantTemplate(btn) {
+        const text = document.getElementById('tenantTemplateText').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const oldText = btn.textContent;
+            btn.textContent = '✅ 已複製！';
+            btn.style.background = '#00d4aa';
+            setTimeout(() => {
+                btn.textContent = oldText;
+                btn.style.background = 'var(--accent)';
+            }, 2000);
+        }).catch(err => {
+            alert('複製失敗，請手動全選複製');
+        });
     }
 
     // ─── 初始化 ───
