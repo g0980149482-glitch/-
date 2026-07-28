@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新人任務系統｜星鴻包租代管</title>
+    <title>🌟 星鴻新人業績地圖</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,702 +12,763 @@
             --card: #1e2235;
             --border: #2e3354;
             --accent: #6c63ff;
-            --accent2: #00d4aa;
+            --green: #00d4aa;
             --gold: #f5c842;
             --red: #ff4d6d;
+            --orange: #ff8c42;
+            --blue: #3b9eff;
             --text: #e8eaf6;
             --muted: #8892b0;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
-            padding: 0 0 80px 0;
+            padding-bottom: 60px;
         }
 
-        /* ─── 頂部橫幅 ─── */
+        /* ── HERO ── */
         .hero {
-            background: linear-gradient(135deg, #1a1d2e 0%, #0d1b2a 100%);
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a1d2e 60%, #12162a 100%);
             border-bottom: 2px solid var(--accent);
-            padding: 28px 20px 22px;
+            padding: 24px 20px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
+        .hero::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(108,99,255,0.08) 0%, transparent 70%);
+            top: -60%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(108,99,255,.1) 0%, transparent 65%);
             pointer-events: none;
         }
         .hero-badge {
             display: inline-block;
-            background: rgba(108,99,255,0.15);
+            background: rgba(108,99,255,.15);
             border: 1px solid var(--accent);
             color: var(--accent);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 12px;
-            border-radius: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+            font-size: 10px; font-weight: 700;
+            padding: 3px 14px; border-radius: 20px;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
         }
         .hero h1 {
-            font-size: 22px;
-            font-weight: 900;
-            background: linear-gradient(90deg, #fff 0%, #c3bdff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
+            font-size: 20px; font-weight: 900;
+            background: linear-gradient(90deg, #fff, #c3bdff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
         }
-        .hero p {
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.6;
+        .hero p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+        .hero-creed {
+            display: inline-block;
+            margin-top: 10px;
+            background: rgba(245,200,66,.08);
+            border: 1px solid rgba(245,200,66,.3);
+            color: var(--gold);
+            font-size: 12px; font-weight: 700;
+            padding: 5px 16px; border-radius: 20px;
         }
 
-        /* ─── 整體進度條 ─── */
-        .progress-wrap {
+        /* ── 整體進度 ── */
+        .progress-section {
             background: var(--bg2);
-            padding: 16px 20px;
             border-bottom: 1px solid var(--border);
+            padding: 14px 20px;
         }
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--muted);
+        .progress-header {
+            display: flex; justify-content: space-between; align-items: center;
             margin-bottom: 8px;
         }
+        .progress-label { font-size: 12px; font-weight: 700; color: var(--muted); }
+        .progress-count { font-size: 13px; font-weight: 900; color: var(--accent); }
         .progress-bar {
-            height: 8px;
-            background: var(--border);
-            border-radius: 10px;
-            overflow: hidden;
+            height: 7px; background: var(--border); border-radius: 10px; overflow: hidden;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            border-radius: 10px;
-            width: 0%;
-            transition: width 0.8s cubic-bezier(.25,.8,.25,1);
+            background: linear-gradient(90deg, var(--accent), var(--green));
+            border-radius: 10px; width: 0%; transition: width 0.6s ease;
         }
 
-        /* ─── 容器 ─── */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px 15px;
+        /* ── 快速連結 ── */
+        .quick-links {
+            display: flex; gap: 10px; padding: 14px 15px;
+            background: var(--bg2); border-bottom: 1px solid var(--border);
         }
+        .quick-link {
+            flex: 1; display: flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid var(--border);
+            color: var(--text); text-decoration: none;
+            padding: 10px 12px; border-radius: 10px;
+            font-size: 12px; font-weight: 700;
+            transition: border-color .2s, background .2s;
+        }
+        .quick-link:hover { border-color: var(--accent); background: rgba(108,99,255,.08); }
+        .quick-link .ql-icon { font-size: 18px; }
+        .quick-link .ql-text { flex: 1; line-height: 1.3; }
+        .quick-link .ql-sub { font-size: 10px; font-weight: 400; color: var(--muted); display: block; }
 
-        /* ─── 任務關卡卡片 ─── */
-        .quest-card {
+        /* ── 容器 ── */
+        .container { max-width: 600px; margin: 0 auto; padding: 16px 14px; }
+
+        /* ── 步驟卡片 ── */
+        .step-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 12px;
+            border-radius: 14px;
+            margin-bottom: 10px;
             overflow: hidden;
             position: relative;
-            transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .quest-card.unlocked { border-color: var(--accent); }
-        .quest-card.completed { border-color: var(--accent2); }
-        .quest-card.locked { opacity: 0.45; }
-
-        /* 左側彩條 */
-        .quest-card::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 4px;
+        .step-card::before {
+            content: ''; position: absolute;
+            left: 0; top: 0; bottom: 0; width: 4px;
             background: var(--border);
         }
-        .quest-card.unlocked::before { background: var(--accent); }
-        .quest-card.completed::before { background: var(--accent2); }
+        .step-card.done::before { background: var(--green); }
+        .step-card.active::before { background: var(--accent); }
 
         /* 卡片 Header */
-        .quest-header {
-            padding: 16px 16px 16px 20px;
+        .step-header {
+            padding: 14px 14px 14px 18px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 14px;
+            display: flex; align-items: center; gap: 12px;
             user-select: none;
         }
-
-        .quest-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
+        .step-num {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,.04);
             border: 1px solid var(--border);
+            font-size: 18px;
         }
-        .quest-card.unlocked .quest-icon { background: rgba(108,99,255,0.15); border-color: var(--accent); }
-        .quest-card.completed .quest-icon { background: rgba(0,212,170,0.15); border-color: var(--accent2); }
+        .step-card.done .step-num { background: rgba(0,212,170,.12); border-color: var(--green); }
+        .step-card.active .step-num { background: rgba(108,99,255,.15); border-color: var(--accent); }
 
-        .quest-meta { flex: 1; min-width: 0; }
-        .quest-stage {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 2px;
+        .step-info { flex: 1; min-width: 0; }
+        .step-day {
+            font-size: 10px; font-weight: 700; letter-spacing: 1px;
+            color: var(--muted); margin-bottom: 2px;
         }
-        .quest-card.unlocked .quest-stage { color: var(--accent); }
-        .quest-card.completed .quest-stage { color: var(--accent2); }
+        .step-card.done .step-day { color: var(--green); }
+        .step-card.active .step-day { color: var(--accent); }
+        .step-title { font-size: 15px; font-weight: 700; line-height: 1.3; }
+        .step-progress { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-        .quest-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text);
-            line-height: 1.3;
-        }
-        .quest-card.locked .quest-name { color: var(--muted); }
-
-        .quest-status {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 20px;
+        .step-badge {
             flex-shrink: 0;
+            font-size: 10px; font-weight: 700;
+            padding: 3px 9px; border-radius: 20px;
         }
-        .status-locked { background: rgba(255,255,255,0.05); color: var(--muted); }
-        .status-unlocked { background: rgba(108,99,255,0.2); color: var(--accent); }
-        .status-completed { background: rgba(0,212,170,0.2); color: var(--accent2); }
+        .badge-done { background: rgba(0,212,170,.15); color: var(--green); }
+        .badge-active { background: rgba(108,99,255,.15); color: var(--accent); }
+        .badge-locked { background: rgba(255,255,255,.05); color: var(--muted); }
 
-        /* 展開箭頭 */
-        .quest-arrow {
-            font-size: 14px;
-            color: var(--muted);
-            transition: transform 0.3s;
-            flex-shrink: 0;
-        }
-        .quest-card.open .quest-arrow { transform: rotate(180deg); }
+        .step-arrow { color: var(--muted); font-size: 12px; transition: transform .3s; flex-shrink: 0; }
+        .step-card.open .step-arrow { transform: rotate(180deg); }
 
-        /* 卡片內容（折疊） */
-        .quest-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(.25,.8,.25,1);
-        }
-        .quest-body-inner {
-            padding: 0 20px 20px 20px;
+        /* 折疊體 */
+        .step-body { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.25,.8,.25,1); }
+        .step-body-inner {
+            padding: 0 16px 18px 18px;
             border-top: 1px solid var(--border);
         }
 
-        /* 任務說明 */
-        .quest-desc {
-            background: rgba(255,255,255,0.03);
+        /* 概念框 */
+        .concept-box {
+            background: rgba(108,99,255,.06);
             border-left: 3px solid var(--accent);
-            padding: 10px 14px;
-            border-radius: 0 8px 8px 0;
-            font-size: 13px;
-            color: #c5c9e6;
-            line-height: 1.7;
-            margin: 14px 0 16px;
+            padding: 9px 12px; border-radius: 0 8px 8px 0;
+            font-size: 12px; color: #c5c9e6; line-height: 1.7;
+            margin: 12px 0 14px;
         }
-        .quest-card.completed .quest-desc { border-left-color: var(--accent2); }
+        .step-card.done .concept-box { border-left-color: var(--green); background: rgba(0,212,170,.05); }
 
-        /* 區塊標題 */
-        .section-label {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 8px;
+        /* 小標 */
+        .mini-label {
+            font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--muted);
+            margin: 14px 0 8px;
         }
 
-        /* 挑戰清單 */
-        .challenge-list {
-            list-style: none;
-            margin-bottom: 16px;
+        /* Checklist */
+        .checklist { list-style: none; margin-bottom: 14px; }
+        .checklist li {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,.04);
+            font-size: 12px; color: #c5c9e6; line-height: 1.5;
         }
-        .challenge-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 13px;
-            color: #c5c9e6;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            line-height: 1.5;
-        }
-        .challenge-list li:last-child { border-bottom: none; }
-        .challenge-list li::before {
-            content: '⚡';
-            font-size: 12px;
-            margin-top: 1px;
+        .checklist li:last-child { border-bottom: none; }
+        .checklist input[type="checkbox"] {
+            width: 16px; height: 16px;
             flex-shrink: 0;
+            margin-top: 1px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+        .checklist label {
+            cursor: pointer; flex: 1;
+            transition: color .2s;
+        }
+        .checklist input:checked + label {
+            color: var(--muted);
+            text-decoration: line-through;
         }
 
         /* 資源按鈕 */
-        .resource-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(108,99,255,0.1);
-            border: 1px solid rgba(108,99,255,0.3);
-            color: #c3bdff;
+        .res-btn {
+            display: flex; align-items: center; gap: 10px;
             text-decoration: none;
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 700;
+            padding: 9px 12px; border-radius: 9px;
+            font-size: 12px; font-weight: 700;
             margin-bottom: 8px;
-            transition: background 0.2s, border-color 0.2s;
+            border: 1px solid;
+            transition: opacity .2s;
         }
-        .resource-btn:hover { background: rgba(108,99,255,0.2); border-color: var(--accent); }
-        .resource-btn.green {
-            background: rgba(0,212,170,0.1);
-            border-color: rgba(0,212,170,0.3);
-            color: #7fffd4;
+        .res-btn:hover { opacity: .8; }
+        .res-btn.purple {
+            background: rgba(108,99,255,.1); border-color: rgba(108,99,255,.3); color: #c3bdff;
         }
-        .resource-btn.green:hover { background: rgba(0,212,170,0.2); border-color: var(--accent2); }
-        .resource-btn.gold {
-            background: rgba(245,200,66,0.1);
-            border-color: rgba(245,200,66,0.3);
+        .res-btn.teal {
+            background: rgba(0,212,170,.1); border-color: rgba(0,212,170,.3); color: #7fffd4;
+        }
+        .res-btn.gold {
+            background: rgba(245,200,66,.08); border-color: rgba(245,200,66,.3); color: var(--gold);
+        }
+        .res-btn .ri { font-size: 15px; flex-shrink: 0; }
+        .res-btn .rt { flex: 1; }
+        .res-btn .ra { font-size: 11px; opacity: .5; }
+
+        /* 完成條件框 */
+        .goal-box {
+            background: rgba(245,200,66,.05);
+            border: 1px solid rgba(245,200,66,.2);
+            border-radius: 9px; padding: 9px 12px;
+            display: flex; gap: 9px;
+            font-size: 11px; color: #e6d68a; line-height: 1.6;
+            margin-top: 12px;
+        }
+
+        /* ── 日曆timeline ── */
+        .timeline-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 10px;
+        }
+        .timeline-title {
+            font-size: 13px; font-weight: 700; margin-bottom: 14px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .week-row { margin-bottom: 12px; }
+        .week-label {
+            font-size: 10px; font-weight: 700; color: var(--muted);
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;
+        }
+        .day-row { display: flex; gap: 5px; flex-wrap: wrap; }
+        .day-chip {
+            padding: 4px 7px; border-radius: 6px;
+            font-size: 11px; font-weight: 700;
+            background: rgba(255,255,255,.05);
+            border: 1px solid var(--border);
+            color: var(--muted); min-width: 38px; text-align: center;
+            line-height: 1.4;
+        }
+        .day-chip span { display: block; font-size: 9px; font-weight: 400; }
+        .day-chip.milestone {
+            background: rgba(108,99,255,.15);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .day-chip.weekly {
+            background: rgba(245,200,66,.1);
+            border-color: rgba(245,200,66,.4);
             color: var(--gold);
         }
-        .resource-btn .btn-icon { font-size: 16px; flex-shrink: 0; }
-        .resource-btn .btn-text { flex: 1; }
-        .resource-btn .btn-arrow { font-size: 12px; opacity: 0.6; }
 
-        /* 完成條件 */
-        .done-box {
-            background: rgba(245,200,66,0.06);
-            border: 1px solid rgba(245,200,66,0.2);
-            border-radius: 10px;
-            padding: 10px 14px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 12px;
-            color: #e6d68a;
-            line-height: 1.6;
-            margin-top: 14px;
+        /* 連接線 */
+        .connector {
+            height: 16px; display: flex; justify-content: center; align-items: center;
         }
-        .done-box .done-icon { font-size: 16px; flex-shrink: 0; }
-
-        /* ─── 連接線 ─── */
-        .quest-connector {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20px;
-            position: relative;
-        }
-        .quest-connector::before {
+        .connector::before {
             content: '';
-            position: absolute;
-            left: 50%;
-            top: 0; bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--border), transparent);
-            transform: translateX(-50%);
+            width: 2px; height: 100%;
+            background: linear-gradient(var(--border), transparent);
         }
 
-        /* ─── 完成橫幅 ─── */
-        .finale-card {
-            background: linear-gradient(135deg, rgba(245,200,66,0.1), rgba(108,99,255,0.1));
+        /* ── 完成橫幅 ── */
+        .finale {
+            background: linear-gradient(135deg, rgba(245,200,66,.08), rgba(0,212,170,.08));
             border: 1px solid var(--gold);
-            border-radius: 16px;
-            padding: 22px 20px;
-            text-align: center;
-            margin-top: 8px;
+            border-radius: 14px; padding: 22px; text-align: center; margin-top: 6px;
         }
-        .finale-card .trophy { font-size: 40px; margin-bottom: 10px; display: block; }
-        .finale-card h2 {
-            font-size: 18px;
-            font-weight: 900;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-        .finale-card p {
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.6;
-        }
+        .finale .trophy { font-size: 38px; margin-bottom: 8px; display: block; }
+        .finale h2 { font-size: 17px; font-weight: 900; color: var(--gold); margin-bottom: 5px; }
+        .finale p { font-size: 12px; color: var(--muted); line-height: 1.6; }
     </style>
 </head>
 <body>
 
-<!-- 頂部英雄橫幅 -->
+<!-- ── HERO ── -->
 <div class="hero">
-    <div class="hero-badge">⚔️ MISSION SYSTEM</div>
-    <h1>新人成長任務系統</h1>
-    <p>每一個階段都是一場戰鬥<br>完成關卡，成為頂尖業務</p>
+    <div class="hero-badge">⚔️ ACHIEVEMENT MAP</div>
+    <h1>🌟 星鴻新人業績地圖</h1>
+    <p>結訓後 32 天，從零到第一張合約完成</p>
+    <div class="hero-creed">唯一信條：「誠信」</div>
 </div>
 
-<!-- 整體進度 -->
-<div class="progress-wrap">
-    <div class="progress-label">
-        <span>🎯 任務進度</span>
-        <span id="progress-text">0 / 8 關完成</span>
+<!-- ── 整體進度 ── -->
+<div class="progress-section">
+    <div class="progress-header">
+        <span class="progress-label">🎯 整體完成進度</span>
+        <span class="progress-count" id="prog-text">計算中...</span>
     </div>
     <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
+        <div class="progress-fill" id="prog-fill"></div>
     </div>
 </div>
 
-<!-- 任務列表 -->
-<div class="container" id="quest-list">
-
-    <!-- ── 關卡 1 ── -->
-    <div class="quest-card unlocked open" data-stage="1">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">⚔️</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 01 · 新手入場</div>
-                <div class="quest-name">領取武器，準備出征</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body" style="max-height: 1000px;">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    結訓後的第一件事——熟悉你的「武器」。把電話話術、LINE 追蹤話術練熟，才能在第一線面對房東時不慌亂。
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>背熟電話開場白，讓房東願意聽你說完</li>
-                    <li>搞清楚社宅包租代管跟一般出租的差別</li>
-                    <li>知道如何回應「我不需要」、「我自己管就好」</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="download.html" class="resource-btn">
-                    <span class="btn-icon">📋</span>
-                    <span class="btn-text">開發話術寶典（電話 + LINE 追蹤三段）</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：能夠完整念完電話話術，並用自己的話解釋社宅的好處給朋友聽。</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="quest-connector"></div>
-
-    <!-- ── 關卡 2 ── -->
-    <div class="quest-card unlocked" data-stage="2">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">🗺️</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 02 · 踏上旅程</div>
-                <div class="quest-name">走進房東的世界，開發第一通電話</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    開發就是獵人在叢林中尋找目標。每一通電話都是一次遭遇戰，大部分時候會被拒絕，但真正的業務就是從這裡開始磨練的。
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>打出你的前 20 通陌生電話，不害怕被掛斷</li>
-                    <li>房東說「我已經有租客了」——如何保留關係，留下 LINE</li>
-                    <li>房東說「你們是詐騙」——如何展示官方名單建立信任</li>
-                    <li>房東說「我考慮看看」——如何有效 follow up</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="download.html" class="resource-btn">
-                    <span class="btn-icon">🛡️</span>
-                    <span class="btn-text">官方得標名單（房東有疑慮時展示）</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <a href="download.html" class="resource-btn">
-                    <span class="btn-icon">💬</span>
-                    <span class="btn-text">LINE 加入後追蹤三段話術</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：成功邀約到至少一位房東面談或願意提供房屋資訊。</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="quest-connector"></div>
-
-    <!-- ── 關卡 3 ── -->
-    <div class="quest-card unlocked" data-stage="3">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">🏠</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 03 · 攻下城池</div>
-                <div class="quest-name">成功簽下招租委託，物件正式上架</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    有招租物件就像打下一座城池。完成現勘、拍照、填寫物件資料，讓物件正式在平台上線，準備迎接租客詢問。
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>完成物件現勘，拍出讓租客想點擊的照片</li>
-                    <li>正確填寫物件資訊（坪數、設備、租金）</li>
-                    <li>物件上架後，主動追蹤詢問狀況</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="download.html#doc-tab" class="resource-btn green">
-                    <span class="btn-icon">📁</span>
-                    <span class="btn-text">各式委託書下載（招租委託相關）</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：物件成功在系統上架，並開始收到租客詢問。</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="quest-connector"></div>
-
-    <!-- ── 關卡 4 ── -->
-    <div class="quest-card unlocked" data-stage="4">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">👥</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 04 · 接觸敵人</div>
-                <div class="quest-name">帶看現場，深入了解租客條件</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    帶看不只是開門讓人進去看。這是了解租客背景、確認資格的關鍵戰場——要問對問題，才能讓對的人住進去。
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>詢問租客職業、收入、同住人數等基本資訊</li>
-                    <li>確認租客是否符合社宅申請資格</li>
-                    <li>帶看後如何有效跟進，讓租客不失溫</li>
-                    <li>租客有疑慮時如何回應（例如：怕社會住宅品質差）</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="index.html" class="resource-btn">
-                    <span class="btn-icon">📋</span>
-                    <span class="btn-text">收件注意事項與對話流程（含東客注意事項）</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：帶看後租客有意願承租，並已確認基本資格符合。</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="quest-connector"></div>
-
-    <!-- ── 關卡 5 ── -->
-    <div class="quest-card unlocked" data-stage="5">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">💰</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 05 · 鎖定目標</div>
-                <div class="quest-name">確定承租，收取定金鎖定房源</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    租客說「我要租！」只是第一步。收取定金才是真正鎖定的關鍵——這一步不到位，目標隨時會跑掉。
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>讓租客在現場或最快時間內完成定金繳交</li>
-                    <li>正確填寫定金收據，避免爭議</li>
-                    <li>向房東確認承租對象，取得初步同意</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="download.html" class="resource-btn green">
-                    <span class="btn-icon">📄</span>
-                    <span class="btn-text">合約附約與定金相關表單</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：租客已繳交定金，並取得定金收據，房東已口頭確認。</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="quest-connector"></div>
-
-    <!-- ── 關卡 6 ── -->
-    <div class="quest-card unlocked" data-stage="6">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">📁</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 06 · 蒐集道具</div>
-                <div class="quest-name">啟動收件流程，蒐集全部必要文件</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    收件就像蒐集打 BOSS 前的道具。每一份文件都缺一不可，有缺漏就會影響後續合約建置與審查，必須謹慎確認。
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>房東、租客雙方的身份證明文件是否齊全</li>
-                    <li>東客（租客）資料核對，注意異常情形</li>
-                    <li>資料送出前最後一次自我檢核</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="index.html" class="resource-btn">
-                    <span class="btn-icon">📋</span>
-                    <span class="btn-text">收件流程與注意事項（東客核對重點）</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <a href="download.html" class="resource-btn green">
-                    <span class="btn-icon">📁</span>
-                    <span class="btn-text">各式委託書與授權書下載</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：所有文件確認齊全，資料已整理準備送出建置合約。</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="quest-connector"></div>
-
-    <!-- ── 關卡 7 ── -->
-    <div class="quest-card unlocked" data-stage="7">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">📝</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 07 · 決戰前夕</div>
-                <div class="quest-name">建置合約，送交房東客審閱三天</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    合約建置是整個流程的核心戰場。建好後必須送交房東和租客審閱三天（法定）——這三天你要保持聯繫，確保不會有變卦。
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>確認合約內容無誤（租金、期間、條款）</li>
-                    <li>合約送出後主動追蹤房東客是否有疑問</li>
-                    <li>三天審閱期間如何讓雙方安心不反悔</li>
-                    <li>有條款爭議時如何協調</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="download.html" class="resource-btn">
-                    <span class="btn-icon">🌐</span>
-                    <span class="btn-text">國土署官方空白合約下載</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <a href="download.html" class="resource-btn green">
-                    <span class="btn-icon">📁</span>
-                    <span class="btn-text">合約附約及其他相關表單</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：合約已送出，房東客均確認審閱完畢，約定好簽約時間。</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="quest-connector"></div>
-
-    <!-- ── 關卡 8 ── -->
-    <div class="quest-card unlocked" data-stage="8">
-        <div class="quest-header" onclick="toggleQuest(this)">
-            <div class="quest-icon">✍️</div>
-            <div class="quest-meta">
-                <div class="quest-stage">關卡 08 · 最終決戰</div>
-                <div class="quest-name">簽約完成，資料繳回公司</div>
-            </div>
-            <span class="quest-status status-unlocked">進行中</span>
-            <span class="quest-arrow">▼</span>
-        </div>
-        <div class="quest-body">
-            <div class="quest-body-inner">
-                <div class="quest-desc">
-                    簽約當天是你努力的成果展現。確保雙方都在場、文件都到位，簽完後立刻整理資料繳回公司，一個案子才算真正完成！
-                </div>
-                <div class="section-label">⚡ 本關挑戰</div>
-                <ul class="challenge-list">
-                    <li>確認簽約現場所有文件齊備，雙方都到場</li>
-                    <li>簽約流程引導（哪裡要簽、哪裡要蓋章）</li>
-                    <li>簽約後的資料整理與繳回公司</li>
-                    <li>後續款項收取確認（押金、第一期租金）</li>
-                </ul>
-                <div class="section-label">🗂️ 任務資源</div>
-                <a href="index.html" class="resource-btn">
-                    <span class="btn-icon">📋</span>
-                    <span class="btn-text">收件流程與注意事項</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <a href="download.html" class="resource-btn green">
-                    <span class="btn-icon">📁</span>
-                    <span class="btn-text">合約與表單下載專區</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="done-box">
-                    <span class="done-icon">🏁</span>
-                    <span>完成條件：合約完成簽署，所有資料已繳回公司，案件正式結案！🎉</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 全部完成 -->
-    <div class="finale-card" id="finale" style="display:none;">
-        <span class="trophy">🏆</span>
-        <h2>恭喜！成為頂尖業務！</h2>
-        <p>你已完成所有關卡，成功帶領一組案件從開發到結案。<br>這只是旅程的開始，下一個案件正在等你！</p>
-    </div>
-
+<!-- ── 快速連結 ── -->
+<div class="quick-links">
+    <a href="download.html" class="quick-link">
+        <span class="ql-icon">⚔️</span>
+        <span class="ql-text">業務資源<span class="ql-sub">話術 / 行銷DM / 合約</span></span>
+        <span>→</span>
+    </a>
+    <a href="index.html" class="quick-link">
+        <span class="ql-icon">📋</span>
+        <span class="ql-text">收件流程<span class="ql-sub">東客資料 / 收件注意</span></span>
+        <span>→</span>
+    </a>
 </div>
+
+<!-- ── 主容器 ── -->
+<div class="container">
+
+<!-- ── 32天時間軸 ── -->
+<div class="timeline-section">
+    <div class="timeline-title">📆 32天任務時程表</div>
+    <div class="week-row">
+        <div class="week-label">第一週 — 基礎建立</div>
+        <div class="day-row">
+            <div class="day-chip milestone">Day 1<span>製作資料夾</span></div>
+            <div class="day-chip">Day 2</div>
+            <div class="day-chip">Day 3</div>
+            <div class="day-chip milestone">Day 4<span>電話20通</span></div>
+            <div class="day-chip">Day 5</div>
+            <div class="day-chip">Day 6</div>
+            <div class="day-chip">Day 7</div>
+            <div class="day-chip weekly">Day 8<span>週目標</span></div>
+        </div>
+    </div>
+    <div class="week-row">
+        <div class="week-label">第二週 — 開發衝刺</div>
+        <div class="day-row">
+            <div class="day-chip">Day 9</div>
+            <div class="day-chip">Day 10</div>
+            <div class="day-chip milestone">Day 11<span>刊登廣告</span></div>
+            <div class="day-chip milestone">Day 12<span>帶看篩選</span></div>
+            <div class="day-chip">Day 13</div>
+            <div class="day-chip">Day 14</div>
+            <div class="day-chip weekly">Day 15<span>週目標</span></div>
+        </div>
+    </div>
+    <div class="week-row">
+        <div class="week-label">第三週 — 收件送審</div>
+        <div class="day-row">
+            <div class="day-chip">Day 16</div>
+            <div class="day-chip">Day 17</div>
+            <div class="day-chip milestone">Day 18<span>收齊資料</span></div>
+            <div class="day-chip milestone">Day 19<span>送系統審</span></div>
+            <div class="day-chip">Day 20</div>
+            <div class="day-chip">Day 21</div>
+            <div class="day-chip weekly">Day 22<span>週目標</span></div>
+        </div>
+    </div>
+    <div class="week-row">
+        <div class="week-label">第四週 — 簽約完成</div>
+        <div class="day-row">
+            <div class="day-chip">Day 23</div>
+            <div class="day-chip">Day 24</div>
+            <div class="day-chip milestone">Day 25<span>預約簽約</span></div>
+            <div class="day-chip milestone">Day 26<span>繳回複審</span></div>
+            <div class="day-chip">Day 27</div>
+            <div class="day-chip">Day 28</div>
+            <div class="day-chip weekly">Day 29<span>週目標</span></div>
+        </div>
+    </div>
+    <div class="week-row">
+        <div class="week-label">第五週 — 業績認列</div>
+        <div class="day-row">
+            <div class="day-chip">Day 30</div>
+            <div class="day-chip">Day 31</div>
+            <div class="day-chip milestone">Day 32<span>🏆 認列</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 1 ══ -->
+<div class="step-card active" id="step1">
+    <div class="step-header" onclick="toggleStep('step1')">
+        <div class="step-num">📂</div>
+        <div class="step-info">
+            <div class="step-day">STEP 01 · Day 1 前完成</div>
+            <div class="step-title">製作銷售資料夾</div>
+            <div class="step-progress" id="prog1">打勾 0/2 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body1">
+        <div class="step-body-inner">
+            <div class="concept-box">建立業務基礎裝備，讓開發房東時有依據、有信任感。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list1">
+                <li><input type="checkbox" id="s1c1" onchange="updateProgress()"><label for="s1c1">備齊各式委託書、信任租範本、房東權益說明與行銷DM</label></li>
+                <li><input type="checkbox" id="s1c2" onchange="updateProgress()"><label for="s1c2">熟記包租333（3稅減免、3補助、3年服務）及信任租好處與租金上限</label></li>
+            </ul>
+            <div class="mini-label">🗂️ 任務資源</div>
+            <a href="download.html" class="res-btn purple">
+                <span class="ri">📋</span><span class="rt">開發話術 + 行銷DM 下載</span><span class="ra">→</span>
+            </a>
+            <a href="download.html" class="res-btn teal">
+                <span class="ri">📁</span><span class="rt">各式委託書下載專區</span><span class="ra">→</span>
+            </a>
+            <div class="goal-box">🏁 <span>完成條件：資料夾整理完畢，能流暢介紹星鴻公司、說明社宅福利及各委託書用途。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 2 ══ -->
+<div class="step-card active" id="step2">
+    <div class="step-header" onclick="toggleStep('step2')">
+        <div class="step-num">📞</div>
+        <div class="step-info">
+            <div class="step-day">STEP 02 · Day 4 前完成</div>
+            <div class="step-title">電話開發 20 通</div>
+            <div class="step-progress" id="prog2">打勾 0/4 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body2">
+        <div class="step-body-inner">
+            <div class="concept-box">建立與潛在房東的第一線聯繫，初步篩選合作對象。登入 591 租屋網，篩選「屋主刊登」物件後開始撥打。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list2">
+                <li><input type="checkbox" id="s2c1" onchange="updateProgress()"><label for="s2c1">完成 20 通以上（不含未接通）聯繫並記錄結果</label></li>
+                <li><input type="checkbox" id="s2c2" onchange="updateProgress()"><label for="s2c2">確認屋主直租（非仲介二房東）</label></li>
+                <li><input type="checkbox" id="s2c3" onchange="updateProgress()"><label for="s2c3">確認基本物件條件（水電、管理費、停車）後再導入社宅介紹</label></li>
+                <li><input type="checkbox" id="s2c4" onchange="updateProgress()"><label for="s2c4">話術中有帶入：包租333、信任租、免服務費</label></li>
+            </ul>
+            <div class="mini-label">🗂️ 任務資源</div>
+            <a href="download.html" class="res-btn purple">
+                <span class="ri">💬</span><span class="rt">電話 + LINE 追蹤話術寶典</span><span class="ra">→</span>
+            </a>
+            <a href="download.html" class="res-btn teal">
+                <span class="ri">🛡️</span><span class="rt">官方得標名單（房東有疑慮時展示）</span><span class="ra">→</span>
+            </a>
+            <div class="goal-box">🏁 <span>完成條件：完成 20 通有效紀錄，並成功邀約到至少一位房東場勘。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 3 ══ -->
+<div class="step-card active" id="step3">
+    <div class="step-header" onclick="toggleStep('step3')">
+        <div class="step-num">🏠</div>
+        <div class="step-info">
+            <div class="step-day">STEP 03 · Day 8 前完成</div>
+            <div class="step-title">場勘實戰 3 場</div>
+            <div class="step-progress" id="prog3">打勾 0/3 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body3">
+        <div class="step-body-inner">
+            <div class="concept-box">由主管或學長姐陪同，實地操作與房東面談，學習話術與流程。攜帶銷售資料夾與筆記工具。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list3">
+                <li><input type="checkbox" id="s3c1" onchange="updateProgress()"><label for="s3c1">完成至少 3 場實地拜訪</label></li>
+                <li><input type="checkbox" id="s3c2" onchange="updateProgress()"><label for="s3c2">有主管或學長姐陪同</label></li>
+                <li><input type="checkbox" id="s3c3" onchange="updateProgress()"><label for="s3c3">做場勘紀錄、簽到委託並拍照存證</label></li>
+            </ul>
+            <div class="mini-label">🗂️ 任務資源</div>
+            <a href="download.html" class="res-btn teal">
+                <span class="ri">📁</span><span class="rt">各式委託書下載（場勘委託用）</span><span class="ra">→</span>
+            </a>
+            <div class="goal-box">🏁 <span>完成條件：完成 3 場場勘，能清楚告知房東修繕項目，了解地區租金行情。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 4 ══ -->
+<div class="step-card active" id="step4">
+    <div class="step-header" onclick="toggleStep('step4')">
+        <div class="step-num">📣</div>
+        <div class="step-info">
+            <div class="step-day">STEP 04 · Day 11 前完成</div>
+            <div class="step-title">刊登招租廣告</div>
+            <div class="step-progress" id="prog4">打勾 0/3 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body4">
+        <div class="step-body-inner">
+            <div class="concept-box">協助房東曝光物件資訊，正式進入租客配對階段。若無不動產營業員證照，須由主管代為上架。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list4">
+                <li><input type="checkbox" id="s4c1" onchange="updateProgress()"><label for="s4c1">備妥文案＋照片（全室燈開、白天自然光、橫式構圖）且文案符合法規</label></li>
+                <li><input type="checkbox" id="s4c2" onchange="updateProgress()"><label for="s4c2">提供給主管或有證照人員上架</label></li>
+                <li><input type="checkbox" id="s4c3" onchange="updateProgress()"><label for="s4c3">廣告上架成功，並將連結傳給直屬主管</label></li>
+            </ul>
+            <div class="goal-box">🏁 <span>完成條件：物件在平台上線，開始收到租客詢問。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 5 ══ -->
+<div class="step-card active" id="step5">
+    <div class="step-header" onclick="toggleStep('step5')">
+        <div class="step-num">👥</div>
+        <div class="step-info">
+            <div class="step-day">STEP 05 · Day 12 前完成</div>
+            <div class="step-title">帶看並篩選租客</div>
+            <div class="step-progress" id="prog5">打勾 0/4 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body5">
+        <div class="step-body-inner">
+            <div class="concept-box">安排租客看屋，觀察條件與誠信，判斷是否可承租。完成帶看後要告知房東篩選結果，信任租結果以口頭方式告知。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list5">
+                <li><input type="checkbox" id="s5c1" onchange="updateProgress()"><label for="s5c1">完整詢問罐頭訊息（姓名、性別、年齡、人數、職業、寵物、租金、搬離原因等）</label></li>
+                <li><input type="checkbox" id="s5c2" onchange="updateProgress()"><label for="s5c2">完成帶看並初步訪談租客背景</label></li>
+                <li><input type="checkbox" id="s5c3" onchange="updateProgress()"><label for="s5c3">完成信任租程序（現場簽同意書、拍身份證）</label></li>
+                <li><input type="checkbox" id="s5c4" onchange="updateProgress()"><label for="s5c4">帶看後完成回報房東（篩選結果與租客基本資訊）</label></li>
+            </ul>
+            <div class="mini-label">🗂️ 任務資源</div>
+            <a href="index.html" class="res-btn purple">
+                <span class="ri">📋</span><span class="rt">收件流程與東客對話注意事項</span><span class="ra">→</span>
+            </a>
+            <div class="goal-box">🏁 <span>完成條件：租客有意願承租，信任租結果已調閱完成並口頭回報房東。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 6 ══ -->
+<div class="step-card active" id="step6">
+    <div class="step-header" onclick="toggleStep('step6')">
+        <div class="step-num">📁</div>
+        <div class="step-info">
+            <div class="step-day">STEP 06 · Day 18 前完成</div>
+            <div class="step-title">收齊房東客資料</div>
+            <div class="step-progress" id="prog6">打勾 0/3 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body6">
+        <div class="step-body-inner">
+            <div class="concept-box">收件是打 BOSS 前蒐集道具的過程。每一份文件都缺一不可，缺件將影響後續審查進度。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list6">
+                <li><input type="checkbox" id="s6c1" onchange="updateProgress()"><label for="s6c1">房東資料齊全：身份證正反、存摺封面、房屋稅單（或課稅明細申請書）、一類謄本</label></li>
+                <li><input type="checkbox" id="s6c2" onchange="updateProgress()"><label for="s6c2">房客資料齊全：身份證正反、存摺封面、戶籍謄本（全戶記事1個月內）、信任租同意書、健保卡</label></li>
+                <li><input type="checkbox" id="s6c3" onchange="updateProgress()"><label for="s6c3">物件資料：滅火器、偵煙器、安全檢核照片</label></li>
+            </ul>
+            <div class="mini-label">🗂️ 任務資源</div>
+            <a href="index.html" class="res-btn purple">
+                <span class="ri">📋</span><span class="rt">收件流程詳細步驟（東客核對）</span><span class="ra">→</span>
+            </a>
+            <a href="download.html" class="res-btn teal">
+                <span class="ri">📁</span><span class="rt">各式委託書與授權書下載</span><span class="ra">→</span>
+            </a>
+            <div class="goal-box">🏁 <span>完成條件：雙方資料全數齊全清晰，確認租客資格（300E試算完成），準備送系統預審。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 7 ══ -->
+<div class="step-card active" id="step7">
+    <div class="step-header" onclick="toggleStep('step7')">
+        <div class="step-num">🖥️</div>
+        <div class="step-info">
+            <div class="step-day">STEP 07 · Day 19 前完成</div>
+            <div class="step-title">送系統預審</div>
+            <div class="step-progress" id="prog7">打勾 0/5 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body7">
+        <div class="step-body-inner">
+            <div class="concept-box">資料未齊不得送審。登入星鴻管理系統，依序輸入：房東 → 物件 → 安全檢核 → 房客 → 附件上傳 → 送出。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list7">
+                <li><input type="checkbox" id="s7c1" onchange="updateProgress()"><label for="s7c1">所有資料皆已上傳且清晰可辨</label></li>
+                <li><input type="checkbox" id="s7c2" onchange="updateProgress()"><label for="s7c2">照順序輸入：房東→物件→安全檢核→房客</label></li>
+                <li><input type="checkbox" id="s7c3" onchange="updateProgress()"><label for="s7c3">附件皆已掃描並上傳正確（含300E試算截圖）</label></li>
+                <li><input type="checkbox" id="s7c4" onchange="updateProgress()"><label for="s7c4">按下「送出」並系統顯示送出成功</label></li>
+                <li><input type="checkbox" id="s7c5" onchange="updateProgress()"><label for="s7c5">登入系統查詢審核進度，注意有無補件通知</label></li>
+            </ul>
+            <div class="goal-box">🏁 <span>完成條件：系統顯示「送出成功」，開始等待1～3個工作天審核結果。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 8 ══ -->
+<div class="step-card active" id="step8">
+    <div class="step-header" onclick="toggleStep('step8')">
+        <div class="step-num">✍️</div>
+        <div class="step-info">
+            <div class="step-day">STEP 08 · Day 25 前完成</div>
+            <div class="step-title">預約公證與簽約</div>
+            <div class="step-progress" id="prog8">打勾 0/4 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body8">
+        <div class="step-body-inner">
+            <div class="concept-box">空白合約須提前3天傳給房東客審閱（法定）。簽約至少提前2日完成文件準備。提前3～5個工作天預約公證。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list8">
+                <li><input type="checkbox" id="s8c1" onchange="updateProgress()"><label for="s8c1">提前3天以上預約房東與房客，確認可到場日期</label></li>
+                <li><input type="checkbox" id="s8c2" onchange="updateProgress()"><label for="s8c2">簽約資料備齊（合約、身份證、授權書等，需彩色列印表2）</label></li>
+                <li><input type="checkbox" id="s8c3" onchange="updateProgress()"><label for="s8c3">合約雙方皆簽章完備</label></li>
+                <li><input type="checkbox" id="s8c4" onchange="updateProgress()"><label for="s8c4">房東與房客已加入地區官方LINE群</label></li>
+            </ul>
+            <div class="mini-label">🗂️ 任務資源</div>
+            <a href="download.html" class="res-btn purple">
+                <span class="ri">🌐</span><span class="rt">國土署空白合約下載（提前3天給雙方審閱）</span><span class="ra">→</span>
+            </a>
+            <a href="download.html" class="res-btn teal">
+                <span class="ri">📁</span><span class="rt">合約附約與其他表單下載</span><span class="ra">→</span>
+            </a>
+            <div class="goal-box">🏁 <span>完成條件：合約雙方完整簽署，公證完成（如需公證），資料整理備好繳回公司。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 9 ══ -->
+<div class="step-card active" id="step9">
+    <div class="step-header" onclick="toggleStep('step9')">
+        <div class="step-num">📤</div>
+        <div class="step-info">
+            <div class="step-day">STEP 09 · Day 26 前完成</div>
+            <div class="step-title">整理資料並繳回複審</div>
+            <div class="step-progress" id="prog9">打勾 0/3 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body9">
+        <div class="step-body-inner">
+            <div class="concept-box">簽完合約後，按照紙本複審順序排序所有文件，繳回公司進行複審。同日在系統申請公證費。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list9">
+                <li><input type="checkbox" id="s9c1" onchange="updateProgress()"><label for="s9c1">複審資料齊全（行政檢核表、身份證、存摺、謄本、稅單、合約等全數到位）</label></li>
+                <li><input type="checkbox" id="s9c2" onchange="updateProgress()"><label for="s9c2">公證完成後當天在系統申請公證費（收據上需手寫房東姓名與物件地址）</label></li>
+                <li><input type="checkbox" id="s9c3" onchange="updateProgress()"><label for="s9c3">幫房客上傳 300E 試算至系統</label></li>
+            </ul>
+            <div class="mini-label">🗂️ 任務資源</div>
+            <a href="index.html" class="res-btn purple">
+                <span class="ri">📋</span><span class="rt">收件流程與複審資料確認清單</span><span class="ra">→</span>
+            </a>
+            <div class="goal-box">🏁 <span>完成條件：所有資料整理完畢並繳回公司，公證費申請完成，等待複審通過。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="connector"></div>
+
+<!-- ══ STEP 10 ══ -->
+<div class="step-card active" id="step10">
+    <div class="step-header" onclick="toggleStep('step10')">
+        <div class="step-num">🏆</div>
+        <div class="step-info">
+            <div class="step-day">STEP 10 · Day 32 前完成</div>
+            <div class="step-title">認列業績，領取獎金！</div>
+            <div class="step-progress" id="prog10">打勾 0/3 項</div>
+        </div>
+        <span class="step-badge badge-active">進行中</span>
+        <span class="step-arrow">▼</span>
+    </div>
+    <div class="step-body" id="body10">
+        <div class="step-body-inner">
+            <div class="concept-box">最終關卡！確認複審通過、業績認列、獎金核算無誤。若有退件要即時補正，記取教訓下次不再犯。</div>
+            <div class="mini-label">✅ 執行檢核</div>
+            <ul class="checklist" id="list10">
+                <li><input type="checkbox" id="s10c1" onchange="updateProgress()"><label for="s10c1">確認是否有被複審退件記錄，若有則立即補正</label></li>
+                <li><input type="checkbox" id="s10c2" onchange="updateProgress()"><label for="s10c2">系統確認業績認列成功</label></li>
+                <li><input type="checkbox" id="s10c3" onchange="updateProgress()"><label for="s10c3">確認媒合費與獎金金額正確無誤</label></li>
+            </ul>
+            <div class="goal-box">🏁 <span>完成條件：業績成功認列，獎金入帳！🎉 恭喜完成第一個完整案件，繼續打下一個！</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- ── 全部完成 ── -->
+<div class="finale" id="finale" style="display:none;">
+    <span class="trophy">🏆</span>
+    <h2>恭喜！成為頂尖業務！</h2>
+    <p>你已完成全部 10 個關卡，成功帶出第一個完整案件。<br>這只是旅程的起點，繼續出發打下一個！</p>
+</div>
+
+</div><!-- /container -->
 
 <script>
-    // 展開 / 收合
-    function toggleQuest(header) {
-        const card = header.parentElement;
-        const body = card.querySelector('.quest-body');
+    // ─── 儲存 / 讀取 (localStorage) ───
+    function saveAll() {
+        const checks = document.querySelectorAll('input[type=checkbox]');
+        const data = {};
+        checks.forEach(c => { data[c.id] = c.checked; });
+        localStorage.setItem('quest_map_v2', JSON.stringify(data));
+    }
+    function loadAll() {
+        const raw = localStorage.getItem('quest_map_v2');
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        Object.keys(data).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.checked = data[id];
+        });
+    }
+
+    // ─── 展開 / 收合 ───
+    function toggleStep(id) {
+        const card = document.getElementById(id);
+        const body = document.getElementById('body' + id.replace('step',''));
         const isOpen = card.classList.contains('open');
         if (isOpen) {
             body.style.maxHeight = '0';
@@ -718,26 +779,55 @@
         }
     }
 
-    // 進度更新
+    // ─── 計算每步進度 ───
+    function countStep(stepN) {
+        const list = document.getElementById('list' + stepN);
+        if (!list) return { done: 0, total: 0 };
+        const all = list.querySelectorAll('input[type=checkbox]');
+        const done = list.querySelectorAll('input:checked').length;
+        return { done, total: all.length };
+    }
+
+    // ─── 更新全部進度 ───
     function updateProgress() {
-        const cards = document.querySelectorAll('.quest-card');
-        const completed = document.querySelectorAll('.quest-card.completed').length;
-        const total = cards.length;
-        const pct = Math.round((completed / total) * 100);
-        document.getElementById('progress-fill').style.width = pct + '%';
-        document.getElementById('progress-text').textContent = completed + ' / ' + total + ' 關完成';
-        if (completed === total) {
+        saveAll();
+        let totalDone = 0, totalAll = 0;
+        for (let i = 1; i <= 10; i++) {
+            const { done, total } = countStep(i);
+            totalDone += done; totalAll += total;
+            const progEl = document.getElementById('prog' + i);
+            if (progEl) progEl.textContent = '打勾 ' + done + '/' + total + ' 項';
+            // 步驟狀態
+            const card = document.getElementById('step' + i);
+            if (!card) continue;
+            const badge = card.querySelector('.step-badge');
+            const dayEl = card.querySelector('.step-day');
+            if (done === total && total > 0) {
+                card.classList.remove('active'); card.classList.add('done');
+                badge.className = 'step-badge badge-done'; badge.textContent = '✅ 完成';
+            } else {
+                card.classList.remove('done'); card.classList.add('active');
+                badge.className = 'step-badge badge-active'; badge.textContent = '進行中';
+            }
+        }
+        // 整體進度
+        const pct = totalAll > 0 ? Math.round(totalDone / totalAll * 100) : 0;
+        document.getElementById('prog-fill').style.width = pct + '%';
+        document.getElementById('prog-text').textContent =
+            '完成 ' + totalDone + ' / ' + totalAll + ' 項（' + pct + '%）';
+        // 全部完成
+        if (totalDone === totalAll && totalAll > 0) {
             document.getElementById('finale').style.display = 'block';
+        } else {
+            document.getElementById('finale').style.display = 'none';
         }
     }
 
-    // 初始化：已展開的項目設定正確高度
-    document.querySelectorAll('.quest-card.open').forEach(card => {
-        const body = card.querySelector('.quest-body');
-        body.style.maxHeight = body.scrollHeight + 'px';
-    });
-
-    updateProgress();
+    // ─── 初始化 ───
+    window.onload = function () {
+        loadAll();
+        updateProgress();
+    };
 </script>
 
 </body>
