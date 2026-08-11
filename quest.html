@@ -367,6 +367,20 @@
     </a>
 </div>
 
+<!-- ── 案件管理與切換專區 ── -->
+<div class="case-management-section" style="background: var(--bg2); border-bottom: 1px solid var(--border); padding: 14px 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <span style="font-size: 13px; font-weight: 700; color: var(--gold);">🏢 業務案件進度切換器</span>
+        <button onclick="createNewCase()" style="background: var(--accent); color: white; border: none; padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">➕ 新增案件</button>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+        <select id="caseSelect" onchange="switchCase(this.value)" style="flex: 1; background: var(--card); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;">
+            <!-- JS 動態生成案件清單 -->
+        </select>
+        <button onclick="deleteCurrentCase()" style="background: rgba(255,77,109,.15); color: var(--red); border: 1px solid var(--red); padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">🗑️ 刪除此案件</button>
+    </div>
+</div>
+
 <!-- ── 主容器 ── -->
 <div class="container">
 
@@ -454,6 +468,11 @@
     <div class="step-body" id="body3">
         <div class="step-body-inner">
             <div class="concept-box">由主管或學長姐陪同，實地操作與房東面談，學習話術與流程。攜帶銷售資料夾與筆記工具。</div>
+            
+            <div class="alert-box gold" style="margin-bottom: 12px; font-weight: 700;">
+                ⚠️ 出門前必檢查警語：出門前必須確認是否有帶到『筆』、『委託書』、『物件確認表』！
+            </div>
+
             <div class="mini-label">✅ 執行檢核</div>
             <ul class="checklist" id="list3">
                 <li><input type="checkbox" id="s3c1" onchange="updateProgress()"><label for="s3c1">完成至少 3 場實地拜訪</label></li>
@@ -520,6 +539,24 @@
             </ul>
             <div class="mini-label">🗂️ 任務資源</div>
             
+            <a href="index.html" class="res-btn purple">
+                <span class="ri">📋</span><span class="rt">收件流程與注意事項</span><span class="ra">→</span>
+            </a>
+
+            <!-- 信任租對話話術稿截取 -->
+            <div style="background: rgba(108,99,255,.08); border: 1px solid rgba(108,99,255,.3); border-radius: 10px; padding: 12px; margin-bottom: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 13px; font-weight: 700; color: #c3bdff;">💬 信任租對話話術稿（向房東說明）</span>
+                    <button onclick="copyTrustScript(this)" style="background: var(--accent); color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; font-weight: 700;">📋 複製話術</button>
+                </div>
+                <pre id="trustScriptText" style="font-family: inherit; font-size: 12px; color: #e8eaf6; white-space: pre-wrap; word-break: break-all; margin: 0; line-height: 1.6; background: rgba(0,0,0,.25); padding: 10px; border-radius: 6px;">「我們公司有一個全台唯一的租客篩選機制——『信任租』。
+現在租賃市場很重視風險控管，不只是看看租客職業談吐，我們還會透過信任租制度，初步查詢租客的信用狀況，像是：
+1. 是否為委託催收黑名單（如多筆交通罰單未繳、目前借貸紀錄等）
+2. 是否頻繁被聯徵或短期內申貸異常
+3. 是否有重大民刑事紀錄或法院公告案件
+這些資料調閱完後，會以口頭方式提供給房東做為參考依據，讓您安心又有依據地選擇租客。整體流程合法、安全又高效率！」</pre>
+            </div>
+
             <!-- 租客資訊問卷複製區 -->
             <div style="background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -575,6 +612,9 @@
                 <li><input type="checkbox" id="s6c3" onchange="updateProgress()"><label for="s6c3">物件資料：滅火器、偵煙器、安全檢核照片</label></li>
             </ul>
             <div class="mini-label">🗂️ 任務資源</div>
+            <a href="photo.html" class="res-btn gold">
+                <span class="ri">📷</span><span class="rt">社宅收件拍照規範與指南</span><span class="ra">→</span>
+            </a>
             <a href="index.html" class="res-btn purple">
                 <span class="ri">📋</span><span class="rt">收件流程詳細步驟（東客核對）</span><span class="ra">→</span>
             </a>
@@ -662,10 +702,6 @@
                 <li><input type="checkbox" id="s9c2" onchange="updateProgress()"><label for="s9c2">公證完成後當天在系統申請公證費（收據上需手寫房東姓名與物件地址）</label></li>
                 <li><input type="checkbox" id="s9c3" onchange="updateProgress()"><label for="s9c3">幫房客上傳 300E 試算至系統</label></li>
             </ul>
-            <div class="mini-label">🗂️ 任務資源</div>
-            <a href="index.html" class="res-btn purple">
-                <span class="ri">📋</span><span class="rt">收件流程與複審資料確認清單</span><span class="ra">→</span>
-            </a>
             <div class="goal-box">🏁 <span>完成條件：所有資料整理完畢並繳回公司，公證費申請完成，等待複審通過。</span></div>
         </div>
     </div>
@@ -709,15 +745,93 @@
 </div><!-- /container -->
 
 <script>
-    // ─── 儲存 / 讀取 (localStorage) ───
+    // ─── 多案件管理與切換邏輯 ───
+    let currentCaseId = 'default_case';
+    let cases = { 'default_case': '案件 A（預設案件）' };
+
+    function getStorageCases() {
+        const rawCases = localStorage.getItem('quest_cases_list');
+        if (rawCases) {
+            cases = JSON.parse(rawCases);
+        } else {
+            localStorage.setItem('quest_cases_list', JSON.stringify(cases));
+        }
+        const activeId = localStorage.getItem('quest_active_case_id');
+        if (activeId && cases[activeId]) {
+            currentCaseId = activeId;
+        } else {
+            currentCaseId = Object.keys(cases)[0] || 'default_case';
+            localStorage.setItem('quest_active_case_id', currentCaseId);
+        }
+    }
+
+    function renderCaseSelect() {
+        const select = document.getElementById('caseSelect');
+        if (!select) return;
+        select.innerHTML = '';
+        Object.keys(cases).forEach(id => {
+            const opt = document.createElement('option');
+            opt.value = id;
+            opt.textContent = cases[id];
+            if (id === currentCaseId) opt.selected = true;
+            select.appendChild(opt);
+        });
+    }
+
+    function createNewCase() {
+        const name = prompt('請輸入新案件名稱（例如：台中市西屯區房東張先生）：');
+        if (!name || !name.trim()) return;
+        const newId = 'case_' + Date.now();
+        cases[newId] = name.trim();
+        localStorage.setItem('quest_cases_list', JSON.stringify(cases));
+        currentCaseId = newId;
+        localStorage.setItem('quest_active_case_id', currentCaseId);
+        renderCaseSelect();
+        // 清空新案件勾選
+        document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+        updateProgress();
+    }
+
+    function switchCase(caseId) {
+        currentCaseId = caseId;
+        localStorage.setItem('quest_active_case_id', currentCaseId);
+        loadAll();
+        updateProgress();
+    }
+
+    function deleteCurrentCase() {
+        const caseName = cases[currentCaseId];
+        const keysCount = Object.keys(cases).length;
+        if (keysCount <= 1) {
+            alert('⚠️ 至少需保留一個案件，無法刪除唯一的案件。');
+            return;
+        }
+        if (confirm(`確定要刪除案件「${caseName}」及該案件的所有勾選進度嗎？`)) {
+            localStorage.removeItem('quest_map_data_' + currentCaseId);
+            delete cases[currentCaseId];
+            localStorage.setItem('quest_cases_list', JSON.stringify(cases));
+            currentCaseId = Object.keys(cases)[0];
+            localStorage.setItem('quest_active_case_id', currentCaseId);
+            renderCaseSelect();
+            loadAll();
+            updateProgress();
+        }
+    }
+
+    // ─── 儲存 / 讀取特定案件勾選進度 ───
     function saveAll() {
         const checks = document.querySelectorAll('input[type=checkbox]');
         const data = {};
         checks.forEach(c => { data[c.id] = c.checked; });
-        localStorage.setItem('quest_map_v2', JSON.stringify(data));
+        localStorage.setItem('quest_map_data_' + currentCaseId, JSON.stringify(data));
     }
+
     function loadAll() {
-        const raw = localStorage.getItem('quest_map_v2');
+        getStorageCases();
+        renderCaseSelect();
+        // 清空
+        document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+        const raw = localStorage.getItem('quest_map_data_' + currentCaseId);
         if (!raw) return;
         const data = JSON.parse(raw);
         Object.keys(data).forEach(id => {
@@ -790,6 +904,22 @@
         navigator.clipboard.writeText(text).then(() => {
             const oldText = btn.textContent;
             btn.textContent = '✅ 已複製！';
+            btn.style.background = '#00d4aa';
+            setTimeout(() => {
+                btn.textContent = oldText;
+                btn.style.background = 'var(--accent)';
+            }, 2000);
+        }).catch(err => {
+            alert('複製失敗，請手動全選複製');
+        });
+    }
+
+    // ─── 一鍵複製信任租對話話術稿 ───
+    function copyTrustScript(btn) {
+        const text = document.getElementById('trustScriptText').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const oldText = btn.textContent;
+            btn.textContent = '✅ 已複製話術！';
             btn.style.background = '#00d4aa';
             setTimeout(() => {
                 btn.textContent = oldText;
