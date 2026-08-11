@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📷 社宅收件拍照規範與指南｜星鴻包租代管</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117;
+            --bg2: #1a1d2e;
+            --card: #1e2235;
+            --border: #2e3354;
+            --accent: #6c63ff;
+            --green: #00d4aa;
+            --gold: #f5c842;
+            --red: #ff4d6d;
+            --orange: #ff8c42;
+            --blue: #3b9eff;
+            --purple: #9b59b6;
+            --text: #e8eaf6;
+            --muted: #8892b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a1d2e 60%, #12162a 100%);
+            border-bottom: 2px solid var(--accent);
+            padding: 28px 20px 22px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -60%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(108,99,255,.12) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(108,99,255,.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 11px; font-weight: 700;
+            padding: 3px 14px; border-radius: 20px;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
+        }
+        .hero h1 {
+            font-size: 22px; font-weight: 900;
+            background: linear-gradient(90deg, #fff, #c3bdff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+        .hero p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+        /* ── 導覽條 ── */
+        .nav-bar {
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 16px;
+            display: flex; gap: 8px; overflow-x: auto;
+            white-space: nowrap;
+        }
+        .nav-link {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid var(--border);
+            color: var(--text); text-decoration: none;
+            padding: 8px 14px; border-radius: 20px;
+            font-size: 12px; font-weight: 700;
+            transition: all .2s;
+        }
+        .nav-link:hover { border-color: var(--accent); background: rgba(108,99,255,.1); }
+
+        /* ── 容器 ── */
+        .container { max-width: 960px; margin: 0 auto; padding: 20px 14px; }
+
+        .section-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: 16px; font-weight: 900; color: var(--text);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* ── 展開控制按鈕 ── */
+        .ctrl-btns {
+            display: flex; gap: 8px; margin-bottom: 16px;
+        }
+        .ctrl-btn {
+            background: rgba(255,255,255,.05);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 6px 12px; border-radius: 8px;
+            font-size: 12px; font-weight: 700; cursor: pointer;
+            transition: all .2s;
+        }
+        .ctrl-btn:hover { background: rgba(108,99,255,.15); color: var(--accent); border-color: var(--accent); }
+
+        /* ── 拍照規範網格 ── */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ── 拍照規範卡片 ── */
+        .photo-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            display: flex; flex-direction: column;
+            transition: border-color .2s;
+        }
+        .photo-card::before {
+            content: ''; position: absolute;
+            left: 0; top: 0; bottom: 0; width: 5px;
+            background: var(--accent);
+        }
+        .photo-card[data-cat="1"]::before { background: var(--blue); }
+        .photo-card[data-cat="2"]::before { background: var(--teal, #00d4aa); }
+        .photo-card[data-cat="3"]::before { background: var(--orange); }
+        .photo-card[data-cat="4"]::before { background: var(--red); }
+        .photo-card[data-cat="5"]::before { background: var(--gold); }
+        .photo-card[data-cat="6"]::before { background: var(--purple); }
+
+        /* 卡片 Header */
+        .card-header {
+            padding: 18px 18px 18px 22px;
+            cursor: pointer;
+            display: flex; align-items: center; gap: 14px;
+            user-select: none;
+        }
+        .card-num {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255,255,255,.04);
+            border: 1px solid var(--border);
+            font-size: 24px;
+        }
+        .photo-card[data-cat="1"] .card-num { background: rgba(59,158,255,.12); border-color: var(--blue); }
+        .photo-card[data-cat="2"] .card-num { background: rgba(0,212,170,.12); border-color: var(--green); }
+        .photo-card[data-cat="3"] .card-num { background: rgba(255,140,66,.12); border-color: var(--orange); }
+        .photo-card[data-cat="4"] .card-num { background: rgba(255,77,109,.12); border-color: var(--red); }
+        .photo-card[data-cat="5"] .card-num { background: rgba(245,200,66,.12); border-color: var(--gold); }
+        .photo-card[data-cat="6"] .card-num { background: rgba(155,89,182,.12); border-color: var(--purple); }
+
+        .card-info { flex: 1; min-width: 0; }
+        .card-cat {
+            font-size: 11px; font-weight: 700; letter-spacing: 1px;
+            color: var(--muted); margin-bottom: 4px; text-transform: uppercase;
+        }
+        .photo-card[data-cat="1"] .card-cat { color: var(--blue); }
+        .photo-card[data-cat="2"] .card-cat { color: var(--green); }
+        .photo-card[data-cat="3"] .card-cat { color: var(--orange); }
+        .photo-card[data-cat="4"] .card-cat { color: var(--red); }
+        .photo-card[data-cat="5"] .card-cat { color: var(--gold); }
+        .photo-card[data-cat="6"] .card-cat { color: var(--purple); }
+
+        .card-title { font-size: 19px; font-weight: 900; line-height: 1.3; color: var(--text); }
+
+        .card-arrow { color: var(--muted); font-size: 14px; transition: transform .3s; flex-shrink: 0; }
+        .photo-card.open .card-arrow { transform: rotate(180deg); }
+
+        /* 折疊內容 */
+        .card-body { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.25,.8,.25,1); }
+        .card-body-inner {
+            padding: 0 20px 20px 22px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* 拍攝要點重點清單 */
+        .rule-list { list-style: none; margin: 16px 0; }
+        .rule-list li {
+            position: relative;
+            padding: 8px 0 8px 24px;
+            border-bottom: 1px solid rgba(255,255,255,.04);
+            font-size: 13px; color: #c5c9e6; line-height: 1.6;
+        }
+        .rule-list li:last-child { border-bottom: none; }
+        .rule-list li::before {
+            content: '📌';
+            position: absolute; left: 0; top: 8px;
+            font-size: 12px;
+        }
+
+        /* 警告 / 注意事項框 */
+        .alert-box {
+            background: rgba(255,77,109,.08);
+            border-left: 3px solid var(--red);
+            padding: 10px 14px; border-radius: 0 8px 8px 0;
+            font-size: 12px; color: #ffb3c1; line-height: 1.6;
+            margin-top: 12px;
+        }
+        .alert-box.gold {
+            background: rgba(245,200,66,.08);
+            border-left-color: var(--gold);
+            color: #fce8a6;
+        }
+        .alert-box.blue {
+            background: rgba(59,158,255,.08);
+            border-left-color: var(--blue);
+            color: #b8dcff;
+        }
+
+        /* 範例照片占位區塊（預留給未來放置範例圖片） */
+        .sample-photo-area {
+            background: rgba(255,255,255,.02);
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 16px; margin-top: 16px;
+            text-align: center;
+        }
+        .sample-photo-title {
+            font-size: 12px; font-weight: 700; color: var(--muted);
+            margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .sample-photo-placeholder {
+            font-size: 11px; color: #64748b; line-height: 1.5;
+        }
+
+        /* 頁尾 */
+        .footer {
+            text-align: center; margin-top: 40px;
+            font-size: 12px; color: var(--muted);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-badge">📷 PHOTO SPECIFICATIONS</div>
+    <h1>社宅收件拍照規範與指南</h1>
+    <p>星鴻包租代管 · 六大拍照要點審核規範</p>
+</div>
+
+<!-- ── 頂部快速導覽 ── -->
+<div class="nav-bar">
+    <a href="index.html" class="nav-link">📋 收件流程主頁</a>
+    <a href="download.html" class="nav-link">⚔️ 業務與表單下載</a>
+    <a href="quest.html" class="nav-link">🌟 新人任務地圖</a>
+</div>
+
+<!-- ── 主容器 ── -->
+<div class="container">
+
+    <div class="section-header">
+        <div class="section-title">📸 拍照六大要點清單</div>
+        <div class="ctrl-btns">
+            <button class="ctrl-btn" onclick="toggleAllCards(true)">📂 全部展開</button>
+            <button class="ctrl-btn" onclick="toggleAllCards(false)">📁 全部收合</button>
+        </div>
+    </div>
+
+    <!-- ── 拍照要點網格 ── -->
+    <div class="photo-grid">
+
+        <!-- ══ ITEM 1 ══ -->
+        <div class="photo-card open" data-cat="1" id="card1">
+            <div class="card-header" onclick="toggleCard('card1')">
+                <div class="card-num">🚪</div>
+                <div class="card-info">
+                    <div class="card-cat">ITEM 01 · 門牌與家門</div>
+                    <div class="card-title">1. 門牌及大門照片</div>
+                </div>
+                <span class="card-arrow">▼</span>
+            </div>
+            <div class="card-body" id="body1">
+                <div class="card-body-inner">
+                    <ul class="rule-list">
+                        <li><strong>拍攝目標：</strong>針對物件家門口拍攝。門牌號碼需清晰可辨識。</li>
+                        <li><strong>雜物清空要求：</strong>家門口<strong>不得有任何雜物</strong>（鞋架、雜物、垃圾等），<strong>連地墊都不可以出現</strong>！</li>
+                    </ul>
+                    <div class="alert-box gold">
+                        📄 <strong>新式大樓無門牌處理方式：</strong><br>
+                        新式大樓若沒有戶政核發之門牌，一律需至當地戶政事務所申請<strong>「臨時門牌」</strong>。<br>
+                        • <strong>基本準備文件：</strong>委託書、一類謄本、房東身分證影本、當年度房屋稅繳納證明、印章。<br>
+                        ⚠️ <em>申請時請務必與當地戶政確認清楚所需資料，以免白跑趟！</em>
+                    </div>
+                    <div class="sample-photo-area">
+                        <div class="sample-photo-title">🖼️ 範例照片區</div>
+                        <div class="sample-photo-placeholder">（目前尚無範例照片，後續將為您上傳範例照片）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ITEM 2 ══ -->
+        <div class="photo-card open" data-cat="2" id="card2">
+            <div class="card-header" onclick="toggleCard('card2')">
+                <div class="card-num">🚿</div>
+                <div class="card-info">
+                    <div class="card-cat">ITEM 02 · 衛浴設備</div>
+                    <div class="card-title">2. 衛浴三寶照片</div>
+                </div>
+                <span class="card-arrow">▼</span>
+            </div>
+            <div class="card-body" id="body2">
+                <div class="card-body-inner">
+                    <ul class="rule-list">
+                        <li><strong>衛浴三寶項目：</strong>包含<strong>臉盆、淋浴設備、馬桶</strong>。</li>
+                        <li><strong>拍攝方式：</strong>請將三寶<strong>單獨各拍一張</strong>後，再拍攝一張<strong>三寶合拍的全景照片</strong>。</li>
+                        <li><strong>多間衛浴規則：</strong>若遇上兩間衛浴，請以<strong>已有浴缸的衛浴為主</strong>進行拍攝；若都沒有浴缸，則擇一拍攝即可。</li>
+                    </ul>
+                    <div class="alert-box blue">
+                        💡 <strong>小提醒：</strong>拍攝臉盆、馬桶與淋浴設備時請保持乾燥與清潔，鏡頭避免反射拍攝人員自身。
+                    </div>
+                    <div class="sample-photo-area">
+                        <div class="sample-photo-title">🖼️ 範例照片區</div>
+                        <div class="sample-photo-placeholder">（目前尚無範例照片，後續將為您上傳範例照片）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ITEM 3 ══ -->
+        <div class="photo-card open" data-cat="3" id="card3">
+            <div class="card-header" onclick="toggleCard('card3')">
+                <div class="card-num">🛗</div>
+                <div class="card-info">
+                    <div class="card-cat">ITEM 03 · 通道與安全逃生</div>
+                    <div class="card-title">3. 出入口及梯間照片</div>
+                </div>
+                <span class="card-arrow">▼</span>
+            </div>
+            <div class="card-body" id="body3">
+                <div class="card-body-inner">
+                    <ul class="rule-list">
+                        <li><strong>一樓物件拍攝：</strong>若物件位於一樓，請拍攝物件大門的<strong>左側廊道 + 右側廊道</strong>照片。</li>
+                        <li><strong>透天厝拍攝：</strong>若遇上透天厝，請將<strong>一樓大門打開拍攝</strong>外景與通道。</li>
+                        <li><strong>一般住宅大樓：</strong>大門不用打開拍攝也行。</li>
+                        <li><strong>梯間角度要求：</strong>梯間<strong>一定要有「向上」及「向下」</strong>的角度照片各一張。</li>
+                    </ul>
+                    <div class="alert-box">
+                        🚫 <strong>最高核心原則：</strong><br>
+                        出入口及逃生梯間的重點是<strong>不能有任何遮擋逃生路線</strong>之物品（如堆置雜物、鞋櫃阻塞通道等）！
+                    </div>
+                    <div class="sample-photo-area">
+                        <div class="sample-photo-title">🖼️ 範例照片區</div>
+                        <div class="sample-photo-placeholder">（目前尚無範例照片，後續將為您上傳範例照片）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ITEM 4 ══ -->
+        <div class="photo-card open" data-cat="4" id="card4">
+            <div class="card-header" onclick="toggleCard('card4')">
+                <div class="card-num">🧯</div>
+                <div class="card-info">
+                    <div class="card-cat">ITEM 04 · 消防安全設備</div>
+                    <div class="card-title">4. 滅火器及偵煙器</div>
+                </div>
+                <span class="card-arrow">▼</span>
+            </div>
+            <div class="card-body" id="body4">
+                <div class="card-body-inner">
+                    <ul class="rule-list">
+                        <li><strong>🧯 滅火器拍攝規範：</strong>
+                            <br>1. <strong>合格標章：</strong>特寫放大至最大且字樣清晰。
+                            <br>2. <strong>拍攝角度：</strong>瓶身以 <strong>45 度角</strong>拍攝。
+                            <br>3. <strong>資訊需清晰：</strong>製造日期 + 效期3年 + 物件地址標籤。
+                            <br>4. <strong>遠景照：</strong>需一張中等距離遠照（不可太遠）確認放置位置。
+                        </li>
+                        <li><strong>🚨 偵煙器（住警器）拍攝規範：</strong>
+                            <br>1. <strong>合格標章：</strong>整顆或半顆偵煙器合格標章必須極度清晰。
+                            <br>2. <strong>安裝位置遠照：</strong>中等距離拍攝，確認安裝位置於天花板上。
+                        </li>
+                    </ul>
+                    <div class="alert-box gold">
+                        ⚠️ <strong>審核退件常客：</strong>標章模糊不清、效期過期或沒有寫上物件地址，是最常被退件原因！
+                    </div>
+                    <div class="sample-photo-area">
+                        <div class="sample-photo-title">🖼️ 範例照片區</div>
+                        <div class="sample-photo-placeholder">（目前尚無範例照片，後續將為您上傳範例照片）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ITEM 5 ══ -->
+        <div class="photo-card open" data-cat="5" id="card5">
+            <div class="card-header" onclick="toggleCard('card5')">
+                <div class="card-num">♨️</div>
+                <div class="card-info">
+                    <div class="card-cat">ITEM 05 · 熱水器設備</div>
+                    <div class="card-title">5. 熱水器照片</div>
+                </div>
+                <span class="card-arrow">▼</span>
+            </div>
+            <div class="card-body" id="body5">
+                <div class="card-body-inner">
+                    <ul class="rule-list">
+                        <li><strong>☀️ 拍攝時間規範：</strong>熱水器照片<strong>一律必須在白天拍攝</strong>！</li>
+                        <li><strong>拍攝細節：</strong>需拍攝到熱水器機身全貌、品牌標籤及安裝環境（如陽台採光通風與排氣管）。</li>
+                    </ul>
+                    <div class="alert-box">
+                        ⚠️ <strong>嚴禁夜間拍攝：</strong>晚上拍攝採光不足或環境昏暗會直接判定不合規！
+                    </div>
+                    <div class="sample-photo-area">
+                        <div class="sample-photo-title">🖼️ 範例照片區</div>
+                        <div class="sample-photo-placeholder">（目前尚無範例照片，後續將為您上傳範例照片）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ITEM 6 ══ -->
+        <div class="photo-card open" data-cat="6" id="card6">
+            <div class="card-header" onclick="toggleCard('card6')">
+                <div class="card-num">🛋️</div>
+                <div class="card-info">
+                    <div class="card-cat">ITEM 06 · 室內家具與家電</div>
+                    <div class="card-title">6. 室內設備照片</div>
+                </div>
+                <span class="card-arrow">▼</span>
+            </div>
+            <div class="card-body" id="body6">
+                <div class="card-body-inner">
+                    <ul class="rule-list">
+                        <li><strong>全景與大方向：</strong>拍攝室內空間時，大方向需將房東所附屬的<strong>家電（電視、冰箱、洗衣機、冷氣等）或家具（沙發、床組、桌椅等）</strong>拍攝進去。</li>
+                        <li><strong>特殊附屬設備：</strong>若有特殊設備或高單價附屬物品，請另外<strong>單獨拍照特寫</strong>記錄。</li>
+                    </ul>
+                    <div class="alert-box blue">
+                        💡 <strong>點交依據：</strong>良好且完整的室內設備照片，是未來退租點交與保障房東權益的關鍵憑證。
+                    </div>
+                    <div class="sample-photo-area">
+                        <div class="sample-photo-title">🖼️ 範例照片區</div>
+                        <div class="sample-photo-placeholder">（目前尚無範例照片，後續將為您上傳範例照片）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /photo-grid -->
+
+    <div class="footer">
+        星鴻包租代管 · 收件拍照規範專區<br>
+        如對拍照規格有任何疑問，請即時聯繫直屬主管或審核同仁。
+    </div>
+
+</div><!-- /container -->
+
+<script>
+    // ─── 個別卡片展開 / 收合 ───
+    function toggleCard(id) {
+        const card = document.getElementById(id);
+        const body = document.getElementById('body' + id.replace('card',''));
+        const isOpen = card.classList.contains('open');
+        if (isOpen) {
+            body.style.maxHeight = '0';
+            card.classList.remove('open');
+        } else {
+            body.style.maxHeight = body.scrollHeight + 'px';
+            card.classList.add('open');
+        }
+    }
+
+    // ─── 全部展開 / 收合 ───
+    function toggleAllCards(open) {
+        for (let i = 1; i <= 6; i++) {
+            const card = document.getElementById('card' + i);
+            const body = document.getElementById('body' + i);
+            if (!card || !body) continue;
+            if (open) {
+                card.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 'px';
+            } else {
+                card.classList.remove('open');
+                body.style.maxHeight = '0';
+            }
+        }
+    }
+
+    // ─── 初始化頁面高度 ───
+    window.onload = function() {
+        for (let i = 1; i <= 6; i++) {
+            const card = document.getElementById('card' + i);
+            const body = document.getElementById('body' + i);
+            if (card && card.classList.contains('open') && body) {
+                body.style.maxHeight = body.scrollHeight + 'px';
+            }
+        }
+    };
+</script>
+
+</body>
+</html>
