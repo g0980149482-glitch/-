@@ -205,23 +205,23 @@
             <select id="relSelect" class="select-input" onchange="checkRelation()">
                 <option value="">-- 請選擇共住親屬稱謂 --</option>
                 
-                <optgroup label="一等親（二等親以內 ❌ 不可共住）">
-                    <option value="parent">父母（父親、母親）</option>
-                    <option value="child">子女（兒子、女兒）</option>
+                <optgroup label="一等親">
+                    <option value="parent">父母</option>
+                    <option value="child">子女</option>
                     <option value="inlaw_parent">公婆、岳父母</option>
-                    <option value="inlaw_child">女婿、兒媳（子媳）</option>
+                    <option value="inlaw_child">女婿、兒媳</option>
                 </optgroup>
 
-                <optgroup label="二等親（二等親以內 ❌ 不可共住）">
-                    <option value="sibling">兄弟姊妹（哥哥、弟弟、姐姐、妹妹）</option>
-                    <option value="grandparent">祖父母、外祖父母（爺爺、奶奶、外公、外婆）</option>
-                    <option value="grandchild">孫子女、外孫子女（孫子、孫女）</option>
+                <optgroup label="二等親">
+                    <option value="sibling">兄弟姊妹</option>
+                    <option value="grandparent">祖父母、外祖父母</option>
+                    <option value="grandchild">孫子女、外孫子女</option>
                     <option value="sibling_spouse">嫂嫂、弟媳、姊夫、妹夫</option>
-                    <option value="spouse_sibling">配偶之兄弟姊妹（大舅子、小叔、小姨子等）</option>
+                    <option value="spouse_sibling">配偶之兄弟姊妹</option>
                     <option value="spouse_grandparent">配偶之祖父母、外祖父母</option>
                 </optgroup>
 
-                <optgroup label="三等親以上 (⭕ 允許共同承租)">
+                <optgroup label="三等親以上">
                     <option value="uncle_aunt">伯父、叔叔、舅舅、姑姑、阿姨（三等血親）</option>
                     <option value="nephew_niece">姪子、姪女、外甥、外甥女（三等血親）</option>
                     <option value="great_grandparent">曾祖父母（三等血親）</option>
@@ -340,7 +340,7 @@
     };
 
     function checkRelation() {
-        const val = document.getElementById('relSelect').value;
+        const val = document.getElementById('relInput').value;
         const resCard = document.getElementById('resultCard');
         const iconEl = document.getElementById('resIcon');
         const titleEl = document.getElementById('resTitle');
@@ -368,7 +368,7 @@
     }
 
     function quickCheck(val) {
-        document.getElementById('relSelect').value = val;
+        document.getElementById('relInput').value = val;
         checkRelation();
     }
 </script>
