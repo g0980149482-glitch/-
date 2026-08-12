@@ -373,12 +373,16 @@
         <span style="font-size: 13px; font-weight: 700; color: var(--gold);">🏢 業務案件進度切換器</span>
         <button onclick="createNewCase()" style="background: var(--accent); color: white; border: none; padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">➕ 新增案件</button>
     </div>
-    <div style="display: flex; gap: 8px; align-items: center;">
+    <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 10px;">
         <select id="caseSelect" onchange="switchCase(this.value)" style="flex: 1; background: var(--card); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;">
             <!-- JS 動態生成案件清單 -->
         </select>
-        <button onclick="deleteCurrentCase()" style="background: rgba(255,77,109,.15); color: var(--red); border: 1px solid var(--red); padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">🗑️ 刪除此案件</button>
+        <button onclick="deleteCurrentCase()" style="background: rgba(255,77,109,.15); color: var(--red); border: 1px solid var(--red); padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">🗑️ 刪除</button>
     </div>
+    <!-- 一鍵複製 LINE 報告按鈕 -->
+    <button onclick="copyCaseReport(this)" style="width: 100%; background: linear-gradient(135deg, #06C755, #00A74A); color: white; border: none; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 8px rgba(6,199,85,.3);">
+        💬 複製此案件進度報告（傳送至 LINE 給主管）
+    </button>
 </div>
 
 <!-- ── 主容器 ── -->
@@ -927,6 +931,53 @@
             }, 2000);
         }).catch(err => {
             alert('複製失敗，請手動全選複製');
+        });
+    }
+
+    // ─── 一鍵複製 LINE 案件進度報告 ───
+    function copyCaseReport(btn) {
+        const caseName = cases[currentCaseId] || '未命名案件';
+        let report = `📊【星鴻社宅 案件進度回報】\n`;
+        report += `🏢 案件名稱：${caseName}\n`;
+        report += `📅 回報時間：${new Date().toLocaleDateString('zh-TW')} ${new Date().toLocaleTimeString('zh-TW', {hour: '2-digit', minute:'2-digit'})}\n`;
+        report += `-----------------------------\n`;
+
+        let completedCount = 0;
+        let activeStageName = '';
+
+        for (let i = 1; i <= 10; i++) {
+            const card = document.getElementById('step' + i);
+            if (!card) continue;
+            const title = card.querySelector('.step-title') ? card.querySelector('.step-title').innerText : `關卡 ${i}`;
+            const { done, total } = countStep(i);
+            
+            if (done === total && total > 0) {
+                report += `✅ [已完成] 關卡 ${i}：${title}\n`;
+                completedCount++;
+            } else if (done > 0) {
+                report += `⏳ [進行中] 關卡 ${i}：${title} (已完成 ${done}/${total} 小項)\n`;
+                if (!activeStageName) activeStageName = `關卡 ${i}：${title}`;
+            } else {
+                report += `⚪ [未開始] 關卡 ${i}：${title}\n`;
+                if (!activeStageName) activeStageName = `關卡 ${i}：${title}`;
+            }
+        }
+
+        report += `-----------------------------\n`;
+        report += `🎯 大項總進度：已完成 ${completedCount} / 10 個大關卡\n`;
+        report += `📌 目前主要卡在 / 推進中：${activeStageName || '已全數完成！🎉'}\n`;
+        report += `🔗 案件地圖：https://g0980149482-glitch.github.io/-/quest.html`;
+
+        navigator.clipboard.writeText(report).then(() => {
+            const oldText = btn.innerHTML;
+            btn.innerHTML = '✅ 進度報告已複製！請貼到 LINE 傳給主管';
+            btn.style.background = '#00d4aa';
+            setTimeout(() => {
+                btn.innerHTML = oldText;
+                btn.style.background = 'linear-gradient(135deg, #06C755, #00A74A)';
+            }, 3000);
+        }).catch(err => {
+            alert('複製失敗，請重設權限後再試');
         });
     }
 
