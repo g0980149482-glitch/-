@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五期社宅共住親屬資格速查小幫手｜星鴻包租代管</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117;
+            --bg2: #1a1d2e;
+            --card: #1e2235;
+            --border: #2e3354;
+            --accent: #6c63ff;
+            --green: #00d4aa;
+            --gold: #f5c842;
+            --red: #ff4d6d;
+            --orange: #ff8c42;
+            --blue: #3b9eff;
+            --text: #e8eaf6;
+            --muted: #8892b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a1d2e 60%, #12162a 100%);
+            border-bottom: 2px solid var(--accent);
+            padding: 24px 20px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(108,99,255,.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 11px; font-weight: 700;
+            padding: 3px 14px; border-radius: 20px;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
+        }
+        .hero h1 {
+            font-size: 22px; font-weight: 900;
+            background: linear-gradient(90deg, #fff, #c3bdff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+        .hero p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+        /* ── 導覽條 ── */
+        .nav-bar {
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 16px;
+            display: flex; gap: 8px; overflow-x: auto; white-space: nowrap;
+        }
+        .nav-link {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,.04); border: 1px solid var(--border);
+            color: var(--text); text-decoration: none; padding: 8px 14px;
+            border-radius: 20px; font-size: 12px; font-weight: 700;
+        }
+
+        .container { max-width: 700px; margin: 0 auto; padding: 20px 14px; }
+
+        /* ── 規則核心宣告卡片 ── */
+        .rule-banner {
+            background: rgba(108,99,255,.08);
+            border: 1px solid rgba(108,99,255,.3);
+            border-radius: 14px; padding: 16px 18px; margin-bottom: 20px;
+            line-height: 1.6; font-size: 13px; color: #d0d6fc;
+        }
+        .rule-banner strong { color: var(--gold); }
+
+        /* ── 查詢主卡片 ── */
+        .search-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px; padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 16px; font-weight: 900; color: var(--text);
+            margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+        }
+
+        .form-group { margin-bottom: 16px; }
+        .form-label {
+            display: block; font-size: 12px; font-weight: 700;
+            color: var(--muted); margin-bottom: 6px;
+        }
+        .select-input, .text-input {
+            width: 100%; background: var(--bg2); border: 1px solid var(--border);
+            color: var(--text); padding: 12px; border-radius: 10px;
+            font-size: 14px; font-weight: 700; font-family: inherit;
+        }
+        .select-input:focus, .text-input:focus {
+            outline: none; border-color: var(--accent);
+        }
+
+        /* 快速熱門稱謂標籤 */
+        .quick-tags {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+        }
+        .tag-btn {
+            background: rgba(255,255,255,.05); border: 1px solid var(--border);
+            color: #c5c9e6; padding: 6px 12px; border-radius: 20px;
+            font-size: 12px; font-weight: 500; cursor: pointer;
+            transition: all .2s;
+        }
+        .tag-btn:hover { background: rgba(108,99,255,.15); border-color: var(--accent); color: white; }
+
+        /* ── 結果展示卡片 ── */
+        .result-card {
+            display: none; border-radius: 16px; padding: 20px;
+            text-align: center; margin-bottom: 20px;
+            animation: fadeIn .3s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .result-card.allowed {
+            background: rgba(0,212,170,.1); border: 2px solid var(--green); color: #e6fffa;
+        }
+        .result-card.forbidden {
+            background: rgba(255,77,109,.1); border: 2px solid var(--red); color: #ffe6eb;
+        }
+
+        .result-status {
+            font-size: 26px; font-weight: 900; margin-bottom: 6px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .result-card.allowed .result-status { color: var(--green); }
+        .result-card.forbidden .result-status { color: var(--red); }
+
+        .result-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .result-desc { font-size: 13px; opacity: .9; line-height: 1.6; max-width: 500px; margin: 0 auto; }
+
+        /* ── 判定對照表 ── */
+        .table-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 20px; margin-bottom: 20px;
+        }
+        .rel-table {
+            width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px;
+        }
+        .rel-table th, .rel-table td {
+            border: 1px solid var(--border); padding: 10px; text-align: left; line-height: 1.5;
+        }
+        .rel-table th { background: var(--bg2); color: var(--gold); font-weight: 700; }
+        .tag-bad {
+            display: inline-block; background: rgba(255,77,109,.2); color: var(--red);
+            font-weight: 700; padding: 2px 6px; border-radius: 4px; font-size: 11px;
+        }
+        .tag-good {
+            display: inline-block; background: rgba(0,212,170,.2); color: var(--green);
+            font-weight: 700; padding: 2px 6px; border-radius: 4px; font-size: 11px;
+        }
+
+        .footer { text-align: center; font-size: 12px; color: var(--muted); margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+    <div class="hero-badge">🏢 5th STAGE RULES</div>
+    <h1>五期社宅共住親屬資格試算速查</h1>
+    <p>依據《社宅第五期 §30 條規》：非屬二等親內親屬（三等親以上或無親屬關係）方可共同承租</p>
+</div>
+
+<!-- ── 導覽條 ── -->
+<div class="nav-bar">
+    <a href="quest.html" class="nav-link">🌟 新人任務地圖</a>
+    <a href="download.html" class="nav-link">⚔️ 業務資源</a>
+    <a href="index.html" class="nav-link">📋 收件流程</a>
+    <a href="photo.html" class="nav-link">📷 拍照規範</a>
+</div>
+
+<div class="container">
+
+    <!-- ── 核心規則 ── -->
+    <div class="rule-banner">
+        ⚖️ <strong>【第五期社宅共住法規關鍵】</strong><br>
+        為防止資源重複集中於直系家族，法規規定申請人<strong>「不得與一等親、二等親內之親屬（含血親與姻親）共同承租」</strong>。<br>
+        👉 <strong>二等親以內親屬：❌ 不得共住承租</strong>（例：父母、子女、兄弟姊妹、公婆、岳父母等）<br>
+        👉 <strong>三等親以外親屬 / 無親屬關係朋友：⭕ 可以共同承租</strong>（例：舅舅、姨丈、堂表兄弟姊妹、朋友、同性伴侶等）
+    </div>
+
+    <!-- ── 試算輸入卡片 ── -->
+    <div class="search-card">
+        <div class="card-title">🔍 選擇或輸入與「申請承租人」的關係</div>
+        
+        <div class="form-group">
+            <label class="form-label">請選擇欲合住親屬之稱謂：</label>
+            <select id="relSelect" class="select-input" onchange="checkRelation()">
+                <option value="">-- 請選擇共住親屬稱謂 --</option>
+                
+                <optgroup label="一等親（二等親以內 ❌ 不可共住）">
+                    <option value="parent">父母（父親、母親）</option>
+                    <option value="child">子女（兒子、女兒）</option>
+                    <option value="inlaw_parent">公婆、岳父母</option>
+                    <option value="inlaw_child">女婿、兒媳（子媳）</option>
+                </optgroup>
+
+                <optgroup label="二等親（二等親以內 ❌ 不可共住）">
+                    <option value="sibling">兄弟姊妹（哥哥、弟弟、姐姐、妹妹）</option>
+                    <option value="grandparent">祖父母、外祖父母（爺爺、奶奶、外公、外婆）</option>
+                    <option value="grandchild">孫子女、外孫子女（孫子、孫女）</option>
+                    <option value="sibling_spouse">嫂嫂、弟媳、姊夫、妹夫</option>
+                    <option value="spouse_sibling">配偶之兄弟姊妹（大舅子、小叔、小姨子等）</option>
+                    <option value="spouse_grandparent">配偶之祖父母、外祖父母</option>
+                </optgroup>
+
+                <optgroup label="三等親以上 (⭕ 允許共同承租)">
+                    <option value="uncle_aunt">伯父、叔叔、舅舅、姑姑、阿姨（三等血親）</option>
+                    <option value="nephew_niece">姪子、姪女、外甥、外甥女（三等血親）</option>
+                    <option value="great_grandparent">曾祖父母（三等血親）</option>
+                    <option value="cousin">堂兄弟姊妹、表兄弟姊妹（四等血親）</option>
+                    <option value="uncle_aunt_spouse">舅媽、姑丈、姨丈、伯母（三等血親之配偶）</option>
+                </optgroup>
+
+                <optgroup label="無親屬關係 (⭕ 允許共同承租)">
+                    <option value="friend">朋友 / 室友</option>
+                    <option value="partner">同居伴侶 / 伴侶</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">🔥 常見熱門查詢稱謂（點擊快速試算）：</label>
+            <div class="quick-tags">
+                <button class="tag-btn" onclick="quickCheck('sibling')">❌ 兄弟姊妹</button>
+                <button class="tag-btn" onclick="quickCheck('inlaw_parent')">❌ 公婆 / 岳父母</button>
+                <button class="tag-btn" onclick="quickCheck('parent')">❌ 父母</button>
+                <button class="tag-btn" onclick="quickCheck('uncle_aunt')">⭕ 舅舅 / 阿姨</button>
+                <button class="tag-btn" onclick="quickCheck('cousin')">⭕ 堂 / 表兄弟姊妹</button>
+                <button class="tag-btn" onclick="quickCheck('friend')">⭕ 朋友 / 室友</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── 試算結果展現 ── -->
+    <div id="resultCard" class="result-card">
+        <div id="resIcon" class="result-status"></div>
+        <div id="resTitle" class="result-title"></div>
+        <div id="resDesc" class="result-desc"></div>
+    </div>
+
+    <!-- ── 官方對照表卡片 ── -->
+    <div class="table-card">
+        <div class="card-title">📖 五期社宅共住親屬對照表</div>
+        <table class="rel-table">
+            <thead>
+                <tr>
+                    <th>親等</th>
+                    <th>類別</th>
+                    <th>包含親屬關係稱謂</th>
+                    <th>五期社宅共住資格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2"><strong>一等親</strong></td>
+                    <td>血親</td>
+                    <td>父母、子女</td>
+                    <td><span class="tag-bad">❌ 不得共住</span></td>
+                </tr>
+                <tr>
+                    <td>姻親</td>
+                    <td>公婆、岳父母、女婿、子媳、血親之配偶（夫之妻、母之夫）</td>
+                    <td><span class="tag-bad">❌ 不得共住</span></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>二等親</strong></td>
+                    <td>血親</td>
+                    <td>兄弟姊妹、(外)祖父母、(外)孫子女</td>
+                    <td><span class="tag-bad">❌ 不得共住</span></td>
+                </tr>
+                <tr>
+                    <td>姻親</td>
+                    <td>兄嫂、弟媳、姊夫、妹夫、配偶之兄弟姊妹、(外)祖父母之配偶、(外)孫媳女婿等</td>
+                    <td><span class="tag-bad">❌ 不得共住</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>三等親以上</strong></td>
+                    <td>舅舅、伯叔、姑姑、阿姨、姪兒女、外甥、堂/表兄弟姊妹、曾祖父母等</td>
+                    <td><span class="tag-good">⭕ 允許共同承租</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>無親屬關係</strong></td>
+                    <td>朋友、室友、同居伴侶</td>
+                    <td><span class="tag-good">⭕ 允許共同承租</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        星鴻包租代管 · 五期社宅共住親屬審查輔助工具
+    </div>
+
+</div>
+
+<script>
+    const relationData = {
+        // 一等親
+        parent: { allowed: false, name: '父母（父親、母親）', degree: '一等血親', desc: '屬於一等親，依法不得以共住方式申請共同承租。' },
+        child: { allowed: false, name: '子女（兒子、女兒）', degree: '一等血親', desc: '屬於一等親，依法不得以共住方式申請共同承租。' },
+        inlaw_parent: { allowed: false, name: '公婆、岳父母', degree: '一等姻親（配偶之血親）', desc: '屬於一等姻親，依法不得以共住方式申請共同承租（如舉例說明：與公婆共住 ❌）。' },
+        inlaw_child: { allowed: false, name: '女婿、兒媳（子媳）', degree: '一等姻親', desc: '屬於一等姻親，依法不得以共住方式申請共同承租。' },
+
+        // 二等親
+        sibling: { allowed: false, name: '兄弟姊妹', degree: '二等血親', desc: '屬於二等血親，依法不得以共住方式申請共同承租（如舉例說明：與兄弟姊妹共住 ❌）。' },
+        grandparent: { allowed: false, name: '祖父母、外祖父母', degree: '二等血親', desc: '屬於二等血親，依法不得以共住方式申請共同承租。' },
+        grandchild: { allowed: false, name: '孫子女、外孫子女', degree: '二等血親', desc: '屬於二等血親，依法不得以共住方式申請共同承租。' },
+        sibling_spouse: { allowed: false, name: '嫂嫂、弟媳、姊夫、妹夫', degree: '二等姻親（血親之配偶）', desc: '屬於二等姻親，依法不得以共住方式申請共同承租。' },
+        spouse_sibling: { allowed: false, name: '配偶之兄弟姊妹', degree: '二等姻親（配偶之血親）', desc: '屬於二等姻親，依法不得以共住方式申請共同承租。' },
+        spouse_grandparent: { allowed: false, name: '配偶之祖父母、外祖父母', degree: '二等姻親', desc: '屬於二等姻親，依法不得以共住方式申請共同承租。' },
+
+        // 三等親以上 (OK)
+        uncle_aunt: { allowed: true, name: '伯父、叔叔、舅舅、姑姑、阿姨', degree: '三等血親', desc: '屬於三等血親（非屬二等親內親屬），符合五期社宅共住條款，可以共同承租！（例：與舅舅共住 ⭕）' },
+        nephew_niece: { allowed: true, name: '姪子、姪女、外甥、外甥女', degree: '三等血親', desc: '屬於三等血親（非屬二等親內親屬），符合五期社宅共住條款，可以共同承租！' },
+        great_grandparent: { allowed: true, name: '曾祖父母', degree: '三等血親', desc: '屬於三等血親，符合五期社宅共住條款，可以共同承租！' },
+        cousin: { allowed: true, name: '堂兄弟姊妹、表兄弟姊妹', degree: '四等血親', desc: '屬於四等血親（非屬二等親內親屬），符合五期社宅共住條款，可以共同承租！（例：與堂/表兄弟姊妹共住 ⭕）' },
+        uncle_aunt_spouse: { allowed: true, name: '舅媽、姑丈、姨丈、伯母', degree: '三等姻親', desc: '屬於三等姻親，符合五期社宅共住條款，可以共同承租！' },
+
+        // 無親屬
+        friend: { allowed: true, name: '朋友 / 室友', degree: '無親屬關係', desc: '非屬二等親內親屬，符合五期社宅共住條件，可以共同承租！' },
+        partner: { allowed: true, name: '同居伴侶 / 伴侶', degree: '無親屬關係', desc: '非屬二等親內親屬，符合五期社宅共住條件，可以共同承租！' }
+    };
+
+    function checkRelation() {
+        const val = document.getElementById('relSelect').value;
+        const resCard = document.getElementById('resultCard');
+        const iconEl = document.getElementById('resIcon');
+        const titleEl = document.getElementById('resTitle');
+        const descEl = document.getElementById('resDesc');
+
+        if (!val || !relationData[val]) {
+            resCard.style.display = 'none';
+            return;
+        }
+
+        const data = relationData[val];
+        resCard.style.display = 'block';
+
+        if (data.allowed) {
+            resCard.className = 'result-card allowed';
+            iconEl.innerHTML = '⭕ 允許共同承租';
+            titleEl.innerHTML = `關係：${data.name}（${data.degree}）`;
+            descEl.innerHTML = data.desc;
+        } else {
+            resCard.className = 'result-card forbidden';
+            iconEl.innerHTML = '❌ 依法不得共住承租';
+            titleEl.innerHTML = `關係：${data.name}（${data.degree}）`;
+            descEl.innerHTML = data.desc;
+        }
+    }
+
+    function quickCheck(val) {
+        document.getElementById('relSelect').value = val;
+        checkRelation();
+    }
+</script>
+
+</body>
+</html>
