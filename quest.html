@@ -397,6 +397,7 @@
         <div class="dash-card" data-url="https://easymap.moi.gov.tw/Index"><span class="dash-icon">🗺️</span><span class="dash-title">地籍圖</span></div>
         <div class="dash-card" data-url="https://pip.moi.gov.tw/Publicize/Info/B1021"><span class="dash-icon">🧮</span><span class="dash-title">300 億試算</span></div>
         <div class="dash-card" data-url="https://has.nlma.gov.tw/house300e/"><span class="dash-icon">📝</span><span class="dash-title">300 億申請</span></div>
+        <div class="dash-card" data-url="https://judgment.judicial.gov.tw/FJUD/default.aspx"><span class="dash-icon">⚖️</span><span class="dash-title">法源網查詢</span></div>
     </div>
 </section>
 
@@ -507,7 +508,7 @@
             <div class="concept-box">由主管或學長姐陪同，實地操作與房東面談，學習話術與流程。攜帶銷售資料夾與筆記工具。</div>
             
             <div class="alert-box gold" style="margin-bottom: 12px; font-weight: 700;">
-                ⚠️ 出門前必檢查警語：出門前必須確認是否有帶到『筆』、『委託書』、『物件確認表』！
+                ⚠️ 出門前必檢查警語：出門前必須確認是否有帶到『筆』、『委託書』、『物件確認表』、『屋況確認表』！
             </div>
 
             <div class="mini-label">✅ 執行檢核</div>
@@ -617,6 +618,11 @@
 11.備註、需求：</pre>
             </div>
 
+            <!-- 300億所得判別按鈕 -->
+            <a href="https://drive.google.com/drive/folders/1ju75_ov-i90jdV3HG3_X93fgDBzw6NwN" target="_blank" class="res-btn gold">
+                <span class="ri">📊</span><span class="rt">300億所得判別（雲端資料夾）</span><span class="ra">→</span>
+            </a>
+
             <!-- 信任租雲端硬碟按鈕 -->
             <a href="https://drive.google.com/drive/folders/12J9nTJSLzGrYfIy8xmICSox01qhnPTnI" target="_blank" class="res-btn teal">
                 <span class="ri">🛡️</span><span class="rt">前往信任租專區（雲端資料夾）</span><span class="ra">→</span>
@@ -634,7 +640,7 @@
         <div class="step-info">
             <div class="step-day">STEP 06 · Day 18 前完成</div>
             <div class="step-title">收齊房東客資料</div>
-            <div class="step-progress" id="prog6">打勾 0/3 項</div>
+            <div class="step-progress" id="prog6">打勾 0/4 項</div>
         </div>
         <span class="step-badge badge-active">進行中</span>
         <span class="step-arrow">▼</span>
@@ -642,11 +648,18 @@
     <div class="step-body" id="body6">
         <div class="step-body-inner">
             <div class="concept-box">收件是打 BOSS 前蒐集道具的過程。每一份文件都缺一不可，缺件將影響後續審查進度。</div>
+            <div class="alert-box gold" style="margin-bottom: 12px; font-weight: 700; line-height: 1.6;">
+                ⚠️ 重要提醒與警語：<br>
+                1. 可與租客確認發薪日，能夠進一步確認往後繳租不會有遲繳問題。<br>
+                2. 包租約的定金務必是匯款到公司虛擬帳戶，屆時會定轉押，於簽約完成後 7-14 天內匯款 2 押 1 租給房東。
+            </div>
+
             <div class="mini-label">✅ 執行檢核</div>
             <ul class="checklist" id="list6">
                 <li><input type="checkbox" id="s6c1" onchange="updateProgress()"><label for="s6c1">房東資料齊全：身份證正反、存摺封面、房屋稅單（或課稅明細申請書）、一類謄本</label></li>
                 <li><input type="checkbox" id="s6c2" onchange="updateProgress()"><label for="s6c2">房客資料齊全：身份證正反、存摺封面、戶籍謄本（全戶記事1個月內）、信任租同意書、健保卡</label></li>
                 <li><input type="checkbox" id="s6c3" onchange="updateProgress()"><label for="s6c3">物件資料：滅火器、偵煙器、安全檢核照片</label></li>
+                <li><input type="checkbox" id="s6c4" onchange="updateProgress()"><label for="s6c4">已告知包租約是得提前終止租約及不代墊租金</label></li>
             </ul>
             <div class="mini-label">🗂️ 任務資源</div>
             <a href="photo.html" class="res-btn gold">
