@@ -241,6 +241,126 @@
             font-size: 11px; color: #64748b; line-height: 1.5;
         }
 
+        /* ── 蝦皮風格圖卡與彈窗 ── */
+        .shopee-section-title {
+            font-size: 14px; font-weight: 900; color: #ee4d2d;
+            display: flex; align-items: center; justify-content: space-between;
+            margin: 16px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #ee4d2d;
+        }
+        .shopee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px; margin-top: 12px;
+        }
+        .shopee-card {
+            background: #1a1d2e;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all .25s ease;
+            display: flex; flex-direction: column;
+        }
+        .shopee-card:hover {
+            transform: translateY(-4px);
+            border-color: #ee4d2d;
+            box-shadow: 0 6px 20px rgba(238, 77, 45, 0.25);
+        }
+        .shopee-badge {
+            position: absolute; top: 8px; left: 8px; z-index: 2;
+            background: linear-gradient(135deg, #ee4d2d, #ff7337);
+            color: #fff; font-size: 10px; font-weight: 900;
+            padding: 3px 8px; border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,.4);
+        }
+        .shopee-badge.gold {
+            background: linear-gradient(135deg, #f5c842, #ffaa00);
+            color: #000;
+        }
+        .shopee-img-wrap {
+            width: 100%; aspect-ratio: 16/9;
+            background: #0f1117; overflow: hidden;
+            position: relative;
+        }
+        .shopee-img-wrap img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .3s ease;
+        }
+        .shopee-card:hover .shopee-img-wrap img {
+            transform: scale(1.05);
+        }
+        .shopee-info {
+            padding: 10px 12px; flex: 1;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .shopee-tag {
+            display: inline-block; font-size: 10px; font-weight: 700;
+            color: #ee4d2d; background: rgba(238,77,45,.12);
+            padding: 2px 6px; border-radius: 4px; margin-bottom: 4px; width: fit-content;
+        }
+        .shopee-title {
+            font-size: 12px; font-weight: 900; color: var(--text);
+            line-height: 1.4; margin-bottom: 6px;
+        }
+        .shopee-footer-row {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 10px; color: var(--muted); margin-top: 4px;
+        }
+        .shopee-btn {
+            background: #ee4d2d; color: #fff; font-size: 10px; font-weight: 700;
+            padding: 4px 8px; border-radius: 6px; border: none; cursor: pointer;
+        }
+
+        /* ── 蝦皮滿版彈窗 Modal ── */
+        .shopee-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,.85); backdrop-filter: blur(8px);
+            z-index: 9999; justify-content: center; align-items: center; padding: 16px;
+        }
+        .shopee-modal.active { display: flex; }
+        .shopee-modal-content {
+            background: #1a1d2e; border: 1px solid #2e3354; border-radius: 16px;
+            width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto;
+            display: flex; flex-direction: column; position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,.6);
+        }
+        .shopee-modal-header {
+            padding: 16px 20px; background: #121524; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 10;
+        }
+        .shopee-modal-title { font-size: 16px; font-weight: 900; color: var(--gold); }
+        .shopee-modal-close {
+            background: rgba(255,255,255,.1); border: none; color: #fff;
+            width: 32px; height: 32px; border-radius: 50%; font-size: 18px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .shopee-modal-close:hover { background: #ff4d6d; }
+        .shopee-modal-body { padding: 20px; }
+        .shopee-slide-nav {
+            display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 16px;
+        }
+        .shopee-nav-tab {
+            padding: 8px 14px; background: rgba(255,255,255,.05); border: 1px solid var(--border);
+            border-radius: 20px; font-size: 11px; font-weight: 700; color: var(--muted);
+            cursor: pointer; white-space: nowrap; transition: all .2s;
+        }
+        .shopee-nav-tab.active {
+            background: #ee4d2d; border-color: #ee4d2d; color: #fff;
+        }
+        .shopee-viewer-img {
+            width: 100%; border-radius: 12px; border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(0,0,0,.4); margin-bottom: 16px;
+        }
+        .shopee-detail-box {
+            background: rgba(255,255,255,.03); border: 1px solid var(--border);
+            border-radius: 12px; padding: 16px; margin-top: 12px;
+        }
+        .shopee-detail-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+        .shopee-detail-list { list-style: none; font-size: 12px; color: #c5c9e6; line-height: 1.8; }
+        .shopee-detail-list li::before { content: '✔️ '; }
+
         /* 頁尾 */
         .footer {
             text-align: center; margin-top: 40px;
@@ -421,9 +541,94 @@
                     <div class="alert-box">
                         ⚠️ <strong>嚴禁夜間拍攝：</strong>晚上拍攝採光不足或環境昏暗會直接判定不合規！
                     </div>
-                    <div class="sample-photo-area">
-                        <div class="sample-photo-title">🖼️ 範例照片區</div>
-                        <div class="sample-photo-placeholder">（目前尚無範例照片，後續將為您上傳範例照片）</div>
+                    <div class="shopee-section-title">
+                        <span>🛍️ 熱水器拍照標準圖卡 (5大情境·全17角度寫真)</span>
+                        <span style="font-size:11px; font-weight:400; color:var(--muted);">點擊圖卡可放大瀏覽 PPT</span>
+                    </div>
+
+                    <!-- 蝦皮風格圖卡網格 (5 大情境) -->
+                    <div class="shopee-grid">
+
+                        <!-- 卡片 1 -->
+                        <div class="shopee-card" onclick="openShopeeModal(1)">
+                            <div class="shopee-badge">室外機 · 拍法1</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/heater_slide1.jpg" alt="室外無天空拍法1">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">室外 (無天空)</span>
+                                <div class="shopee-title">♨️ 熱水器 - 室外 (無天空)</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 4張照·3角度</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 2 -->
+                        <div class="shopee-card" onclick="openShopeeModal(2)">
+                            <div class="shopee-badge gold">室外機 · 拍法2-1</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/heater_slide2.jpg" alt="室外有天空拍法2-1">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">室外 (有天空)</span>
+                                <div class="shopee-title">♨️ 熱水器 - 室外 (直看天空)</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 3張照·2角度</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 3 -->
+                        <div class="shopee-card" onclick="openShopeeModal(3)">
+                            <div class="shopee-badge">強排機 · 拍法2</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/heater_slide1.jpg" alt="室內強排陽台有窗戶">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">室內強排 (陽台有窗)</span>
+                                <div class="shopee-title">♨️ 陽台有窗戶強排機拍法</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 4張照·3角度</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 4 -->
+                        <div class="shopee-card" onclick="openShopeeModal(4)">
+                            <div class="shopee-badge gold">強排機 · 拍法1</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/heater_slide2.jpg" alt="室內強排密閉處">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">室內強排 (密閉通風佳)</span>
+                                <div class="shopee-title">♨️ 密閉處強排機連貫拍法</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 5張照·4角度</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 5 -->
+                        <div class="shopee-card" onclick="openShopeeModal(5)">
+                            <div class="shopee-badge">強排機 · 拍法3</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/heater_slide1.jpg" alt="全室內強排">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">強排機 (全室內)</span>
+                                <div class="shopee-title">♨️ 全室內強排機遠近拍法</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 4張照·3角度</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -465,7 +670,119 @@
 
 </div><!-- /container -->
 
+<!-- ── 蝦皮滿版彈窗 (Modal Viewer) ── -->
+<div class="shopee-modal" id="shopeeModal">
+    <div class="shopee-modal-content">
+        <div class="shopee-modal-header">
+            <div class="shopee-modal-title" id="shopeeModalTitle">♨️ 各式熱水器標準拍照指南</div>
+            <button class="shopee-modal-close" onclick="closeShopeeModal()">✕</button>
+        </div>
+        <div class="shopee-modal-body">
+            <div class="shopee-slide-nav">
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(1)" id="tab1">1. 室外(無天空)</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(2)" id="tab2">2. 室外(直看天空)</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(3)" id="tab3">3. 陽台有窗強排</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(4)" id="tab4">4. 密閉處強排</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(5)" id="tab5">5. 全室內強排</button>
+            </div>
+
+            <img src="img/heater/heater_slide1.jpg" alt="熱水器圖卡簡報" class="shopee-viewer-img" id="shopeeViewerImg">
+
+            <div class="shopee-detail-box">
+                <div class="shopee-detail-title" id="shopeeDetailTitle">📌 拍攝角度與檢核要點</div>
+                <ul class="shopee-detail-list" id="shopeeDetailList">
+                    <!-- JS 動態帶入要點 -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+    // ─── 蝦皮圖卡 Modal 邏輯 ───
+    const shopeeData = {
+        1: {
+            title: '♨️ 情境 1：熱水器 - 室外 (無法直接看到天空) · 標準拍法 1',
+            img: 'img/heater/heater_slide1.jpg',
+            points: [
+                '正面及側面照片（機身正面 + 側面標籤/銘牌特寫）',
+                '熱水器 + 陽台開口處照片（確認環境通風與採光）',
+                '熱水器 + 仰拍天空照片（確認上方建物結構）',
+                '⚠️ 提醒：必須於白天拍攝，拍攝需清楚無昏暗或遮擋'
+            ]
+        },
+        2: {
+            title: '♨️ 情境 2：熱水器 - 室外 (直接看到天空) · 標準拍法 2-1',
+            img: 'img/heater/heater_slide2.jpg',
+            points: [
+                '正面及側面照片（含 T-GAS 認證標籤特寫）',
+                '熱水器 + 天空照片（清楚照出上方無遮蔽）',
+                '⚠️ 提醒：相機角度向上拍攝，必須拍出無遮擋的天空景致'
+            ]
+        },
+        3: {
+            title: '♨️ 情境 3：熱水器 - 室內有強排 (在陽台但有窗戶) · 標準拍法 2',
+            img: 'img/heater/heater_slide1.jpg',
+            points: [
+                '正面及側面照片（強排主機本體與側面規格銘牌）',
+                '整體管線通往窗口照片（含熱水器本身）',
+                '強排出風口照片（出風管延伸至窗外特寫）',
+                '⚠️ 提醒：強排風管必須確實伸出窗外，否則判定不合規'
+            ]
+        },
+        4: {
+            title: '♨️ 情境 4：熱水器 - 室內有強排 (在密閉處通風不佳) · 標準拍法 1',
+            img: 'img/heater/heater_slide2.jpg',
+            points: [
+                '正面及側面照片（含 TGAS 認證貼紙與液晶面板）',
+                '整體管線通往窗口照片（含熱水器本身）',
+                '強排出風口照片（室外出口）',
+                '管線往窗口照片（需與第 2 張照片保持連貫）',
+                '⚠️ 提醒：連貫性照片不可中斷，需能清楚呈現全段管線路徑'
+            ]
+        },
+        5: {
+            title: '♨️ 情境 5：熱水器 - 室內有強排 (全室內環境) · 標準拍法 3',
+            img: 'img/heater/heater_slide1.jpg',
+            points: [
+                '正面及側面照片（室內安裝特寫）',
+                '整體管線通往窗口照片（含熱水器本身）',
+                '強排出風口照片（遠景 + 近景雙角度特寫）',
+                '⚠️ 提醒：全室內必須使用符合規定之強制排氣型熱水器'
+            ]
+        }
+    };
+
+    function openShopeeModal(slideId) {
+        document.getElementById('shopeeModal').classList.add('active');
+        switchShopeeSlide(slideId);
+    }
+
+    function closeShopeeModal() {
+        document.getElementById('shopeeModal').classList.remove('active');
+    }
+
+    function switchShopeeSlide(id) {
+        const data = shopeeData[id] || shopeeData[1];
+        document.getElementById('shopeeModalTitle').textContent = data.title;
+        document.getElementById('shopeeViewerImg').src = data.img;
+        
+        for (let i = 1; i <= 5; i++) {
+            const tab = document.getElementById('tab' + i);
+            if (tab) {
+                if (i === id) tab.classList.add('active');
+                else tab.classList.remove('active');
+            }
+        }
+
+        const listEl = document.getElementById('shopeeDetailList');
+        listEl.innerHTML = '';
+        data.points.forEach(p => {
+            const li = document.createElement('li');
+            li.textContent = p;
+            listEl.appendChild(li);
+        });
+    }
     // ─── 個別卡片展開 / 收合 ───
     function toggleCard(id) {
         const card = document.getElementById(id);
