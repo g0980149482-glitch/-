@@ -560,7 +560,7 @@
 
                     <!-- 熱水器三大類型情境快速切換按鈕 -->
                     <div class="heater-filter-btns">
-                        <button class="heater-filter-btn" onclick="filterHeaterCards('outdoor', this)" id="btnOutdoor">
+                        <button class="heater-filter-btn active" onclick="filterHeaterCards('outdoor', this)" id="btnOutdoor">
                             ☀️ 1. 室外 (2種拍法)
                         </button>
                         <button class="heater-filter-btn" onclick="filterHeaterCards('indoor', this)" id="btnIndoor">
@@ -568,9 +568,6 @@
                         </button>
                         <button class="heater-filter-btn" onclick="filterHeaterCards('electric', this)" id="btnElectric">
                             ⚡ 3. 電熱水器 (3種拍法)
-                        </button>
-                        <button class="heater-filter-btn active" onclick="filterHeaterCards('all', this)" id="btnAllHeater">
-                            ♨️ 全部 (8大情境)
                         </button>
                     </div>
 
@@ -935,7 +932,7 @@
         }
     }
 
-    // ─── 初始化頁面高度 ───
+    // ─── 初始化頁面高度與熱水器預設預覽 ───
     window.onload = function() {
         for (let i = 1; i <= 6; i++) {
             const card = document.getElementById('card' + i);
@@ -944,6 +941,8 @@
                 body.style.maxHeight = body.scrollHeight + 'px';
             }
         }
+        // 預設切換至 1.室外 拍照圖卡
+        filterHeaterCards('outdoor', document.getElementById('btnOutdoor'));
     };
 </script>
 
