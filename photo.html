@@ -554,11 +554,11 @@
                         ⚠️ <strong>嚴禁夜間拍攝：</strong>晚上拍攝採光不足或環境昏暗會直接判定不合規！
                     </div>
                     <div class="shopee-section-title">
-                        <span>🛍️ 熱水器拍照標準圖卡 (5大情境·全17角度寫真)</span>
-                        <span style="font-size:11px; font-weight:400; color:var(--muted);">點擊圖卡可放大瀏覽 PPT</span>
+                        <span>🛍️ 熱水器拍照標準圖卡 (三大類型·8大情境寫真懶人包)</span>
+                        <span style="font-size:11px; font-weight:400; color:var(--muted);">點擊圖卡可放大瀏覽 PPT 範本</span>
                     </div>
 
-                    <!-- 熱水器三大情境快速切換按鈕 -->
+                    <!-- 熱水器三大類型情境快速切換按鈕 -->
                     <div class="heater-filter-btns">
                         <button class="heater-filter-btn" onclick="filterHeaterCards('outdoor', this)" id="btnOutdoor">
                             ☀️ 1. 室外 (2種拍法)
@@ -566,15 +566,18 @@
                         <button class="heater-filter-btn" onclick="filterHeaterCards('indoor', this)" id="btnIndoor">
                             🏠 2. 室內/強排 (3種拍法)
                         </button>
+                        <button class="heater-filter-btn" onclick="filterHeaterCards('electric', this)" id="btnElectric">
+                            ⚡ 3. 電熱水器 (3種拍法)
+                        </button>
                         <button class="heater-filter-btn active" onclick="filterHeaterCards('all', this)" id="btnAllHeater">
-                            ♨️ 3. 熱水器 (全部5大情境)
+                            ♨️ 全部 (8大情境)
                         </button>
                     </div>
 
-                    <!-- 蝦皮風格圖卡網格 (5 大情境) -->
+                    <!-- 蝦皮風格圖卡網格 (8 大情境) -->
                     <div class="shopee-grid">
 
-                        <!-- 卡片 1 (室外) -->
+                        <!-- 卡片 1 (1.室外) -->
                         <div class="shopee-card" data-type="outdoor" onclick="openShopeeModal(1)">
                             <div class="shopee-badge">1.室外機 · 拍法1</div>
                             <div class="shopee-img-wrap">
@@ -590,7 +593,7 @@
                             </div>
                         </div>
 
-                        <!-- 卡片 2 (室外) -->
+                        <!-- 卡片 2 (1.室外) -->
                         <div class="shopee-card" data-type="outdoor" onclick="openShopeeModal(2)">
                             <div class="shopee-badge gold">1.室外機 · 拍法2-1</div>
                             <div class="shopee-img-wrap">
@@ -606,7 +609,7 @@
                             </div>
                         </div>
 
-                        <!-- 卡片 3 (室內) -->
+                        <!-- 卡片 3 (2.室內/強排) -->
                         <div class="shopee-card" data-type="indoor" onclick="openShopeeModal(3)">
                             <div class="shopee-badge">2.室內強排 · 拍法2</div>
                             <div class="shopee-img-wrap">
@@ -622,7 +625,7 @@
                             </div>
                         </div>
 
-                        <!-- 卡片 4 (室內) -->
+                        <!-- 卡片 4 (2.室內/強排) -->
                         <div class="shopee-card" data-type="indoor" onclick="openShopeeModal(4)">
                             <div class="shopee-badge gold">2.室內強排 · 拍法1</div>
                             <div class="shopee-img-wrap">
@@ -638,7 +641,7 @@
                             </div>
                         </div>
 
-                        <!-- 卡片 5 (室內) -->
+                        <!-- 卡片 5 (2.室內/強排) -->
                         <div class="shopee-card" data-type="indoor" onclick="openShopeeModal(5)">
                             <div class="shopee-badge">2.室內強排 · 拍法3</div>
                             <div class="shopee-img-wrap">
@@ -649,6 +652,54 @@
                                 <div class="shopee-title">♨️ 全室內強排機遠近拍法</div>
                                 <div class="shopee-footer-row">
                                     <span>📷 4張照·3角度</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 6 (3.電熱水器) -->
+                        <div class="shopee-card" data-type="electric" onclick="openShopeeModal(6)">
+                            <div class="shopee-badge gold">3.電熱水器 · 拍法1-1</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/electric_heater_1.jpg" alt="電熱水器一般立式">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">3. 電熱水器 (一般立式)</span>
+                                <div class="shopee-title">⚡ 電熱水器 - 一般/立式</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 3張照·近照貼紙+遠照</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 7 (3.電熱水器) -->
+                        <div class="shopee-card" data-type="electric" onclick="openShopeeModal(7)">
+                            <div class="shopee-badge">3.電熱水器 · 拍法1-2</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/electric_heater_2.jpg" alt="電熱水器在天花板">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">3. 電熱水器 (天花板)</span>
+                                <div class="shopee-title">⚡ 電熱水器 - 在天花板</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 3張照·由下往上拍</span>
+                                    <button class="shopee-btn">看圖解 🛒</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 卡片 8 (3.電熱水器) -->
+                        <div class="shopee-card" data-type="electric" onclick="openShopeeModal(8)">
+                            <div class="shopee-badge gold">3.電熱水器 · 拍法1-3</div>
+                            <div class="shopee-img-wrap">
+                                <img src="img/heater/electric_heater_3.jpg" alt="電熱水器太陽能">
+                            </div>
+                            <div class="shopee-info">
+                                <span class="shopee-tag">3. 電熱水器 (太陽能)</span>
+                                <div class="shopee-title">⚡ 電熱水器 - 太陽能型</div>
+                                <div class="shopee-footer-row">
+                                    <span>📷 3張照·由下往上拍</span>
                                     <button class="shopee-btn">看圖解 🛒</button>
                                 </div>
                             </div>
@@ -705,10 +756,13 @@
         <div class="shopee-modal-body">
             <div class="shopee-slide-nav">
                 <button class="shopee-nav-tab" onclick="switchShopeeSlide(1)" id="tab1">1. 室外(無天空)</button>
-                <button class="shopee-nav-tab" onclick="switchShopeeSlide(2)" id="tab2">2. 室外(直看天空)</button>
-                <button class="shopee-nav-tab" onclick="switchShopeeSlide(3)" id="tab3">3. 陽台有窗強排</button>
-                <button class="shopee-nav-tab" onclick="switchShopeeSlide(4)" id="tab4">4. 密閉處強排</button>
-                <button class="shopee-nav-tab" onclick="switchShopeeSlide(5)" id="tab5">5. 全室內強排</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(2)" id="tab2">1. 室外(直看天空)</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(3)" id="tab3">2. 陽台有窗強排</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(4)" id="tab4">2. 密閉處強排</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(5)" id="tab5">2. 全室內強排</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(6)" id="tab6">3. 電熱水器(一般)</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(7)" id="tab7">3. 電熱水器(天花板)</button>
+                <button class="shopee-nav-tab" onclick="switchShopeeSlide(8)" id="tab8">3. 電熱水器(太陽能)</button>
             </div>
 
             <img src="img/heater/heater_slide1.jpg" alt="熱水器圖卡簡報" class="shopee-viewer-img" id="shopeeViewerImg">
@@ -775,6 +829,33 @@
                 '強排出風口照片（遠景 + 近景雙角度特寫）',
                 '⚠️ 提醒：全室內必須使用符合規定之強制排氣型熱水器'
             ]
+        },
+        6: {
+            title: '⚡ 情境 6：電熱水器 (一般/立式) · 標準拍法 1-1',
+            img: 'img/heater/electric_heater_1.jpg',
+            points: [
+                '近照 + 貼紙（拍出熱水器品牌標籤、能源效率貼紙與 TGAS/規格銘牌）',
+                '遠照（包含機身全貌與週邊電路開關與環境）',
+                '⚠️ 提醒：近照銘牌文字與規格必須清楚可考據'
+            ]
+        },
+        7: {
+            title: '⚡ 情境 7：電熱水器 (在天花板) · 標準拍法 1-2',
+            img: 'img/heater/electric_heater_2.jpg',
+            points: [
+                '近照 + 貼紙（特寫天花板維修口內的機身貼紙與品牌規格）',
+                '遠照（⚠️ 一定要由下往上拍！拍出維修天花板開口與整體位置）',
+                '⚠️ 提醒：遠照角度非常關鍵，必須「由下往上」拍出維修孔位置'
+            ]
+        },
+        8: {
+            title: '⚡ 情境 8：電熱水器 (太陽能) · 標準拍法 1-3',
+            img: 'img/heater/electric_heater_3.jpg',
+            points: [
+                '近照 + 貼紙（太陽能熱水器主機/集熱板與保固注意事項貼紙特寫）',
+                '遠照（⚠️ 一定要由下往上拍！包含頂樓集熱板與全貌）',
+                '⚠️ 提醒：遠照需由下往上拍攝，確保完整照出太陽能集熱與儲水系統'
+            ]
         }
     };
 
@@ -792,7 +873,7 @@
         document.getElementById('shopeeModalTitle').textContent = data.title;
         document.getElementById('shopeeViewerImg').src = data.img;
         
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 8; i++) {
             const tab = document.getElementById('tab' + i);
             if (tab) {
                 if (i === id) tab.classList.add('active');
