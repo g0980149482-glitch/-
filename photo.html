@@ -379,6 +379,28 @@
             font-size: 12px; color: var(--muted);
             line-height: 1.8;
         }
+
+        /* ── 通用 Lightbox ── */
+        #imgLightbox {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+            flex-direction: column; padding: 16px;
+        }
+        #imgLightbox.active { display: flex; }
+        #imgLightbox img {
+            max-width: 96vw; max-height: 86vh;
+            object-fit: contain; border-radius: 8px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        }
+        #imgLightbox .lb-close {
+            position: absolute; top: 14px; right: 18px;
+            font-size: 28px; color: #fff; cursor: pointer;
+            line-height: 1; background: none; border: none;
+        }
+        #imgLightbox .lb-caption {
+            margin-top: 10px; font-size: 12px; color: #aaa; text-align: center;
+        }
+        .lb-trigger { cursor: zoom-in; }
     </style>
 </head>
 <body>
@@ -561,11 +583,12 @@
                             <div style="background:#1a1d2e; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
                                 <div style="position:relative;">
                                     <div style="position:absolute;top:6px;left:6px;z-index:2;background:linear-gradient(135deg,#ee4d2d,#ff7337);color:#fff;font-size:10px;font-weight:900;padding:2px 7px;border-radius:4px;">拍法③</div>
-                                    <img src="img/fire_ext_far.jpg" alt="滅火器遠照範例" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;">
+                                    <img src="img/fire_ext_far.jpg" alt="滅火器遠照範例" class="lb-trigger" onclick="openLightbox(this.src, this.alt)" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;">
                                 </div>
                                 <div style="padding:8px 10px;">
                                     <div style="font-size:11px;font-weight:900;color:var(--text);margin-bottom:4px;">📐 環境遠照</div>
-                                    <div style="font-size:10px;color:var(--muted);line-height:1.5;">距離不能太遠，要拍到室內陳列物。<strong style="color:#fce8a6;">1 倍焦</strong> 拍攝即可</div>
+                                    <div style="font-size:10px;color:var(--muted);line-height:1.6;">距離不能太遠，要拍到室內陳列物。<strong style="color:#fce8a6;">1 倍焦</strong>拍攝即可</div>
+                                    <div style="margin-top:5px; padding:4px 7px; background:rgba(245,200,66,0.12); border-left:3px solid #f5c842; border-radius:3px; font-size:10px; color:#fce8a6; line-height:1.5;">⚠️ 拍攝角度需<strong>帶到滅火器上手寫地址的位置</strong>，讓審核確認地址正確</div>
                                 </div>
                             </div>
 
@@ -580,23 +603,23 @@
                             </div>
                             <div style="display:flex; gap:8px; overflow-x:auto; padding:10px 12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
                                 <div style="flex:0 0 140px; scroll-snap-align:start; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
-                                    <img src="img/fire_ext_date_1.jpg" alt="製造日期地址範本1" style="width:140px;height:200px;object-fit:cover;display:block;">
+                                    <img src="img/fire_ext_date_1.jpg" alt="製造日期地址範本1" class="lb-trigger" onclick="openLightbox(this.src, this.alt)" style="width:140px;height:200px;object-fit:cover;display:block;">
                                     <div style="padding:5px 7px;font-size:10px;color:var(--muted);">範本 1</div>
                                 </div>
                                 <div style="flex:0 0 140px; scroll-snap-align:start; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
-                                    <img src="img/fire_ext_date_2.jpg" alt="製造日期地址範本2" style="width:140px;height:200px;object-fit:cover;display:block;">
+                                    <img src="img/fire_ext_date_2.jpg" alt="製造日期地址範本2" class="lb-trigger" onclick="openLightbox(this.src, this.alt)" style="width:140px;height:200px;object-fit:cover;display:block;">
                                     <div style="padding:5px 7px;font-size:10px;color:var(--muted);">範本 2</div>
                                 </div>
                                 <div style="flex:0 0 140px; scroll-snap-align:start; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
-                                    <img src="img/fire_ext_date_3.jpg" alt="製造日期地址範本3" style="width:140px;height:200px;object-fit:cover;display:block;">
+                                    <img src="img/fire_ext_date_3.jpg" alt="製造日期地址範本3" class="lb-trigger" onclick="openLightbox(this.src, this.alt)" style="width:140px;height:200px;object-fit:cover;display:block;">
                                     <div style="padding:5px 7px;font-size:10px;color:var(--muted);">範本 3</div>
                                 </div>
                                 <div style="flex:0 0 140px; scroll-snap-align:start; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
-                                    <img src="img/fire_ext_date_4.jpg" alt="製造日期地址範本4" style="width:140px;height:200px;object-fit:cover;display:block;">
+                                    <img src="img/fire_ext_date_4.jpg" alt="製造日期地址範本4" class="lb-trigger" onclick="openLightbox(this.src, this.alt)" style="width:140px;height:200px;object-fit:cover;display:block;">
                                     <div style="padding:5px 7px;font-size:10px;color:var(--muted);">範本 4</div>
                                 </div>
                                 <div style="flex:0 0 140px; scroll-snap-align:start; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
-                                    <img src="img/fire_ext_date_5.jpg" alt="製造日期地址範本5" style="width:140px;height:200px;object-fit:cover;display:block;">
+                                    <img src="img/fire_ext_date_5.jpg" alt="製造日期地址範本5" class="lb-trigger" onclick="openLightbox(this.src, this.alt)" style="width:140px;height:200px;object-fit:cover;display:block;">
                                     <div style="padding:5px 7px;font-size:10px;color:var(--muted);">範本 5</div>
                                 </div>
                             </div>
@@ -1095,7 +1118,27 @@
         // 預設切換至 1.室外 拍照圖卡
         filterHeaterCards('outdoor', document.getElementById('btnOutdoor'));
     };
+
+    // ─── 通用 Lightbox ───
+    function openLightbox(src, caption) {
+        const lb = document.getElementById('imgLightbox');
+        document.getElementById('lbImg').src = src;
+        document.getElementById('lbCaption').textContent = caption || '';
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        document.getElementById('imgLightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
 </script>
+
+<!-- 通用 Lightbox 浮層 -->
+<div id="imgLightbox" onclick="if(event.target===this) closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lb-caption" id="lbCaption"></div>
+</div>
 
 </body>
 </html>
